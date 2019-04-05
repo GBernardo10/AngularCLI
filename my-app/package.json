@@ -32,6 +32,8 @@
     "rxjs": "~6.3.3",
     "tedious": "^6.1.0",
     "tslib": "^1.9.0",
+    "ejs": "^2.6.1",
+    "req-flash": "0.0.3",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

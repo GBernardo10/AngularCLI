@@ -13,6 +13,7 @@ import { TaskComponent } from './task/task.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
+import { CadastroFormComponent } from './cadastro-form/cadastro-form.component';
 
 
 const appRoutes: Routes = [
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     TaskComponent,
     PageNotFoundComponent,
     UsersComponent,
-    LoginComponent
+    LoginComponent,
+    CadastroFormComponent
   ],
   imports: [
     BrowserModule,
