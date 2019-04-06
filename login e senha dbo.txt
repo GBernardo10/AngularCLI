@@ -1,0 +1,3 @@
+NOME DO SERVIDOR: gameoverserve
+LOGON: adminGO
+SENHA: GameOver0

@@ -1,0 +1,19 @@
+create database DataBaseGO;
+use DataBaseGO;
+
+create table users (
+    userId int primary key identity(1,1),
+    username varchar(50),
+    password varchar(50),
+    firstName varchar(20),
+    lastName varchar(20),
+);
+
+
+<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+<dependency>
+    <groupId>com.microsoft.sqlserver</groupId>
+    <artifactId>mssql-jdbc</artifactId>
+    <version>7.0.0.jre8</version>
+    <scope>test</scope>
+</dependency>
