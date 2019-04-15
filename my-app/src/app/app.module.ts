@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
+import { NbThemeModule } from '@nebular/theme';
+
 
 
 import { AppComponent } from './app.component';
@@ -14,6 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
 import { CadastroFormComponent } from './cadastro-form/cadastro-form.component';
+import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 
 
 const appRoutes: Routes = [
@@ -37,11 +40,13 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     UsersComponent,
     LoginComponent,
-    CadastroFormComponent
+    CadastroFormComponent,
+    DashboardAdminComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
+    NbThemeModule.forRoot(),
 	HttpClientModule
   ],
   providers: [],
