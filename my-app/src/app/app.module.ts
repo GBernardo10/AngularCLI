@@ -1,9 +1,17 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
+
+//import { RouterModule, Routes } from '@angular/router';
+
 import { HttpClientModule} from '@angular/common/http';
 import { NbThemeModule } from '@nebular/theme';
 
+import { AppRoutingModule } from './app.routing';
+import { ComponentsModule } from './components/components.module';
 
 
 import { AppComponent } from './app.component';
@@ -16,9 +24,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
 import { CadastroFormComponent } from './cadastro-form/cadastro-form.component';
-import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {
+  AgmCoreModule
+} from '@agm/core';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 
+/*
 const appRoutes: Routes = [
   {
     path: 'Task', component: TaskComponent
@@ -27,7 +40,7 @@ const appRoutes: Routes = [
     path: '**', component: PageNotFoundComponent
   }
 ];
-
+*/
 
 @NgModule({
   declarations: [
@@ -41,13 +54,23 @@ const appRoutes: Routes = [
     UsersComponent,
     LoginComponent,
     CadastroFormComponent,
-    DashboardAdminComponent
+    AdminLayoutComponent,
+    //DashboardComponent
   ],
   imports: [
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpModule,
+    RouterModule,
+    AppRoutingModule,
+    ComponentsModule,
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    //RouterModule.forRoot(appRoutes),
     NbThemeModule.forRoot(),
-	HttpClientModule
+  HttpClientModule,
+  AgmCoreModule.forRoot({
+    apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+  })
   ],
   providers: [],
   bootstrap: [AppComponent]
