@@ -5,7 +5,7 @@
   "projects": {
     "my-app": {
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "e2e",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},
