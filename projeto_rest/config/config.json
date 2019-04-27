@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "adminGO",
+    "password": "GameOver0",
+    "database": "DataBaseGO",
+    "host": "gameoverserve.database.windows.net",
+    "dialect": "mysql",
+    "port": "5000"
+  },
+  "test": {
+    "username": "adminGO",
+    "password": "GameOver0",
+    "database": "DataBaseGO",
+    "host": "gameoverserve.database.windows.net",
+    "dialect": "mysql",
+    "port": "5000"
+  },
+  "production": {
+    "username": "adminGO",
+    "password": "GameOver0",
+    "database": "DataBaseGO",
+    "host": "gameoverserve.database.windows.net",
+    "dialect": "mysql",
+    "port": "5000"
+  }
+}
