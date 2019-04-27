@@ -4,13 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
 import { NbThemeModule } from '@nebular/theme';
 
-
-
 import { AppComponent } from './app.component';
 import { GstAddComponent } from './gst-add/gst-add.component';
 import { GstGetComponent } from './gst-get/gst-get.component';
 import { GstEditComponent } from './gst-edit/gst-edit.component';
-import { MyNewComponentComponent } from './my-new-component/my-new-component.component';
 import { TaskComponent } from './task/task.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UsersComponent } from './users/users.component';
@@ -35,7 +32,6 @@ const appRoutes: Routes = [
     GstAddComponent,
     GstGetComponent,
     GstEditComponent,
-    MyNewComponentComponent,
     TaskComponent,
     PageNotFoundComponent,
     UsersComponent,
