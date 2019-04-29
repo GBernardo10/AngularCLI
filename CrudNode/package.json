@@ -1,5 +1,5 @@
 {
-  "name": "Crud-Node",
+  "name": "CrudNode",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,17 +12,25 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/tedious": "^3.0.0",
+    "body-parser": "1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
+    "msnodesqlv8": "^0.7.1",
     "mssql": "^5.1.0",
-    "promise-mysql": "^3.3.1"
+    "path": "^0.12.7",
+    "promise-mysql": "^3.3.1",
+    "simple-sqlite-promise": "^0.1.5",
+    "tedious": "6.1.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.5",
     "@types/express": "^4.16.1",
+    "@types/jest": "^24.0.11",
     "@types/morgan": "^1.7.35",
     "@types/mssql": "^4.0.13",
+    "mssql-connection-string": "^0.3.2",
     "nodemon": "^1.18.11"
   }
 }

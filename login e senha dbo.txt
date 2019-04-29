@@ -1,3 +1,21 @@
+SQL
 NOME DO SERVIDOR: gameoverserve
 LOGON: adminGO
 SENHA: GameOver0
+
+MYSQL
+NOME DO SERVIDOR: sevenserver
+LOGON: sevenAdmin
+SENHA: sevensoftSETE7
+
+
+config = {
+	server: 'gameoverserve.database.windows.net',
+	user: 'adminGO',
+	password: 'GameOver0',
+	database: 'DataBaseGO',
+	options:
+	{
+		database: 'DataBaseGO', //update me
+		encrypt: true
+	}

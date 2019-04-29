@@ -18,18 +18,18 @@ class Server {
         this.app.set('port', process.env.PORT || 3000);
         this.app.use(morgan_1.default('dev'));
         this.app.use(cors_1.default());
-        this.app.use(express_1.default.json());
+        this.app.use((express_1.default.json()));
         this.app.use(express_1.default.urlencoded({
             extended: false
         }));
     }
     routes() {
         this.app.use(indexRoutes_1.default);
-        this.app.use('/seven/usuarios', userRoutes_1.default);
+        this.app.use('/api/user', userRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
-            console.log(`Servidor na porta`, this.app.get('port'));
+            console.log(`Server on port `, this.app.get('port'));
         });
     }
 }
