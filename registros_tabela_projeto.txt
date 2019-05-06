@@ -1,0 +1,102 @@
+create table hardware (
+id_Hardware int primary key identity (100,1),
+nome_processador varchar(50),
+modelo_processador varchar (50),
+fabricante varchar (50),
+sistema_operacional varchar(50),
+processadores_logico varchar (50),
+processadores_fisico varchar (50),
+memoria_total varchar (50),
+placa_video varchar (50),
+fabricante_gpu varchar (50),
+tipo_memoria_gpu varchar (50),
+memoria_total_gpu varchar(50),
+gpu_clock varchar (50),
+fk_idSoft int
+);
+
+
+create table desempenho (
+id_Desempenho int primary key identity (100,1),
+cpu_disponivel float,
+cpu_em_uso float,
+temperatura_cpu float,
+memoria_ram_disponivel float,
+memoria_ram_em_uso_cpu float,
+disco_em_uso_hd float,
+disco_livre_hd float,
+temperatura_gpu float,
+memoria_em_uso_gpu float,
+fk_idSoft int
+);
+
+create table processo (
+id_processo int primary key identity(100,1),
+nome_processo varchar (50),
+pid int,
+processador_cpu varchar (10),
+memoria int,
+fk_idSoft int
+);
+
+create table software (
+id_soft int primary key identity (7,7),
+nome_soft varchar (50) unique
+);
+
+create table usuario (
+    id_usuario int primary key identity (70,7),
+    nome varchar (50),
+    usuario varchar (50),
+    email varchar (255),
+    senha varchar (20),
+    fk_idSoft int,
+    fk_idAcesso int,
+);
+
+create table nivel_acesso (
+idAcesso int primary key,
+tipo_acesso varchar (20) unique
+);
+
+insert into hardware values (
+'intel core', 'i5-6300HQ CPU @ 2.30GHz','intel','windows 10', '4 logical CPU(s)',' 4 physical CPU core(s)', '7.8 GiB','gtx 650','nvidia','gddr5','2gb','1515mhz', 7);
+
+insert into desempenho values (
+98,2,42.0,4,3.9,1,99,30.4,32,7
+);
+
+insert into processo values (
+'chrome.exe', 4036, '01', 113048,7
+);
+
+select * from software, desempenho where ID_SOFT =7;
+select id_usuario,nome, usuario,id_soft ,nome_soft from usuario,software, desempenho where ID_SOFT = 7;
+select * from usuario,software where fk_idSoft = id_soft and ID_SOFT = 7;
+select * from usuario,software, hardware, desempenho 
+where usuario.fk_idSoft = id_soft and ID_HARDWARE = 100;
+select * from usuario,software, hardware, desempenho 
+where id_soft = 7 and id_usuario = 70 and id_hardware = 100;
+select id_usuario, nome, usuario,
+email,id_soft,nome_soft,id_hardware,nome_processador,modelo_processador,sistema_operacional,
+id_desempenho, cpu_disponivel
+from usuario,software, hardware, desempenho 
+where id_soft = 7 and id_usuario = 70 and id_hardware = 100;
+select id_usuario,nome, usuario,
+email,nome_soft,sistema_operacional,
+cpu_disponivel
+from usuario,software, hardware, desempenho 
+where software.id_soft = hardware.fk_idSoft and id_Hardware = 100;
+
+
+alter table processo add foreign key (fk_idSoft) references software (ID_SOFT);
+alter table hardware add foreign key (fk_idSoft ) references software (ID_SOFT);
+alter table desempenho add foreign key (fk_idSoft ) references software (ID_SOFT);
+alter table usuario add foreign key (fk_idSoft) references software (ID_SOFT);
+alter table usuario add foreign key (fk_idAcesso) references nivel_acesso (idAcesso);
+
+insert into software values ('softUm'),('SoftDois'),('softTres'),('softQuatro'),('softCinco');
+insert into desempenho values(98,2,42.5,4,3.9,100,200,39.1,2,7);
+insert into usuario values('Guilherme', 'GBernardo10','emailteste@teste.com','123', 7,1);
+insert into nivel_acesso values(1, 'SuperMaster'),(2, 'Master'),(3,'Secundario');
+
