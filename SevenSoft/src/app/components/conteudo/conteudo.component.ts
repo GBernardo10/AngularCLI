@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 //import { NgModule } from '@angular/core';
 //import * as RellaxDirective from 'rellax';
-import { NgImageSliderComponent } from 'ng-image-slider';
+//import { NgImageSliderComponent } from 'ng-image-slider';
 
 @Component({
   selector: 'app-conteudo',

@@ -13,6 +13,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UsersService } from './services/users.service';
+import { ParallaxDirective } from './parallax.directive';
+import { ParallaxComponent } from './components/parallax/parallax.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { UsersService } from './services/users.service';
     FooterComponent,
     NavigationComponent,
     UserFormComponent,
-    UserListComponent
+    UserListComponent,
+    ParallaxDirective,
+    ParallaxComponent
   ],
   imports: [
     BrowserModule,
