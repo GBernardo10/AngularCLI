@@ -1,5 +1,5 @@
 {
-  "name": "Usuario",
+  "name": "Guilherme",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -10,24 +10,8 @@
       "type": "string",
       "required": true
     },
-    "usuario": {
-      "type": "string",
-      "required": true
-    },
-    "email": {
-      "type": "string",
-      "required": true
-    },
     "senha": {
       "type": "string",
-      "required": true
-    },
-    "fk_idSoft": {
-      "type": "number",
-      "required": true
-    },
-    "fk_idAcesso ": {
-      "type": "number",
       "required": true
     }
   },
