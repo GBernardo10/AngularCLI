@@ -1,0 +1,24 @@
+FireLoop
+Loopback
+Ionic
+Cordova
+
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "sqlSevenSoftdb": {
+    "name": "sqlSevenSoftdb",
+	"connector": "mssql",
+    "host": "serversoft7.database.windows.net",
+    "url": "mssql://serversoft7.database.windows.net:1433;database=SevenSoft;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;",
+    "database": "SevenSoft",
+	"password": "@Sevensoft",
+	"user": "ninja",
+	"options": {
+	"database":"SevenSoft",
+	"encrypt": true
+	}
+   }
+}
