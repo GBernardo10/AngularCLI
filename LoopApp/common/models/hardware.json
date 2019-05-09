@@ -1,0 +1,70 @@
+{
+  "name": "Hardware",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id_Hardware": {
+      "type": "number",
+      "required": true
+    },
+    "nome_processador": {
+      "type": "string",
+      "required": true
+    },
+    "modelo_processador": {
+      "type": "string",
+      "required": true
+    },
+    "fabricante": {
+      "type": "string",
+      "required": true
+    },
+    "sistema_operacional": {
+      "type": "string",
+      "required": true
+    },
+    "processadores_logico": {
+      "type": "number",
+      "required": true
+    },
+    "processadores_fisico": {
+      "type": "number",
+      "required": true
+    },
+    "memoria_total": {
+      "type": "number",
+      "required": true
+    },
+    "placa_video": {
+      "type": "string",
+      "required": true
+    },
+    "fabricante_gpu  ": {
+      "type": "string",
+      "required": true
+    },
+    "tipo_memoria_gpu": {
+      "type": "string",
+      "required": true
+    },
+    "memoria_total_gpu": {
+      "type": "number",
+      "required": true
+    },
+    "gpu_clock": {
+      "type": "number",
+      "required": true
+    },
+    "fk_idSoft ": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

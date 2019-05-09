@@ -1,0 +1,42 @@
+{
+  "name": "Usuario",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id_usuario": {
+      "type": "number",
+      "required": true
+    },
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "usuario": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "number",
+      "required": true
+    },
+    "senha": {
+      "type": "string",
+      "required": true
+    },
+    "fk_idSoft": {
+      "type": "number",
+      "required": true
+    },
+    "fk_idAcesso ": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

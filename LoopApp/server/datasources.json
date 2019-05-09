@@ -1,0 +1,18 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "sqlSevenSoftdb": {
+    "name": "sqlSevenSoftdb",
+    "connector": "mssql",
+    "host": "serversoft7.database.windows.net",
+    "user": "ninja",
+    "password": "@Sevensoft",
+    "database": "SevenSoft",
+    "options": {
+      "database": "SevenSoft",
+      "encrypt": true
+    }
+  }
+}
