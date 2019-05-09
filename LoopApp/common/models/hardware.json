@@ -42,7 +42,7 @@
       "type": "string",
       "required": true
     },
-    "fabricante_gpu  ": {
+    "fabricante_gpu": {
       "type": "string",
       "required": true
     },
@@ -58,7 +58,7 @@
       "type": "number",
       "required": true
     },
-    "fk_idSoft ": {
+    "fk_idSoft": {
       "type": "number",
       "required": true
     }
