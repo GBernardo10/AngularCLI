@@ -135,7 +135,7 @@ export class UserController {
     await this.userRepository.deleteById(id);
   }
 
-  @get('/users/{username}', {
+  @get('/users/nomes/', {
     responses: {
       '200': {
         description: 'User model instance',
@@ -143,10 +143,18 @@ export class UserController {
       },
     },
   })
-
-  async getName(@param.path.string('username') username: string): Promise<Users> {
-    return await this.userRepository.getName(username);
+  // async whereByName(
+  //   @param.query.object('where', getWhereSchemaFor(Users)) where?: Where, ): Promise<Users> {
+  //   return await this.userRepository.find({ order: { username: DESC } });
+  // }
+  // async whereByName(
+  //   @param.path.string('username') username: string,
+  //   @param.query.object('where', getWhereSchemaFor(Users)) where?: Where, ): Promise<Users[]> {
+  //   return await this.userRepository.find({ where: { username: username } });
+  // }
+  async whereByName(
+    @param.query.string('username') username: string,
+    @param.query.object('where', getWhereSchemaFor(Users)) where?: Where, ): Promise<Users[]> {
+    return await this.userRepository.find({ where: { username: username } });
   }
-
-  //async getName(@param.query`select * from users where id=2` _username :string){
 }
