@@ -15,6 +15,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { UsersService } from './services/users.service';
 import { ParallaxDirective } from './parallax.directive';
 import { ParallaxComponent } from './components/parallax/parallax.component';
+import { GraficoComponent } from './components/grafico/grafico.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ParallaxComponent } from './components/parallax/parallax.component';
     UserFormComponent,
     UserListComponent,
     ParallaxDirective,
-    ParallaxComponent
+    ParallaxComponent,
+    GraficoComponent
   ],
   imports: [
     BrowserModule,
