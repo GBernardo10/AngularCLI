@@ -16,122 +16,137 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
-import { Usuario } from '../models';
-import { UsuarioRepository } from '../repositories';
+import { Users } from '../models';
+import { UserRepository } from '../repositories';
 
 export class UserController {
   constructor(
-    @repository(UsuarioRepository)
-    public usuarioRepository: UsuarioRepository,
+    @repository(UserRepository)
+    public userRepository: UserRepository,
   ) { }
 
-  @post('/usuarios', {
+  @post('/users', {
     responses: {
       '200': {
-        description: 'Usuario model instance',
-        content: { 'application/json': { schema: { 'x-ts-type': Usuario } } },
+        description: 'User model instance',
+        content: { 'application/json': { schema: { 'x-ts-type': Users } } },
       },
     },
   })
-  async create(@requestBody() usuario: Usuario): Promise<Usuario> {
-    return await this.usuarioRepository.create(usuario);
+  async create(@requestBody() user: Users): Promise<Users> {
+    return await this.userRepository.create(user);
   }
 
-  @get('/usuarios/count', {
+  @get('/users/count', {
     responses: {
       '200': {
-        description: 'Usuario model count',
+        description: 'User model count',
         content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
   async count(
-    @param.query.object('where', getWhereSchemaFor(Usuario)) where?: Where,
+    @param.query.object('where', getWhereSchemaFor(Users)) where?: Where,
   ): Promise<Count> {
-    return await this.usuarioRepository.count(where);
+    return await this.userRepository.count(where);
   }
 
-  @get('/usuarios', {
+  @get('/users', {
     responses: {
       '200': {
-        description: 'Array of Usuario model instances',
+        description: 'Array of User model instances',
         content: {
           'application/json': {
-            schema: { type: 'array', items: { 'x-ts-type': Usuario } },
+            schema: { type: 'array', items: { 'x-ts-type': Users } },
           },
         },
       },
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(Usuario)) filter?: Filter,
-  ): Promise<Usuario[]> {
-    return await this.usuarioRepository.find(filter);
+    @param.query.object('filter', getFilterSchemaFor(Users)) filter?: Filter,
+  ): Promise<Users[]> {
+    return await this.userRepository.find(filter);
   }
 
-  @patch('/usuarios', {
+  @patch('/users', {
     responses: {
       '200': {
-        description: 'Usuario PATCH success count',
+        description: 'User PATCH success count',
         content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
   async updateAll(
-    @requestBody() usuario: Usuario,
-    @param.query.object('where', getWhereSchemaFor(Usuario)) where?: Where,
+    @requestBody() user: Users,
+    @param.query.object('where', getWhereSchemaFor(Users)) where?: Where,
   ): Promise<Count> {
-    return await this.usuarioRepository.updateAll(usuario, where);
+    return await this.userRepository.updateAll(user, where);
   }
 
-  @get('/usuarios/{id}', {
+  @get('/users/{id}', {
     responses: {
       '200': {
-        description: 'Usuario model instance',
-        content: { 'application/json': { schema: { 'x-ts-type': Usuario } } },
+        description: 'User model instance',
+        content: { 'application/json': { schema: { 'x-ts-type': Users } } },
       },
     },
   })
-  async findById(@param.path.number('id') id: number): Promise<Usuario> {
-    return await this.usuarioRepository.findById(id);
+  async findById(@param.path.number('id') id: number): Promise<Users> {
+    return await this.userRepository.findById(id);
   }
 
-  @patch('/usuarios/{id}', {
+  @patch('/users/{id}', {
     responses: {
       '204': {
-        description: 'Usuario PATCH success',
+        description: 'User PATCH success',
       },
     },
   })
   async updateById(
     @param.path.number('id') id: number,
-    @requestBody() usuario: Usuario,
+    @requestBody() user: Users,
   ): Promise<void> {
-    await this.usuarioRepository.updateById(id, usuario);
+    await this.userRepository.updateById(id, user);
   }
 
-  @put('/usuarios/{id}', {
+  @put('/users/{id}', {
     responses: {
       '204': {
-        description: 'Usuario PUT success',
+        description: 'User PUT success',
       },
     },
   })
   async replaceById(
     @param.path.number('id') id: number,
-    @requestBody() usuario: Usuario,
+    @requestBody() user: Users,
   ): Promise<void> {
-    await this.usuarioRepository.replaceById(id, usuario);
+    await this.userRepository.replaceById(id, user);
   }
 
-  @del('/usuarios/{id}', {
+  @del('/users/{id}', {
     responses: {
       '204': {
-        description: 'Usuario DELETE success',
+        description: 'User DELETE success',
       },
     },
   })
   async deleteById(@param.path.number('id') id: number): Promise<void> {
-    await this.usuarioRepository.deleteById(id);
+    await this.userRepository.deleteById(id);
   }
+
+  @get('/users/{username}', {
+    responses: {
+      '200': {
+        description: 'User model instance',
+        content: { 'application/json': { schema: { 'x-ts-type': Users } } },
+      },
+    },
+  })
+
+  async getName(@param.path.string('username') username: string): Promise<Users> {
+    return await this.userRepository.getName(username);
+  }
+
+  //async getName(@param.query`select * from users where id=2` _username :string){
 }

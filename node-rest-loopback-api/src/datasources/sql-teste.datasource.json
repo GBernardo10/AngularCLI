@@ -1,0 +1,12 @@
+{
+  "name": "SQLTeste",
+  "connector": "mssql",
+  "host": "gameoverserve.database.windows.net",
+  "user": "adminGO",
+  "password": "GameOver0",
+  "database": "DataBaseGO",
+  "options": {
+    "database": "DataBaseGO",
+    "encrypt": true
+  }
+}
