@@ -6,7 +6,7 @@ import { GstGetComponent } from './gst-get/gst-get.component';
 
 const routes: Routes = [
   {
-    path: 'usuarios/criado',
+    path: 'usuarios/adicionar',
     component: GstAddComponent
   },
   {

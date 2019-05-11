@@ -1,8 +1,9 @@
+<ng2-slim-loading-bar color="blue"></ng2-slim-loading-bar>
 <nav class="navbar navbar-expand-sm bg-light">
   <div class="container-fluid">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a routerLink="usuarios/criado" class="nav-link" routerLinkActive="active">
+        <a routerLink="usuarios/adicionar" class="nav-link" routerLinkActive="active">
           Criar usuarios
         </a>
       </li>
@@ -14,7 +15,13 @@
     </ul>
   </div>
 </nav>
-
+<!-- <label>
+  Email:
+  <input type="text" [formAction]="email"/>
+  <p>
+    Value:{{email.value}}
+  </p>
+</label> -->
 <div class="container">
   <router-outlet></router-outlet>
 </div>
