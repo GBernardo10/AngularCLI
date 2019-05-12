@@ -15,9 +15,12 @@ import {
   put,
   del,
   requestBody,
+  Request,
+  Response
 } from '@loopback/rest';
 import { Users } from '../models';
 import { UserRepository } from '../repositories';
+import { resolve } from 'dns';
 
 export class UserController {
   constructor(
@@ -135,18 +138,27 @@ export class UserController {
     await this.userRepository.deleteById(id);
   }
 
-  @get('/users/{username}', {
-    responses: {
-      '200': {
-        description: 'User model instance',
-        content: { 'application/json': { schema: { 'x-ts-type': Users } } },
-      },
-    },
-  })
+  // public async getUserName(req: Request, res: Response): Promise<void> {
+  //   const {username} = req.params;
+  //   const userGetName = await
+  // };
 
-  async getName(@param.path.string('username') username: string): Promise<Users> {
-    return await this.userRepository.getName(username);
-  }
+  // @get('/users/{username}', {
+  //   responses: {
+  //     '200': {
+  //       description: 'User model instance',
+  //       content: { 'application/json': { schema: { 'x-ts-type': Users } } },
+  //     },
+  //   },
+  // })
+  // async countDois(
+  //   @param.query.object('where', getWhereSchemaFor(Users)) where?: Where,
+  // ): Promise<Count> {
+  //   return await this.userRepository.count(where);
+  // }
+  // async getName(@param.path.string('username') username: string): Promise<Users> {
+  //   return await this.userRepository.getName(username);
+  // }
 
   //async getName(@param.query`select * from users where id=2` _username :string){
 }

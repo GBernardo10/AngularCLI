@@ -8,15 +8,15 @@ import * as $ from 'jquery';
 })
 
 export class NavBarComponent implements OnInit {
-  
+
 
   constructor() { }
 
   ngOnInit() {
-    $(function () {
-      $(".navigation_icon").click(function () {
-        $(".navigation").toggleClass('navigation-open');
-      });
-    });
+    // $(function () {
+    //   $(".navigation_icon").click(function () {
+    //     $(".navigation").toggleClass('navigation-open');
+    //   });
+    // });
   }
 }

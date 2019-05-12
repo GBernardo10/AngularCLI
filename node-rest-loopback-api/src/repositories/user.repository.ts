@@ -7,9 +7,6 @@ export class UserRepository extends DefaultCrudRepository<
   Users,
   typeof Users.prototype.userId
   > {
-  getName(username: string): Users | PromiseLike<Users> {
-    throw new Error("Method not implemented.");
-  }
   constructor(
     @inject('datasources.SQLTeste') dataSource: SqlTesteDataSource,
   ) {

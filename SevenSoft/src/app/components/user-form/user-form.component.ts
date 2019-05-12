@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { User } from '../../models/User';
+import { UsersService } from '../../services/users.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-form',
@@ -7,9 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFormComponent implements OnInit {
 
-  constructor() { }
+  @HostBinding('class') classes = 'row';
+
+  user: User = {
+    userId: 0,
+    username: '',
+    password: '',
+    firstName: '',
+    lastName: ''
+  };
+
+  constructor(private userService: UsersService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    const params = this.activatedRoute.snapshot.params;
+    if (params.userId) {
+      this.userService.getUser(params.userId).subscribe(
+        res => {
+          console.log(res);
+          this.user = res;
+        },
+        err => console.error(err)
+      )
+    }
+  }
+
+  cadastrarNovoUsuario() {
+    delete this.user.userId;
+    this.userService.saveUser(this.user).subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/user']);
+      },
+      err => console.error(err)
+    )
   }
 
 }
