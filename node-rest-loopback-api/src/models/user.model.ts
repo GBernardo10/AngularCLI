@@ -14,12 +14,12 @@ export class Users extends Entity {
     required: true,
   })
   username: string;
-  // private _username: string;
+  // private userName: string;
   // public get username(): string {
-  //   return this._username;
+  //   return this.userName;
   // }
   // public set username(value: string) {
-  //   this._username = value;
+  //   this.userName = value;
   // }
 
   @property({
