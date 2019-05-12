@@ -13,25 +13,24 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
 
-  getUsers(){
+  getUsers() {
     return this.http.get(`${this.API_URI}/user`);
   }
 
-  getUser(userId: string){
+  getUser(userId: string) {
     return this.http.get(`${this.API_URI}/user/${userId}`);
   }
 
-  deleteUser(userId:string){
+  deleteUser(userId: string) {
     return this.http.delete(`${this.API_URI}/user/${userId}`);
   }
 
-  saveUser(user: User){
+  saveUser(user: User) {
     return this.http.post(`${this.API_URI}/user`, user);
   }
 
-  updateUser(userId: string, updatedUser: User): Observable<User>{
+  updateUser(userId: string, updatedUser: User): Observable<User> {
     return this.http.put(`${this.API_URI}/user/${userId}`, updatedUser);
-
   }
 
 }

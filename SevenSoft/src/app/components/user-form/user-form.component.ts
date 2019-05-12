@@ -13,12 +13,13 @@ export class UserFormComponent implements OnInit {
   @HostBinding('class') classes = 'row';
 
   user: User = {
-    userId: 0,
     username: '',
     password: '',
     firstName: '',
     lastName: ''
   };
+
+  edit: boolean = false;
 
   constructor(private userService: UsersService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -29,6 +30,7 @@ export class UserFormComponent implements OnInit {
         res => {
           console.log(res);
           this.user = res;
+          this.edit = true;
         },
         err => console.error(err)
       )
@@ -46,4 +48,13 @@ export class UserFormComponent implements OnInit {
     )
   }
 
+  atualizarUsuario() {
+    this.userService.updateUser(this.user.userId, this.user).subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/user']);
+      },
+      err => console.error(err)
+    )
+  }
 }

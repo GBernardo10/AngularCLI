@@ -18,7 +18,7 @@
           <input type="text" name="lastName" [(ngModel)]="user.lastName" placeholder="lastName" class="form-control"
             autofocus>
         </div>
-        <button class="btn btn-success btn-block" (click)="cadastrarNovoUsuario()">
+        <button class="btn btn-success btn-block" (click)="edit ? atualizarUsuario() : cadastrarNovoUsuario()">
           Cadastrar
         </button>
       </form>
@@ -28,7 +28,7 @@
 
 <div class="col-md-4">
   <div class="card card-body text-center">
-    
+
 
   </div>
 </div>
