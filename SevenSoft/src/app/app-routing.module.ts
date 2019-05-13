@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import {UserEditComponent} from './components/user-edit/user-edit.component';
 
 const routes: Routes = [
   {
@@ -18,8 +19,8 @@ const routes: Routes = [
     component: UserFormComponent
   },
   {
-    path:'user/edit/:userId',
-    component:UserFormComponent
+    path:'user/edit/:id',
+    component:UserEditComponent
   }
 ];
 

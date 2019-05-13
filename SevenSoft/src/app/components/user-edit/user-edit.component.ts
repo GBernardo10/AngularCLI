@@ -4,29 +4,32 @@ import { UsersService } from '../../services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.css']
+  selector: 'app-user-edit',
+  templateUrl: './user-edit.component.html',
+  styleUrls: ['./user-edit.component.css']
 })
-export class UserFormComponent implements OnInit {
-
-  @HostBinding('class') classes = 'row';
-
-  user: User = {
+export class UserEditComponent implements OnInit {
+	
+	  @HostBinding('class') classes = 'row';
+	  
+	user: User = {
+	userId:0,
     username: '',
     password: '',
     firstName: '',
     lastName: ''
   };
 
+
   constructor(private userService: UsersService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
   }
-
-  cadastrarNovoUsuario() {
-    delete this.user.userId;
-    this.userService.saveUser(this.user).subscribe(
+  
+  
+  atualizarUsuario() {
+	      const params = this.activatedRoute.snapshot.params;
+    this.userService.updateUser(params.id, this.user).subscribe(
       res => {
         console.log(res);
         this.router.navigate(['/user']);

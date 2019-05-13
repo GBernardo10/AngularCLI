@@ -25,20 +25,13 @@ class UserController {
                     });
                 }
             });
-            // const userList = await pool.query`select * from users`;
-            // res.json(userList.recordset);
-            // const users = await pool.request().query(`select * from users`).then(resultado => {
-            //     res.json(resultado.recordset);
-            // })
-            // const users = await pool.request().query(`select * from users`)
-            //     res.json(users);
         });
     }
     ;
     getUserId(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { userId } = req.params;
-            yield database_1.default.query `select * from users where userId = ${userId}`.then(resultado => {
+            const { id } = req.params;
+            yield database_1.default.query `select * from users where userId = ${id}`.then(resultado => {
                 if (resultado.recordset.length > 0) {
                     return res.json(resultado.recordset);
                 }
@@ -64,28 +57,24 @@ class UserController {
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { userId } = req.params;
+            const { id } = req.params;
             const { username } = req.body;
             const { password } = req.body;
             const { firstName } = req.body;
             const { lastName } = req.body;
             // await pool.query`update [users] set username = ${username}, password =${password}, firstName = ${firstName}, lastName =${lastName} where userId = ${userId}`;
-            yield database_1.default.query `update [users] set username = 'teste', password ='teste', firstName = 'teste', lastName = 'teste' where userId =${userId}`;
-            // const { userId } = req.params;
-            // const { body } = req.body;
-            // const userUpdate = await pool.request().query(`update users set ${ body } where userId = ${ userId } `)
-            //     .then(resultado => {
-            //         res.json({
-            //             text: "Usuario atualizado com sucesso"
-            //         });
-            //         // res.json(resultado.recordset);
-            //     })
+            yield database_1.default.query `update [users] set username = ${username}, password =${username}, firstName = ${username}, lastName = ${username} where userId = ${id}`
+                .then(resultado => {
+                res.json({
+                    text: "Usuario atualizado com sucesso"
+                });
+            });
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { userId } = req.params;
-            yield database_1.default.request().query(`delete from users where USERID = ${userId}`);
+            const { id } = req.params;
+            yield database_1.default.request().query(`delete from users where userId = ${id}`);
             res.json({
                 text: "Usuario deletado com sucesso"
             });

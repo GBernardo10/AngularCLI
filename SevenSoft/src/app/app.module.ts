@@ -16,6 +16,7 @@ import { UsersService } from './services/users.service';
 import { ParallaxDirective } from './parallax.directive';
 import { ParallaxComponent } from './components/parallax/parallax.component';
 import { GraficoComponent } from './components/grafico/grafico.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { GraficoComponent } from './components/grafico/grafico.component';
     UserListComponent,
     ParallaxDirective,
     ParallaxComponent,
-    GraficoComponent
+    GraficoComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

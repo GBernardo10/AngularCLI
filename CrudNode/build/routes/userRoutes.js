@@ -12,10 +12,10 @@ class UserRoutes {
     }
     config() {
         this.router.get('/', userController_1.default.list);
-        this.router.get('/:userId', userController_1.default.getUserId);
+        this.router.get('/:id', userController_1.default.getUserId);
         this.router.post('/', userController_1.default.create);
-        this.router.put('/:userId', userController_1.default.update);
-        this.router.delete('/:userId', userController_1.default.delete);
+        this.router.put('/:id', userController_1.default.update);
+        this.router.delete('/:id', userController_1.default.delete);
     }
 }
 const userRoutes = new UserRoutes();
