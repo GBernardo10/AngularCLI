@@ -12,10 +12,7 @@ class UserController {
                     text: "Nenhum usuario encontrado"
                 })
             }
-
-
         })
-
     };
 
     public async getUserId(req: Request, res: Response): Promise<void> {
@@ -58,6 +55,7 @@ class UserController {
             })
 
     }
+
     public async delete(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
         await pool.request().query(`delete from users where userId = ${id}`);

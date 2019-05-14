@@ -13,6 +13,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UsersService } from './services/users.service';
+import { GraficoService } from './services/grafico.service';
 import { ParallaxDirective } from './parallax.directive';
 import { ParallaxComponent } from './components/parallax/parallax.component';
 import { GraficoComponent } from './components/grafico/grafico.component';
@@ -40,7 +41,8 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
     HttpClientModule
   ],
   providers: [
-    UsersService
+    UsersService,
+    GraficoService
   ],
   bootstrap: [AppComponent]
 })
