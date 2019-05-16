@@ -18,6 +18,8 @@ import { ParallaxDirective } from './parallax.directive';
 import { ParallaxComponent } from './components/parallax/parallax.component';
 import { GraficoComponent } from './components/grafico/grafico.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
     ParallaxDirective,
     ParallaxComponent,
     GraficoComponent,
-    UserEditComponent
+    UserEditComponent,
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
