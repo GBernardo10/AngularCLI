@@ -5,6 +5,7 @@ import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
 import userRoutes from './routes/userRoutes';
 import businessRoutes from './routes/businessRoutes';
+import authRoutes from './routes/authRoutes';
 
 class Server {
     public app: Application;
@@ -37,6 +38,7 @@ class Server {
         this.app.use(indexRoutes);
         this.app.use('/api/user', userRoutes);
         this.app.use('/api/business', businessRoutes);
+        this.app.use('/api/login', authRoutes);
     }
 
     start(): void {
