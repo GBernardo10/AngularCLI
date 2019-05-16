@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './authentication/auth.guard';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -46,7 +47,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   ],
   providers: [
     UsersService,
-    GraficoService
+    GraficoService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
