@@ -33,7 +33,7 @@ class UserController {
             const { id } = req.params;
             yield database_1.default.query `select * from users where userId = ${id}`.then(resultado => {
                 if (resultado.recordset.length > 0) {
-                    return res.json(resultado.recordset);
+                    return res.json(resultado.recordset[0]);
                 }
                 else {
                     res.status(404).json({
@@ -62,8 +62,9 @@ class UserController {
             const { password } = req.body;
             const { firstName } = req.body;
             const { lastName } = req.body;
+            console.log(req.body);
             // await pool.query`update [users] set username = ${username}, password =${password}, firstName = ${firstName}, lastName =${lastName} where userId = ${userId}`;
-            yield database_1.default.query `update [users] set username = ${username}, password =${username}, firstName = ${username}, lastName = ${username} where userId = ${id}`
+            yield database_1.default.query `update [users] set username = ${username}, password = ${password}, firstName = ${firstName}, lastName = ${lastName} where userId = ${id}`
                 .then(resultado => {
                 res.json({
                     text: "Usuario atualizado com sucesso"

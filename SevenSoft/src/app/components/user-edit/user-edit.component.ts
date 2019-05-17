@@ -12,7 +12,7 @@ export class UserEditComponent implements OnInit {
 
   @HostBinding('class') classes = 'row';
 
-  user: User = {
+  public user = {
     userId: 0,
     username: '',
     password: '',
@@ -24,14 +24,23 @@ export class UserEditComponent implements OnInit {
   constructor(private userService: UsersService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    const params = this.activatedRoute.snapshot.params;
+    this.userService.getUser(params.id).subscribe(
+      res => {
+        this.user = res;
+        console.log(this.user)
+      }
+    )
   }
 
 
   atualizarUsuario() {
+    console.log(this.user)
     const params = this.activatedRoute.snapshot.params;
+    //console.log(this.user)
     this.userService.updateUser(params.id, this.user).subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
         this.router.navigate(['/user']);
       },
       err => console.error(err)

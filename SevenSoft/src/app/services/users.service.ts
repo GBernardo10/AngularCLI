@@ -18,7 +18,8 @@ export class UsersService {
   }
 
   getUser(id: string) {
-    return this.http.get(`${this.API_URI}/user/${id}`);
+    console.log(id)
+    return this.http.get<any>(`${this.API_URI}/user/${id}`);
   }
 
   deleteUser(id: string) {
@@ -29,7 +30,8 @@ export class UsersService {
     return this.http.post(`${this.API_URI}/user`, user);
   }
 
-  updateUser(id: string|number, updatedUser: User): Observable<User> {
+  updateUser(id: string | number, updatedUser: User): Observable<any> {
+    //console.log(updatedUser)
     return this.http.put(`${this.API_URI}/user/${id}`, updatedUser);
   }
 

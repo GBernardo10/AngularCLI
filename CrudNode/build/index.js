@@ -6,6 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
+// import sqlite3, { verbose } from 'sqlite3';
+// import jwt from 'jsonwebtoken';
+// import bcrypt from 'bcryptjs';
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const businessRoutes_1 = __importDefault(require("./routes/businessRoutes"));
@@ -24,11 +27,14 @@ class Server {
         this.app.use(express_1.default.urlencoded({
             extended: false
         }));
-        this.app.use((req, res, next) => {
-            res.header('Access-Control-Allow-Origin', '*');
-            res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-            next();
-        });
+        // this.app.use((req: Request, res: Response, next) => {
+        //     res.header('Access-Control-Allow-Origin', '*');
+        //     res.header(
+        //         'Access-Control-Allow-Headers',
+        //         'Origin, X-Requested-With, Content-Type, Accept'
+        //     );
+        //     next();
+        // });
     }
     routes() {
         this.app.use(indexRoutes_1.default);

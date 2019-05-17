@@ -67,20 +67,20 @@ export class LoginComponent implements OnInit {
   //     }
   //   }
 
-  login() {
-    this.loginForm.get()
-    // console.log(this.f.username.value)
-    this.authService.entrar(this.user.map(Login)).subscribe(
-      res => {
-        console.log(res);
-        // if (this.user.username == this.f.username.value) {
-        //   this.router.navigate(['/dashboard']);
-        // }
-        this.router.navigate(['/dashboard']);
-      },
-      err => console.error(err)
-    )
-  }
+  // login() {
+  //   this.loginForm.get()
+  //   // console.log(this.f.username.value)
+  //   this.authService.entrar(this.user.map(Login)).subscribe(
+  //     res => {
+  //       console.log(res);
+  //       // if (this.user.username == this.f.username.value) {
+  //       //   this.router.navigate(['/dashboard']);
+  //       // }
+  //       this.router.navigate(['/dashboard']);
+  //     },
+  //     err => console.error(err)
+  //   )
+  // }
 
 
   // login() {

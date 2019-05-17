@@ -1,9 +1,9 @@
 import express, { Application, Request, Response } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import sqlite3, { verbose } from 'sqlite3';
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
+// import sqlite3, { verbose } from 'sqlite3';
+// import jwt from 'jsonwebtoken';
+// import bcrypt from 'bcryptjs';
 
 
 import indexRoutes from './routes/indexRoutes';
@@ -27,14 +27,14 @@ class Server {
         this.app.use(express.urlencoded({
             extended: false
         }));
-        this.app.use((req: Request, res: Response, next) => {
-            res.header('Access-Control-Allow-Origin', '*');
-            res.header(
-                'Access-Control-Allow-Headers',
-                'Origin, X-Requested-With, Content-Type, Accept'
-            );
-            next();
-        });
+        // this.app.use((req: Request, res: Response, next) => {
+        //     res.header('Access-Control-Allow-Origin', '*');
+        //     res.header(
+        //         'Access-Control-Allow-Headers',
+        //         'Origin, X-Requested-With, Content-Type, Accept'
+        //     );
+        //     next();
+        // });
 
     }
 

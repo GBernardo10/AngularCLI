@@ -1,37 +1,41 @@
-import jwt from 'jsonwebtoken';
+//import jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
 import pool from '../database';
-import { error } from 'util';
-import bcrypt from 'bcryptjs';
+//import bcrypt from 'bcryptjs';
 
-const SECRET_KEY = "secretkey23456";
+// const SECRET_KEY = "secretkey23456";
 
 
 class AuthController {
     public async getLogin(req: Request, res: Response): Promise<void> {
+        
+        const username = req.body.username;
+        console.log(username)
+        const password = req.body.password
+        console.log(password)
 
-        let { username } = req.body.username;
-        let { password } = req.body.password;
-        let { teste } = req.body.teste;
-        let { de } = req.body.de;
-        await pool.query`select * from users where username = '${username}' and password = ${password}`.then(error, resultado => {
-            if (error) {
-                return res.status(500).send("Server error !");
-            }
-            if (resultado.recordset < 0) {
-                return res.status(404).send('Usuario nao encotrado!');
-            }
-            const result = bcrypt.compareSync(password, password);
-            if (!result) {
-                return res.status(401).send('Senha invalida');
-            }
-            const expiresIn = 24 * 60 * 60;
-            const accessToken = jwt.sign({ username: username, password }, SECRET_KEY, {
-                expiresIn: expiresIn
-            });
-            res.status(200).json({
-                "users": username, "accessToken": accessToken, "expiresIn": expiresIn
-            });
+        //let { teste } = req.body.teste;
+        //let { de } = req.body.de;
+        await pool.query`select * from users where username = ${username} and password = ${password}`.then(resultado => {
+            console.log(resultado)
+
+            // if (error) {
+            //     return res.status(500).send("Server error !");
+            // }
+            // if (resultado.recordset < 0) {
+            //     return res.status(404).send('Usuario nao encotrado!');
+            // }
+            // const result = bcrypt.compareSync(password, password);
+            // if (!result) {
+            //     return res.status(401).send('Senha invalida');
+            // }
+            //  const expiresIn = 24 * 60 * 60;
+            // const accessToken = jwt.sign({ username: username, password }, SECRET_KEY, {
+            //     expiresIn: expiresIn
+            // });
+            // res.status(200).json({
+            //     "users": username, "accessToken": accessToken, "expiresIn": expiresIn
+            // });
 
 
             // res.status(404).json({
