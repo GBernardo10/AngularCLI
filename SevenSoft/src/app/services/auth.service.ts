@@ -19,7 +19,7 @@ export class AuthService {
     // var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     // this.token = currentUser && currentUser.token;
   }
-  public user: Login[] = [];
+  public user: Login;
 
 
   // login(username: string, password: string): Observable<void> {
@@ -92,9 +92,9 @@ export class AuthService {
   // }
 
   logout(): void {
-    this.token = null;
-    localStorage.removeItem('currentUser');
-    // localStorage.setItem('isLoggedIn', "false");
-    // localStorage.removeItem('token');
+    // this.token = null;
+    // localStorage.removeItem('currentUser');
+    localStorage.setItem('isLoggedIn', "false");
+    localStorage.removeItem('token');
   }
 }

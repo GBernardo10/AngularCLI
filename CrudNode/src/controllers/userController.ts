@@ -46,15 +46,13 @@ class UserController {
         const { password } = req.body;
         const { firstName } = req.body;
         const { lastName } = req.body;
-        console.log(req.body)
-        // await pool.query`update [users] set username = ${username}, password =${password}, firstName = ${firstName}, lastName =${lastName} where userId = ${userId}`;
+
         await pool.query`update [users] set username = ${username}, password = ${password}, firstName = ${firstName}, lastName = ${lastName} where userId = ${id}`
             .then(resultado => {
                 res.json({
                     text: "Usuario atualizado com sucesso"
                 });
             })
-
     }
 
     public async delete(req: Request, res: Response): Promise<void> {

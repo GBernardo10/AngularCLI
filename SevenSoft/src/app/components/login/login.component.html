@@ -12,13 +12,13 @@ this.myGroup = new FormGroup({
   <div class="col-md-6 col-md-offset-3 loginBox">
     <h3>Log In</h3>
     <p *ngIf="message" clas s="text-center error">{{message}}</p>
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="form-group">
-        <input type="text" name="username" [(ngModel)]="user.username" placeholder="username" class="form-control"
+        <input type="text" name="username" formControlName="username" placeholder="username" class="form-control"
           autofocus>
       </div>
       <div class="form-group">
-        <input type="text" name="password" [(ngModel)]="user.password" placeholder="password" class="form-control"
+        <input type="password" name="password" formControlName="password" placeholder="password" class="form-control"
           autofocus>
       </div>
       <button class="btn btn-success btn-block" (click)="login()">

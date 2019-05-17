@@ -11,13 +11,13 @@ import { NgClass } from '@angular/common';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user: Login[] = [{
+  public user: Login = {
     username: '',
     password: ''
-  }];
+  };
 
   loginForm: FormGroup;
-  // message: string;
+  message: string;
   // returnUrl: string;
 
   constructor(private formBuilder: FormBuilder, private router: Router, public authService: AuthService) { }
@@ -38,6 +38,36 @@ export class LoginComponent implements OnInit {
   // get f() {
   //   return this.loginForm.controls;
   // }
+
+  login() {
+    this.authService.entrar(this.user).subscribe(
+      res => {
+        localStorage.setItem('isLoggedIn', "true");
+        localStorage.setItem('token', this.loginForm.value);
+        this.router.navigate(['/dashboard']);
+      }
+    )
+  }
+
+  // login() {
+  //   if (this.loginForm.invalid) {
+  //     return;
+  //   } else {
+  //     if (this.f.userId.value == this.model.userId && this.f.password.value == this.model.password) {
+  //       console.log("Login com sucesso");
+  //       localStorage.setItem('isLoggedIn', "true");
+  //       localStorage.setItem('token', this.f.userId.value);
+  //       this.router.navigate([this.returnUrl]);
+  //     } else {
+  //       this.message = "Por favor verifique o userId e a senha";
+  //     }
+  //   }
+  // }
+
+
+
+
+
 
   // login() {
   //   // console.log(this.f.username.value)
