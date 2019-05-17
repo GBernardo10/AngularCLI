@@ -1,6 +1,10 @@
 import express, { Application, Request, Response } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import sqlite3, { verbose } from 'sqlite3';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
+
 
 import indexRoutes from './routes/indexRoutes';
 import userRoutes from './routes/userRoutes';

@@ -9,11 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-	
-	  @HostBinding('class') classes = 'row';
-	  
-	user: User = {
-	userId:0,
+
+  @HostBinding('class') classes = 'row';
+
+  user: User = {
+    userId: 0,
     username: '',
     password: '',
     firstName: '',
@@ -25,10 +25,10 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit() {
   }
-  
-  
+
+
   atualizarUsuario() {
-	      const params = this.activatedRoute.snapshot.params;
+    const params = this.activatedRoute.snapshot.params;
     this.userService.updateUser(params.id, this.user).subscribe(
       res => {
         console.log(res);
