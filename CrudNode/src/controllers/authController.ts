@@ -8,6 +8,7 @@ class AuthController {
         const password = req.body.password
 
         await pool.query`select * from users where username = ${username} and password = ${password}`.then(resultado => {
+            console.log(resultado.recordset)
             res.json(resultado.recordset[0])
         });
     }

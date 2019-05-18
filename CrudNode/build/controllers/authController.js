@@ -18,6 +18,7 @@ class AuthController {
             const username = req.body.username;
             const password = req.body.password;
             yield database_1.default.query `select * from users where username = ${username} and password = ${password}`.then(resultado => {
+                console.log(resultado.recordset);
                 res.json(resultado.recordset[0]);
             });
         });
