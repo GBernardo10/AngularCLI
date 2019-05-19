@@ -1,8 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { AdmRouting } from './adm.routing';
 import { DashboardComponent } from '../../components/dashboard/dashboard.component';
+import {
+  MatButtonModule,
+  MatInputModule,
+  MatRippleModule,
+  MatFormFieldModule,
+  MatTooltipModule,
+  MatSelectModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -10,7 +19,14 @@ import { DashboardComponent } from '../../components/dashboard/dashboard.compone
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(AdmRouting)
+    RouterModule.forChild(AdmRouting),
+    FormsModule,
+    MatButtonModule,
+    MatRippleModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTooltipModule,
   ]
 })
 export class AdmModule { }
