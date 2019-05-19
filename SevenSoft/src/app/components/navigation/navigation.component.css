@@ -1,0 +1,21 @@
+.carPrev{
+    width: 0%;
+}
+
+.carNext{
+    width: 0%;
+}
+
+.carPrevControl{
+    position: absolute;
+    left: 280px;
+}
+
+.carNextControl{
+    position: absolute;
+    right: 280px;
+}
+
+.slide2{
+    height: 857px;
+}

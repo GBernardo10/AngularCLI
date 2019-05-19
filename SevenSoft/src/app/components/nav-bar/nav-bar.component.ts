@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
+//import * as $ from 'jquery';
+
+declare const navBar: any
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,14 +11,9 @@ import * as $ from 'jquery';
 
 export class NavBarComponent implements OnInit {
 
-
   constructor() { }
 
   ngOnInit() {
-    // $(function () {
-    //   $(".navigation_icon").click(function () {
-    //     $(".navigation").toggleClass('navigation-open');
-    //   });
-    // });
+    navBar()
   }
 }

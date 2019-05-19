@@ -5,6 +5,9 @@ import { Login } from '../../models/login';
 import { AuthService } from '../../services/auth.service';
 import { NgClass } from '@angular/common';
 
+//declare const myTest: any
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,11 +19,14 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
+  
+
   loginForm: FormGroup;
   message: string;
   returnUrl: string;
 
   constructor(private formBuilder: FormBuilder, private router: Router, public authService: AuthService) { }
+
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
