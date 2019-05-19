@@ -20,7 +20,10 @@ import { ParallaxComponent } from './components/parallax/parallax.component';
 import { GraficoComponent } from './components/grafico/grafico.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { LoginComponent } from './components/login/login.component';
+import { AdmComponent } from './dashboard/adm/adm.component';
+
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+// import { RoutaDashboardComponent } from './adm/routa-dashboard/routa-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     GraficoComponent,
     UserEditComponent,
     LoginComponent,
+    AdmComponent,
     DashboardComponent
+    // RoutaDashboardComponent
   ],
   imports: [
     BrowserModule,
