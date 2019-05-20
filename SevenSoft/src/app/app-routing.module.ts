@@ -12,56 +12,95 @@ import { GraficoComponent } from './components/grafico/grafico.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from './authentication/auth.guard';
+import { ConteudoComponent } from './components/conteudo/conteudo.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    component:ConteudoComponent,
     pathMatch: 'full'
   },
   {
-    path: '',
+    path: 'dashboard',
     component: AdmComponent,
     children: [
       {
-        path: '',
+        path: 'dashboard',
         loadChildren: './dashboard/adm/adm.module#AdmModule'
       }
     ]
-  }
-  // {
-  //   path: '',
-  //   redirectTo: '/',
-  //   pathMatch: 'full'
-  // },
-  // {
-  //   path: 'user',
-  //   component: UserListComponent
-  // },
-  // {
-  //   path: 'user/add',
-  //   component: UserFormComponent
-  // },
-  // {
-  //   path: 'user/edit/:id',
-  //   component: UserEditComponent
-  // },
-  // {
-  //   path: 'chart',
-  //   component: GraficoComponent
-  // },
-  // {
-  //   path: 'login',
-  //   component: LoginComponent
-  // },
-  // {
-  //   path: 'dashboard',
-  //   component: DashboardComponent,
-  //   //canActivate:[AuthGuard]
-  // }
-
-
+  },
+  {
+    path: 'chart',
+    component: GraficoComponent
+  },
 ];
+
+// {
+//   path: 'homem', 
+//   component: ConteudoComponent,
+//   children: [
+//     {
+//       path: '',
+//       pathMatch: 'full',
+//       redirectTo: 'home'
+//     };
+//   ],
+//     {
+//       path: 'dashboard',
+//       component: AdmComponent,
+//       children: [
+//         {
+//           path: 'dashboard',
+//           loadChildren: './dashboard/adm/adm.module#AdmModule'
+//         }
+//       ]
+//     }
+
+// {
+//   path: '',
+//   redirectTo: 'dashboard',
+//   pathMatch: 'full'
+// },
+// {
+//   path: '',
+//   component: AdmComponent,
+//   children: [
+//     {
+//       path: '',
+//       loadChildren: './dashboard/adm/adm.module#AdmModule'
+//     }
+//   ]
+// }
+// {
+//   path: '',
+//   redirectTo: '/',
+//   pathMatch: 'full'
+// },
+// {
+//   path: 'user',
+//   component: UserListComponent
+// },
+// {
+//   path: 'user/add',
+//   component: UserFormComponent
+// },
+// {
+//   path: 'user/edit/:id',
+//   component: UserEditComponent
+// },
+
+// {
+//   path: 'login',
+//   component: LoginComponent
+// },
+// {
+//   path: 'dashboard',
+//   component: DashboardComponent,
+//   //canActivate:[AuthGuard]
+// }
+
+
 
 @NgModule({
   imports: [

@@ -22,7 +22,8 @@ import { UsersService } from './services/users.service';
 import { GraficoService } from './services/grafico.service';
 import { ParallaxDirective } from './parallax.directive';
 import { ParallaxComponent } from './components/parallax/parallax.component';
-import { GraficoComponent } from './components/grafico/grafico.component';
+import { ComponentsGraficoModule } from './components/grafico/components-grafico';
+// import { GraficoComponent } from './components/grafico/grafico.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdmComponent } from './dashboard/adm/adm.component';
@@ -38,7 +39,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     UserListComponent,
     ParallaxDirective,
     ParallaxComponent,
-    GraficoComponent,
     UserEditComponent,
     LoginComponent,
     AdmComponent,
@@ -52,7 +52,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    ComponentsDashboardModule
+    ComponentsDashboardModule,
+    ComponentsGraficoModule
   ],
   providers: [
     UsersService,

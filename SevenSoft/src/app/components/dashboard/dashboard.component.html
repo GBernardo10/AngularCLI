@@ -4,7 +4,6 @@
     <a href="javascript:void(0);" (click)="logout()">Logout</a>
   </div>
 </div> -->
-
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -86,9 +85,12 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card card-chart">
-                    <div class="card-header card-header-success">
-                        <div class="ct-chart" id="dailySalesChart"></div>
-                    </div>
+                        <div class="container">
+                                <app-grafico></app-grafico>
+                            </div>
+                    <!-- <div class="card-header card-header-success">
+                        
+                    </div> -->
                     <div class="card-body">
                         <h4 class="card-title">??</h4>
                         <p class="card-category">

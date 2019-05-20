@@ -37,8 +37,7 @@ const routes: Routes =[
     BrowserModule,
     RouterModule.forRoot(routes)
   ],
-  exports: [
-  ],
+  exports: [],
   declarations: [TestTresComponent],
 })
 export class AppRoutingModule { }
