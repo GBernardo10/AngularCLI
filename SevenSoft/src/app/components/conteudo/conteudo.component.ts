@@ -9,7 +9,8 @@ declare const rellax: any;
 @Component({
   selector: 'app-conteudo',
   templateUrl: './conteudo.component.html',
-  styleUrls: ['./conteudo.component.css']
+  styleUrls: ['./conteudo.component.css',
+    './conteudoUm.component.css']
 })
 
 

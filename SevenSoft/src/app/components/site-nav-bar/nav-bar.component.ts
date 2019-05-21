@@ -4,12 +4,12 @@ import { Component, OnInit } from '@angular/core';
 declare const navBar: any
 
 @Component({
-  selector: 'app-nav-bar',
+  selector: 'site-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
 
-export class NavBarComponent implements OnInit {
+export class SiteNavBarComponent implements OnInit {
 
   constructor() { }
 

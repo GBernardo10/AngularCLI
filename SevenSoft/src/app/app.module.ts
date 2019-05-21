@@ -12,9 +12,9 @@ import { AppComponent } from './app.component';
 // import { AuthGuard } from './authentication/auth.guard';
 
 
-// import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { SiteNavBarComponent } from './components/site-nav-bar/nav-bar.component';
 import { ConteudoComponent } from './components/conteudo/conteudo.component';
-// import { FooterComponent } from './components/footer/footer.component';
+import { FooterSiteComponent } from './components/footer-site/footer.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
@@ -42,6 +42,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     UserEditComponent,
     LoginComponent,
     AdmComponent,
+    SiteNavBarComponent,
+    FooterSiteComponent
     // DashboardComponent,
   ],
   imports: [

@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from './authentication/auth.guard';
 import { ConteudoComponent } from './components/conteudo/conteudo.component';
+import { FooterSiteComponent } from './components/footer-site/footer.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'chart',
     component: GraficoComponent
+  },
+  {
+    path: 'teste',
+    component: FooterSiteComponent
   },
 ];
 
