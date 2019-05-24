@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GraficoService } from '../../services/grafico.service';
 import { Chart } from 'chart.js';
-import { JsonPipe } from '@angular/common';
-import { map } from 'rxjs-compat/operator/map';
 
 
 @Component({
@@ -11,16 +9,20 @@ import { map } from 'rxjs-compat/operator/map';
   styleUrls: ['./grafico.component.css']
 })
 export class GraficoComponent {
-  chart: any = [];
-  chartDate = [];
-  chartTempMax = [];
-  chartTempMin = [];
+  chartTemperaturaCPU: any = [];
 
 
   constructor(private chartjs: GraficoService) { }
-
-
+  
   ngOnInit() {
+    this.chartTempMaxTempMin();
+  }
+
+  chartTempMaxTempMin(){
+    let chartTempMax = [];
+    let chartDate = [];
+    let chartTempMin = [];
+
     setInterval(() => {
       this.chartjs.getAllDados().subscribe(
         res => {
@@ -30,33 +32,32 @@ export class GraficoComponent {
           let alldates = res['recordset'].map(res => res.hora);
 
           temp_max.forEach((res) => {
-            this.chartTempMax.push(res);
+            chartTempMax.push(res);
           })
 
           temp_min.forEach((res) => {
-            this.chartTempMin.push(res);
+            chartTempMin.push(res);
           })
 
-          // console.log(chartDate)
           alldates.forEach((res) => {
             let jsdate = new Date(res)
-            this.chartDate.push(jsdate.toLocaleTimeString('en', {
+            chartDate.push(jsdate.toLocaleTimeString('en', {
               hour: 'numeric'
             }))
           })
 
-          this.chart = new Chart('canvas', {
+          this.chartTemperaturaCPU = new Chart('canvas', {
             type: 'line',
             data: {
-              labels: this.chartDate,
+              labels: chartDate,
               datasets: [
                 {
-                  data: this.chartTempMax,
+                  data: chartTempMax,
                   borderColor: '#3cba9f',
                   fill: false
                 },
                 {
-                  data: this.chartTempMin,
+                  data: chartTempMin,
                   borderColor: '#ffcc00',
                   fill: false
                 },
@@ -82,6 +83,7 @@ export class GraficoComponent {
         }
       );
     }, 10000)
+
   }
 }
 
