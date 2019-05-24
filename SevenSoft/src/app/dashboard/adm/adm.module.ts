@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AdmRouting } from './adm.routing';
 import { DashboardComponent } from '../../components/dashboard/dashboard.component';
+import { NavBarComponent } from '../../components/dashboard/nav-bar/nav-bar.component';
+import { SideBarComponent } from '../../components/dashboard/side-bar/side-bar.component';
 import {
   MatButtonModule,
   MatInputModule,
@@ -15,7 +17,9 @@ import {
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    NavBarComponent,
+    SideBarComponent
   ],
   imports: [
     CommonModule,

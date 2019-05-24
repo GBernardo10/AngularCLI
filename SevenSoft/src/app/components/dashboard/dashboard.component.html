@@ -86,11 +86,13 @@
             <div class="col-md-4">
                 <div class="card card-chart">
                     <div class="container">
-                        <div *ngIf="chartTemperaturaCPU">
-                            <canvas id="canvas">
-                                {{chartTemperaturaCPU}}
-                            </canvas>
-                        </div>
+                        <!-- <div class="card-header card-header-success"> -->
+                            <div *ngIf="chartTemperaturaCPU">
+                                <canvas id="canvas">
+                                    {{chartTemperaturaCPU}}
+                                </canvas>
+                            </div>
+                        <!-- </div> -->
                     </div>
                     <!-- <div class="card-header card-header-success">
                         
@@ -111,11 +113,13 @@
             <div class="col-md-4">
                 <div class="card card-chart">
                     <div class="container">
-                        <div *ngIf="chartMemoriaRam">
-                            <canvas id="memoriaRam">
-                                {{chartMemoriaRam}}
-                            </canvas>
-                        </div>
+                        <!-- <div class="card-header card-header-danger"> -->
+                            <div *ngIf="chartMemoriaRam">
+                                <canvas id="memoriaRam">
+                                    {{chartMemoriaRam}}
+                                </canvas>
+                            </div>
+                        <!-- </div> -->
                     </div>
                     <!-- <div class="card-header card-header-warning">
                         <div class="ct-chart">

@@ -13,6 +13,16 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/dashboard', title: 'Dashboard', icon: 'dashboard', class: ''
   },
+  {
+    path: '/user-profile', title: 'Perfil', icon: 'person', class: ''
+  },
+  {
+    path: '/user-evento', title: 'Evento', icon: 'person', class: ''
+  },
+  {
+    path: '/user-ticket', title: 'Chamados', icon: 'person', class: ''
+  },
+
 ];
 
 @Component({
