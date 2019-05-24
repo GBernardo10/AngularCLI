@@ -16,6 +16,7 @@ export class GraficoComponent {
   constructor(private chartjs: GraficoService) { }
 
   ngOnInit() {
+    setInterval(this.chart, 3000)
     this.chartjs.getAllDados().subscribe(
       res => {
         let temp_max = res['recordset'].map(res => res.tempMax);
