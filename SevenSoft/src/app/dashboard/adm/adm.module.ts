@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AdmRouting } from './adm.routing';
 import { DashboardComponent } from '../../components/dashboard/dashboard.component';
-import { NavBarComponent } from '../../components/dashboard/nav-bar/nav-bar.component';
-import { SideBarComponent } from '../../components/dashboard/side-bar/side-bar.component';
+import { TableListComponent } from '../../components/table-list/table-list.component';
+import { UserProfileComponent } from '../../components/user-profile/user-profile.component';
+
 import {
   MatButtonModule,
   MatInputModule,
@@ -18,8 +19,8 @@ import {
 @NgModule({
   declarations: [
     DashboardComponent,
-    NavBarComponent,
-    SideBarComponent
+    UserProfileComponent,
+    TableListComponent
   ],
   imports: [
     CommonModule,

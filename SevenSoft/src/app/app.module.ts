@@ -27,6 +27,7 @@ import { ComponentsGraficoModule } from './components/grafico/components-grafico
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdmComponent } from './dashboard/adm/adm.component';
+import {UserProfileComponent} from './components/user-profile/user-profile.component'
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
@@ -43,7 +44,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     LoginComponent,
     AdmComponent,
     SiteNavBarComponent,
-    FooterSiteComponent
+    FooterSiteComponent,
+    UserProfileComponent
     // DashboardComponent,
   ],
   imports: [
@@ -55,7 +57,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AppRoutingModule,
     HttpClientModule,
     ComponentsDashboardModule,
-    ComponentsGraficoModule
+    ComponentsGraficoModule,
+    // UserProfileComponent
   ],
   providers: [
     UsersService,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 
+
 declare const $: any;
 declare interface RouteInfo {
   path: string;
@@ -9,12 +10,13 @@ declare interface RouteInfo {
   class: string
 }
 
+
 export const ROUTES: RouteInfo[] = [
   {
     path: '/dashboard', title: 'Dashboard', icon: 'dashboard', class: ''
   },
   {
-    path: '/user-profile', title: 'Perfil', icon: 'person', class: ''
+    path: '/user-profile', title: 'Perfil', icon: 'person', class: '',
   },
   {
     path: '/user-evento', title: 'Evento', icon: 'person', class: ''
@@ -31,12 +33,12 @@ export const ROUTES: RouteInfo[] = [
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
-  menuItens: any[];
+  menuItems: any[];
 
   constructor() { }
 
   ngOnInit() {
-    this.menuItens = ROUTES.filter(menuItem => menuItem);
+    this.menuItems = ROUTES.filter(menuItem => menuItem);
   }
   isMobileMenu() {
     if ($(window).width() > 991) {

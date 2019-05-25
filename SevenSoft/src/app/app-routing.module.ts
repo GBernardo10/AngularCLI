@@ -14,6 +14,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from './authentication/auth.guard';
 import { ConteudoComponent } from './components/conteudo/conteudo.component';
 import { FooterSiteComponent } from './components/footer-site/footer.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -21,20 +22,44 @@ const routes: Routes = [
     component:ConteudoComponent,
     pathMatch: 'full'
   },
+  // {
+  //   path:'',
+  //   redirectTo:'dashboard',
+  //   pathMatch:'full'
+  // },
+  // {
+  //   path: '',
+  //   component: AdmComponent,
+  //   children: [
+  //     {
+  //       path: '',
+  //       loadChildren: './dashboard/adm/adm.module#AdmModule',
+  //     }
+  //   ]
+  // },
   {
     path: 'dashboard',
     component: AdmComponent,
     children: [
       {
         path: 'dashboard',
-        loadChildren: './dashboard/adm/adm.module#AdmModule'
+        loadChildren: './dashboard/adm/adm.module#AdmModule',
       }
     ]
   },
   {
+    path: 'user-profile', 
+    component: UserProfileComponent,
+  },
+
+  {
     path: 'chart',
     component: GraficoComponent
   },
+  // {
+  //   path:'user-profile',
+  //   component:UserProfileComponent
+  // },
   {
     path: 'teste',
     component: FooterSiteComponent
