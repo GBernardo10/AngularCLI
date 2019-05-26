@@ -10,18 +10,13 @@ declare const navBar: any
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
-  isloggedIn: boolean;
 
   constructor(private userService: UsersService) { }
 
   ngOnInit() {
-    this.isloggedIn = this.userService.isloggedIn();
     navBar()
   }
 
-  logout() {
-    this.userService.logout();
-    // this.isloggedIn = false;
-  }
+
 }
 

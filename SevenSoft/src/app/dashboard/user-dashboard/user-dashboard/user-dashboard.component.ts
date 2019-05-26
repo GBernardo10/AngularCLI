@@ -18,7 +18,6 @@ export class UserDashboardComponent implements OnInit {
   private yScrollStack: number[] = [];
 
   constructor(public location: Location, private router: Router) { }
-
  
 ngOnInit(){
 

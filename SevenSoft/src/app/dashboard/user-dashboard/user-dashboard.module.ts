@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserDashboardRoutingModule } from './user-dashboard-routing.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
@@ -12,11 +13,17 @@ import { ChamadosDashboardComponent } from './chamados-dashboard/chamados-dashbo
 import { FooterDashboardComponent } from './footer-dashboard/footer-dashboard.component';
 
 @NgModule({
-  declarations: [UserDashboardComponent, PerfilDashboardComponent, GraficoDashboardComponent, NavBarDashboardComponent, SideBarDashboardComponent, EventoDashboardComponent, ChamadosDashboardComponent, FooterDashboardComponent],
-  exports:[UserDashboardComponent],
+  declarations: [UserDashboardComponent,
+    PerfilDashboardComponent, GraficoDashboardComponent,
+    NavBarDashboardComponent, SideBarDashboardComponent,
+    EventoDashboardComponent, ChamadosDashboardComponent,
+    FooterDashboardComponent],
+  exports: [UserDashboardComponent],
   imports: [
     CommonModule,
-    UserDashboardRoutingModule
+    UserDashboardRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class UserDashboardModule { }

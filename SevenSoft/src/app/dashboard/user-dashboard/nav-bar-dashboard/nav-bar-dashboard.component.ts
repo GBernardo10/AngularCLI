@@ -2,6 +2,9 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../side-bar-dashboard/side-bar-dashboard.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
+import { UsersService } from '../../../Site/services/users.service';
+import { User } from '../../../models/User';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-nav-bar-dashboard',
@@ -15,13 +18,20 @@ export class NavBarDashboardComponent implements OnInit {
   mobile_menu_visible: any = 0;
   private toggleButton: any;
   private sidebarVisible: boolean;
+  isloggedIn: boolean;
+  
+  user: User = {
 
-  constructor(location: Location, private element: ElementRef, private router: Router) {
+  };
+
+  constructor(location: Location, private element: ElementRef,
+    private router: Router, private userService: UsersService) {
     this.location = location;
     this.sidebarVisible = false;
   }
 
   ngOnInit() {
+    this.isloggedIn = this.userService.isloggedIn();
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
@@ -33,6 +43,11 @@ export class NavBarDashboardComponent implements OnInit {
         this.mobile_menu_visible = 0;
       }
     });
+  }
+
+  logout() {
+    this.userService.logout();
+    // this.isloggedIn = false;
   }
 
   sidebarOpen() {

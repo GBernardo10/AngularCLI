@@ -25,6 +25,8 @@ import { Error404Component } from './Site/error404/error404.component';
 import { GuardService } from './Site/services/guard.service';
 import { UserDashboardModule } from './dashboard/user-dashboard/user-dashboard.module';
 import { PerfilDashboardComponent } from './dashboard/user-dashboard/perfil-dashboard/perfil-dashboard.component';
+import { EventoDashboardComponent } from './dashboard/user-dashboard/evento-dashboard/evento-dashboard.component';
+import { ChamadosDashboardComponent } from './dashboard/user-dashboard/chamados-dashboard/chamados-dashboard.component';
 
 
 const routes: Routes = [
@@ -42,6 +44,8 @@ const routes: Routes = [
   { path: 'cadastro', component: CadastroComponent },
   { path: 'dashboard', loadChildren: () => UserDashboardModule, canActivate: [GuardService] },
   { path: 'perfil', component: PerfilDashboardComponent },
+  { path: 'evento', component: EventoDashboardComponent },
+  { path: 'abrir-chamado', component: ChamadosDashboardComponent },
   { path: '404', component: Error404Component },
   { path: '**', redirectTo: '/404' },
 ]
