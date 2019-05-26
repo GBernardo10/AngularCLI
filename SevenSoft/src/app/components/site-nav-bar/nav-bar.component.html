@@ -31,7 +31,7 @@
 
 <div id="body">
   <header class="headder">
-    <nav class="navigation">
+    <nav class="navigation" (click)="navBar()">
       <section class="navigation_icon">
         <span class="topBar"></span>
         <span class="middleBar"></span>
@@ -40,11 +40,11 @@
       <ul class="navigation_ul">
         <li><a routerLink="/">Inicio</a></li>
         <li><a routerLink="/teste">Objetivo</a></li>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="projeto">Projeto</a></li>
-        <li><a href="contato">Contato</a></li>
-        <li><a href="login">Login</a></li>
-        <li><a href="cadastro">Cadastro</a></li>
+        <li><a routerLink="/servicos">Serviços</a></li>
+        <li><a routerLink="/projeto">Projeto</a></li>
+        <li><a routerLink="/contato">Contato</a></li>
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/cadastro">Cadastro</a></li>
       </ul>
     </nav>
   </header>

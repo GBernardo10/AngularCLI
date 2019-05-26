@@ -4,5 +4,4 @@ function navBar() {
             $(".navigation").toggleClass('navigation-open');
         });
     });
-
 }
