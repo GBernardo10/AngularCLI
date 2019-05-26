@@ -4,7 +4,6 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { Router } from '@angular/router';
 import { UsersService } from '../../../Site/services/users.service';
 import { User } from '../../../models/User';
-import { userInfo } from 'os';
 
 @Component({
   selector: 'app-nav-bar-dashboard',
