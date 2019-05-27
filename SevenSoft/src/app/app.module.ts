@@ -40,10 +40,12 @@ import { ContatoComponent } from './Site/contato/contato.component';
 import { CadastroComponent } from './Site/cadastro/cadastro.component';
 import { FooterComponent } from './Site/footer/footer.component';
 import { LoginComponent } from './Site/login/login.component';
-import { Error404Component } from './Site/error404/error404.component';
+import { Error404Module } from './Site/error404/error404.module';
 import { UsersService } from './Site/services/users.service';
 import { GraficoService } from './Site/services/grafico.service';
 import { UserDashboardModule } from './dashboard/user-dashboard/user-dashboard.module';
+
+
 
 
 @NgModule({
@@ -71,7 +73,6 @@ import { UserDashboardModule } from './dashboard/user-dashboard/user-dashboard.m
     CadastroComponent,
     LoginComponent,
     FooterComponent,
-    Error404Component
     // DashboardComponent,
   ],
   imports: [
@@ -82,7 +83,8 @@ import { UserDashboardModule } from './dashboard/user-dashboard/user-dashboard.m
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    UserDashboardModule
+    UserDashboardModule,
+    Error404Module
     //ComponentsDashboardModule,
     //ComponentsGraficoModule,
     // UserProfileComponent

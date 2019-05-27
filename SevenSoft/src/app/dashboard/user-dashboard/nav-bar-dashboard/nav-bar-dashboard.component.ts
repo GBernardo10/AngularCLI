@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../side-bar-dashboard/side-bar-dashboard.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../../Site/services/users.service';
 import { User } from '../../../models/User';
 
@@ -12,24 +12,28 @@ import { User } from '../../../models/User';
 })
 
 export class NavBarDashboardComponent implements OnInit {
+
   private listTitles: any[];
   location: Location;
   mobile_menu_visible: any = 0;
   private toggleButton: any;
   private sidebarVisible: boolean;
   isloggedIn: boolean;
-  
-  user: User = {
 
-  };
 
-  constructor(location: Location, private element: ElementRef,
+  public user: any = [];
+
+
+  constructor(private activatedRoute: ActivatedRoute,
+    location: Location, private element: ElementRef,
     private router: Router, private userService: UsersService) {
     this.location = location;
     this.sidebarVisible = false;
   }
 
   ngOnInit() {
+    // this.getUser()
+    console.log(this.user)
     this.isloggedIn = this.userService.isloggedIn();
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
@@ -138,4 +142,22 @@ export class NavBarDashboardComponent implements OnInit {
     }
     return 'Dashboard';
   }
+
+  // getUser() {
+  //   // return this.userService.login().subscribe(
+  //   //   (user) => {
+  //   //     this.router.navigate(["/dashboard"])
+  //   //     // this.router.navigate([this.returnUrl]);
+  //   //     console.log(user)
+  //   //   });
+  //   const params = this.activatedRoute.snapshot.params;
+  //   this.userService.getUser(this.user.userId).subscribe(
+  //     res => {
+  //       console.log(this.user.userId)
+  //       console.log(res)
+  //       this.user.map(result => result)
+  //     },
+  //     err => console.log(err)
+  //   )
+  // }
 }

@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 // import { AdmComponent } from './dashboard/adm/adm.component'
 // import { UserListComponent } from './components/user-list/user-list.component';
-// import { UserFormComponent } from './components/user-form/user-form.component';
 // import { UserEditComponent } from './components/user-edit/user-edit.component';
 // import { GraficoComponent } from './components/grafico/grafico.component';
 // import { LoginComponent } from './components/login/login.component';
@@ -21,12 +20,11 @@ import { ProjetoComponent } from './Site/projeto/projeto.component';
 import { ContatoComponent } from './Site/contato/contato.component';
 import { CadastroComponent } from './Site/cadastro/cadastro.component';
 import { LoginComponent } from './Site/login/login.component';
-import { Error404Component } from './Site/error404/error404.component';
 import { GuardService } from './Site/services/guard.service';
 import { UserDashboardModule } from './dashboard/user-dashboard/user-dashboard.module';
-import { PerfilDashboardComponent } from './dashboard/user-dashboard/perfil-dashboard/perfil-dashboard.component';
 import { EventoDashboardComponent } from './dashboard/user-dashboard/evento-dashboard/evento-dashboard.component';
 import { ChamadosDashboardComponent } from './dashboard/user-dashboard/chamados-dashboard/chamados-dashboard.component';
+import { Error404Module } from './Site/error404/error404.module';
 
 
 const routes: Routes = [
@@ -43,11 +41,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'dashboard', loadChildren: () => UserDashboardModule, canActivate: [GuardService] },
-  { path: 'perfil', component: PerfilDashboardComponent },
   { path: 'evento', component: EventoDashboardComponent },
   { path: 'abrir-chamado', component: ChamadosDashboardComponent },
-  { path: '404', component: Error404Component },
-  { path: '**', redirectTo: '/404' },
+  { path: '404', loadChildren: () => Error404Module },
+  // { path: '**', redirectTo: '/404' },
 ]
 // {
 //   path: '',

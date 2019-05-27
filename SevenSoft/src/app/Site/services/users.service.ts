@@ -43,11 +43,11 @@ export class UsersService {
 
   // login(data): Observable<User> {
   //   return this.http.post<any>(`${this.API_URI}/login`, data).pipe(
-  //     tap((login: Login) => {
-  //       if (login && login.token) {
-  //         localStorage.setItem('currentUser', JSON.stringify(login));
-  //         this.isloggedIn = true;
-  //       }
+  //     tap(login => {
+  //       // if (login && login.token) {
+  //       localStorage.setItem('currentUser', JSON.stringify(login));
+  //       // this.isloggedIn = true;
+  //       //}
   //       this.log(`Entrou com o usuario=${login.username}`)
   //     }),
   //     catchError(this.handleError<User>('login'))
@@ -74,12 +74,23 @@ export class UsersService {
     );
   }
 
+  // login(formData: NgForm): Observable<User> {
+  //   return this.http.post<any>(`${this.API_URI}/login`, formData).pipe(
+  //     tap((user: User) => {
+  //       localStorage.setItem('currentUser', JSON.stringify(user));
+  //       this.log(`Entrou com o usuario=${user.username}`)
+  //     }),
+  //     catchError(this.handleError<User>('login'))
+  //   );
+  // }
 
-  login(formData: NgForm): Observable<User> {
+  login(formData: NgForm) {
     return this.http.post<any>(`${this.API_URI}/login`, formData).pipe(
-      tap((login: Login) => {
-        localStorage.setItem('currentUser', JSON.stringify(login));
-        this.log(`Entrou com o usuario=${login.username}`)
+      tap(user => {
+        if (user) {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+        }
+        this.log(`Entrou com o usuario=${user.username}`)
       }),
       catchError(this.handleError<User>('login'))
     );
@@ -101,24 +112,23 @@ export class UsersService {
     }
   }
 
-
   getUserLoggedIn() {
     if (this.isloggedIn) {
       return JSON.parse(localStorage.getItem('currentUser'));
     }
   }
 
-
-
-
+getHardware(){
+  return this.http.get(`${this.API_URI}/hardware`);
+}
 
   getUsers() {
-    return this.http.get(`${this.API_URI}/user`);
+    return this.http.get(`${this.API_URI}/usuario`);
   }
 
-  getUser(id: string) {
+  getUser(id: string | number) {
     console.log(id)
-    return this.http.get<any>(`${this.API_URI}/user/${id}`);
+    return this.http.get<any>(`${this.API_URI}/usuario/${id}`);
   }
 
   deleteUser(id: string) {

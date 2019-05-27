@@ -12,7 +12,7 @@ export class UserEditComponent implements OnInit {
 
   @HostBinding('class') classes = 'row';
 
-  public user = {
+  public user: User = {
     userId: 0,
     username: '',
     password: '',

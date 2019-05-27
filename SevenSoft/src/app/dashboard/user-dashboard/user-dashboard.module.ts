@@ -13,11 +13,16 @@ import { ChamadosDashboardComponent } from './chamados-dashboard/chamados-dashbo
 import { FooterDashboardComponent } from './footer-dashboard/footer-dashboard.component';
 
 @NgModule({
-  declarations: [UserDashboardComponent,
-    PerfilDashboardComponent, GraficoDashboardComponent,
-    NavBarDashboardComponent, SideBarDashboardComponent,
-    EventoDashboardComponent, ChamadosDashboardComponent,
-    FooterDashboardComponent],
+  declarations: [
+    UserDashboardComponent,
+    PerfilDashboardComponent,
+    GraficoDashboardComponent,
+    NavBarDashboardComponent,
+    SideBarDashboardComponent,
+    EventoDashboardComponent,
+    ChamadosDashboardComponent,
+    FooterDashboardComponent
+  ],
   exports: [UserDashboardComponent],
   imports: [
     CommonModule,

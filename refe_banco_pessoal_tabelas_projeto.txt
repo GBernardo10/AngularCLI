@@ -1,0 +1,43 @@
+create table evento (
+id_Evento int primary key identity(50,50),
+nomeEvento varchar(50),
+tipoEvento varchar(50),
+data date,
+hora time,
+fk_idUserEvento int,
+FOREIGN key (fk_idUserEvento) REFERENCES users(USERID) 
+);
+
+create table usuario (
+idUsuario int primary key identity(10,10),
+nome varchar(50),
+email varchar (255),
+senha varchar(50),
+fk_idAcesso int,
+FOREIGN KEY (fk_idAcesso) REFERENCES nivel_acesso(idAcesso)
+)
+
+create table software (
+idSoft int primary key identity(20,20),
+nome varchar (20),
+fk_idUsuario int,
+FOREIGN KEY (fk_idUsuario) REFERENCES usuario(idUsuario)
+)
+
+
+create table nivel_acesso(
+idAcesso int primary key,
+tipo_acesso varchar(20)
+)
+
+create table evento (
+idEvento int primary key identity(50,50),
+nomeEvento varchar(50),
+tipoEvento varchar(50),
+data date,
+hora time,
+fk_idUsuario int,
+fk_idSoft int,
+FOREIGN key (fk_idUsuario) REFERENCES usuario(idUsuario),
+FOREIGN key (fk_idSoft) REFERENCES software(idSoft) 
+);
