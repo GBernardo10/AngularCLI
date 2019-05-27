@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: 'contato', component: ContatoComponent, canActivate: [GuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
-  { path: 'dashboard', loadChildren: () => UserDashboardModule, canActivate: [GuardService] },
+  { path: 'dashboard/:id', loadChildren: () => UserDashboardModule, canActivate: [GuardService] },
   { path: 'evento', component: EventoDashboardComponent },
   { path: 'abrir-chamado', component: ChamadosDashboardComponent },
   { path: '404', loadChildren: () => Error404Module },

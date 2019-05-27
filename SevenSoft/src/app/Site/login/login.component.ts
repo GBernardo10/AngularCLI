@@ -62,7 +62,11 @@ export class LoginComponent implements OnInit {
     // console.log(this.user.userId)
     return this.userService.login(formData).subscribe(
       (user) => {
-        this.router.navigate(["/dashboard"])
+        if (user) {
+          this.userService.getUser(user)
+          this.router.navigate(['/dashboard', user.userId])
+        }
+        // this.router.navigate(["/dashboard"])
         // this.router.navigate([this.returnUrl]);
         console.log(user)
       });

@@ -21,7 +21,7 @@ export class NavBarDashboardComponent implements OnInit {
   isloggedIn: boolean;
 
 
-  public user: any = [];
+  public user: User = {};
 
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -32,7 +32,7 @@ export class NavBarDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getUser()
+    this.getUser(this.user)
     console.log(this.user)
     this.isloggedIn = this.userService.isloggedIn();
     this.listTitles = ROUTES.filter(listTitle => listTitle);
@@ -142,6 +142,26 @@ export class NavBarDashboardComponent implements OnInit {
     }
     return 'Dashboard';
   }
+
+  getUser(user: User) {
+    const params = this.activatedRoute.snapshot.params;
+    // console.log(this.user.userId)
+    return this.userService.getUser(params.id).subscribe(
+      (user) => {
+        this.user = (user)
+        // this.userService.getUser(user)
+        // this.router.navigate(["/dashboard"])
+        // this.router.navigate([this.returnUrl]);
+        console.log(user)
+      });
+  }
+
+  // this.userService.getUser(params.id).subscribe(
+  //   res => {
+  //     this.user = res;
+  //     console.log(this.user)
+  //   }
+  // )
 
   // getUser() {
   //   // return this.userService.login().subscribe(

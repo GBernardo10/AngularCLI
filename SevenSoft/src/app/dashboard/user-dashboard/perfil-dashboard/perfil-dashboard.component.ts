@@ -98,7 +98,6 @@ export class PerfilDashboardComponent implements OnInit {
     setInterval(() => {
       this.chartjs.getAllDados().subscribe(
         res => {
-
           let temp_max = res['recordset'].map(res => res.tempMax);
           let temp_min = res['recordset'].map(res => res.tempMin);
           let alldates = res['recordset'].map(res => res.hora);
