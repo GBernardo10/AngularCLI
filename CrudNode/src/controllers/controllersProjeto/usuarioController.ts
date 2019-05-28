@@ -1,13 +1,29 @@
 import { Request, Response } from 'express';
+import mssql from 'mssql';
 import pool from '../../database';
+import keys from '../../keys';
+
 
 class UsuarioController {
 
+    // public async list(req: Request, res: Response) {
+    //     await pool.query`select * from users`.then(resultado => {
+    //         if (resultado.recordset.length > 0) {
+    //             res.json(resultado.recordset);
+    //             //console.log(resultado)
+    //         } else {
+    //             res.status(404).json({
+    //                 text: "Nenhum usuario encontrado"
+    //             })
+    //         }
+    //     })
+    // };
     public async list(req: Request, res: Response) {
-        await pool.query`select * from users`.then(resultado => {
+        
+        await pool.connect(`select * from users`).then(resultado => {
             if (resultado.recordset.length > 0) {
                 res.json(resultado.recordset);
-                console.log(resultado)
+                //console.log(resultado)
             } else {
                 res.status(404).json({
                     text: "Nenhum usuario encontrado"
@@ -15,6 +31,22 @@ class UsuarioController {
             }
         })
     };
+
+
+    // public async list(req: Request, res: Response) {
+    //     const sql: any = new mssql.ConnectionPool(keys, err => {
+    //         return sql.request().query(`select * from users`).then((resultado: { recordset: { length: number; }; }) => {
+    //             if (resultado.recordset.length > 0) {
+    //                 res.json(resultado.recordset);
+    //                 //console.log(resultado)
+    //             } else {
+    //                 res.status(404).json({
+    //                     text: "Nenhum usuario encontrado"
+    //                 })
+    //             }
+    //         })
+    //     })
+    // }
 
     public async getUserId(req: Request, res: Response): Promise<void> {
         // const { id } = req.params;

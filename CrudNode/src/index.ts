@@ -1,4 +1,4 @@
-import express, { Application, Request, Response } from 'express';
+import express, { Application, Request, Response, ErrorRequestHandler, NextFunction } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 
@@ -8,6 +8,7 @@ import businessRoutes from './routes/businessRoutes';
 import authRoutes from './routes/authRoutes';
 import graficoRoutes from './routes/graficoRoutes';
 import hardwareRoutes from './routes/hardwareRoutes';
+// import middleware from './middleware';
 
 class Server {
     public app: Application;
@@ -15,6 +16,7 @@ class Server {
         this.app = express();
         this.config();
         this.routes();
+        // this.error();
     }
 
     config(): void {
@@ -33,8 +35,9 @@ class Server {
             );
             next();
         });
+        // this.app.use(middleware(pool)
 
-    }
+    };
 
     routes(): void {
         this.app.use(indexRoutes);
@@ -45,6 +48,13 @@ class Server {
         this.app.use('/api/grafico', graficoRoutes);
         this.app.use('/api/hardware', hardwareRoutes);
     }
+
+    // error() {
+    //     this.app.use((err:Er, req: Request, res: Response, next: NextFunction) => {
+    //         res.status(500).send('Error');
+    //     })
+    // }
+
 
     start(): void {
         this.app.listen(this.app.get('port'), () => {

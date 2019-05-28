@@ -12,11 +12,13 @@ const businessRoutes_1 = __importDefault(require("./routes/businessRoutes"));
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
 const graficoRoutes_1 = __importDefault(require("./routes/graficoRoutes"));
 const hardwareRoutes_1 = __importDefault(require("./routes/hardwareRoutes"));
+// import middleware from './middleware';
 class Server {
     constructor() {
         this.app = express_1.default();
         this.config();
         this.routes();
+        // this.error();
     }
     config() {
         this.app.set('port', process.env.PORT || 3000);
@@ -31,7 +33,9 @@ class Server {
             res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
             next();
         });
+        // this.app.use(middleware(pool)
     }
+    ;
     routes() {
         this.app.use(indexRoutes_1.default);
         // this.app.use('/api/user', userRoutes);
@@ -41,6 +45,11 @@ class Server {
         this.app.use('/api/grafico', graficoRoutes_1.default);
         this.app.use('/api/hardware', hardwareRoutes_1.default);
     }
+    // error() {
+    //     this.app.use((err:Er, req: Request, res: Response, next: NextFunction) => {
+    //         res.status(500).send('Error');
+    //     })
+    // }
     start() {
         this.app.listen(this.app.get('port'), () => {
             console.log(`Server on port `, this.app.get('port'));

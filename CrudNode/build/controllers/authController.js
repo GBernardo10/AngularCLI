@@ -17,7 +17,7 @@ class AuthController {
         return __awaiter(this, void 0, void 0, function* () {
             const username = req.body.username;
             const password = req.body.password;
-            yield database_1.default.query `select * from users where username = ${username} and password = ${password}`.then(resultado => {
+            yield database_1.default.connect `select * from users where username = ${username} and password = ${password}`.then(resultado => {
                 res.json(resultado.recordset[0]);
                 console.log(resultado.recordset[0]);
                 // res.json(resultado.recordset[0])
