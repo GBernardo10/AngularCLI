@@ -14,7 +14,7 @@ Cordova
     "host": "serversoft7.database.windows.net",
     "url": "mssql://serversoft7.database.windows.net:1433;database=SevenSoft;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;",
     "database": "SevenSoft",
-	"password": "@Sevensoft",
+	"password": x=Rw4=P_
 	"user": "ninja",
 	"options": {
 	"database":"SevenSoft",

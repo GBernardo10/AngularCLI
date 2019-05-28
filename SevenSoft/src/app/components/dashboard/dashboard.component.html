@@ -85,9 +85,15 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card card-chart">
-                        <div class="container">
-                                <app-grafico></app-grafico>
+                    <div class="container">
+                        <!-- <div class="card-header card-header-success"> -->
+                            <div *ngIf="chartTemperaturaCPU">
+                                <canvas id="canvas">
+                                    {{chartTemperaturaCPU}}
+                                </canvas>
                             </div>
+                        <!-- </div> -->
+                    </div>
                     <!-- <div class="card-header card-header-success">
                         
                     </div> -->
@@ -106,9 +112,19 @@
 
             <div class="col-md-4">
                 <div class="card card-chart">
-                    <div class="card-header card-header-warning">
-                        <div class="ct-chart" id="websiteViewsChart"></div>
+                    <div class="container">
+                        <!-- <div class="card-header card-header-danger"> -->
+                            <div *ngIf="chartMemoriaRam">
+                                <canvas id="memoriaRam">
+                                    {{chartMemoriaRam}}
+                                </canvas>
+                            </div>
+                        <!-- </div> -->
                     </div>
+                    <!-- <div class="card-header card-header-warning">
+                        <div class="ct-chart">
+                        </div>
+                    </div> -->
                     <div class="card-body">
                         <h4 class="card-title">??</h4>
                         <p class="card-category">??</p>
