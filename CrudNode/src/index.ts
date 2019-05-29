@@ -8,6 +8,7 @@ import businessRoutes from './routes/businessRoutes';
 import authRoutes from './routes/authRoutes';
 import graficoRoutes from './routes/graficoRoutes';
 import hardwareRoutes from './routes/hardwareRoutes';
+import maquinaRoutes from './routes/routesProjeto/maquinaRoutes';
 // import middleware from './middleware';
 
 class Server {
@@ -48,6 +49,7 @@ class Server {
         this.app.use('/api/login', authRoutes);
         this.app.use('/api/grafico', graficoRoutes);
         this.app.use('/api/hardware', hardwareRoutes);
+        this.app.use('/api/maquina', maquinaRoutes);
     }
 
     // error() {

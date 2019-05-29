@@ -12,6 +12,7 @@ const businessRoutes_1 = __importDefault(require("./routes/businessRoutes"));
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
 const graficoRoutes_1 = __importDefault(require("./routes/graficoRoutes"));
 const hardwareRoutes_1 = __importDefault(require("./routes/hardwareRoutes"));
+const maquinaRoutes_1 = __importDefault(require("./routes/routesProjeto/maquinaRoutes"));
 // import middleware from './middleware';
 class Server {
     constructor() {
@@ -45,6 +46,7 @@ class Server {
         this.app.use('/api/login', authRoutes_1.default);
         this.app.use('/api/grafico', graficoRoutes_1.default);
         this.app.use('/api/hardware', hardwareRoutes_1.default);
+        this.app.use('/api/maquina', maquinaRoutes_1.default);
     }
     // error() {
     //     this.app.use((err:Er, req: Request, res: Response, next: NextFunction) => {

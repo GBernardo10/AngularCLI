@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
 import pool from '../../database';
 
-class UsuarioController {
+class MaquinaController {
 
     public async list(req: Request, res: Response) {
-        await pool.query`select * from users`.then(resultado => {
+        const id = req.params.id;
+        await pool.query`select * from maquina join username on maquina.fk_idusuario = ${id} and username.id_usuario = ${id};`.then(resultado => {
             if (resultado.recordset.length > 0) {
                 res.json(resultado.recordset);
             } else {
@@ -15,10 +16,11 @@ class UsuarioController {
         }).then(() => pool.off)
     };
 
-    public async getUserId(req: Request, res: Response): Promise<void> {
+    public async getMaquinaId(req: Request, res: Response): Promise<void> {
         // const { id } = req.params;
         const id = req.params.id;
-        await pool.query`select * from users where userId = ${id}`.then(resultado => {
+        const idSoft = req.params.id
+        await pool.query`select * from maquina, username where id_soft = ${idSoft}`.then(resultado => {
             if (resultado.recordset[0]) {
                 console.log(resultado.recordset)
                 return res.json(resultado.recordset[0]);
@@ -68,5 +70,5 @@ class UsuarioController {
 
 }
 
-const usuarioController = new UsuarioController();
-export default usuarioController;
+const maquinaController = new MaquinaController();
+export default maquinaController;
