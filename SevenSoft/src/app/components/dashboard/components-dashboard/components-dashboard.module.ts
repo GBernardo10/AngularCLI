@@ -22,9 +22,9 @@ import { DashboardComponent } from '../../../components/dashboard/dashboard.comp
     RouterModule
   ],
   exports: [
+    FooterComponent,
     NavBarComponent,
     SideBarComponent,
-    FooterComponent,
     //DashboardComponent,
     GraficoComponent
   ]

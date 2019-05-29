@@ -19,8 +19,6 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
-  
-
   loginForm: FormGroup;
   message: string;
   returnUrl: string;

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 
+
 export class NavBarComponent implements OnInit {
   private listTitles: any[];
   location: Location;
