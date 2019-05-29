@@ -2,12 +2,11 @@ import { Router } from 'express';
 import usuarioController from '../../controllers/controllersProjeto/usuarioController';
 
 
-class UserRoutes {
+class UsuarioRoutes {
     public router: Router = Router();
 
     constructor() {
         this.config();
-
     }
 
     config(): void {
@@ -20,5 +19,5 @@ class UserRoutes {
 
 }
 
-const userRoutes = new UserRoutes();
-export default userRoutes.router;
+const usuarioRoutes = new UsuarioRoutes();
+export default usuarioRoutes.router;

@@ -28,11 +28,12 @@ class Server {
             extended: false
         }));
         this.app.use((req: Request, res: Response, next) => {
-            res.header('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Allow-Origin', '*');
             res.header(
                 'Access-Control-Allow-Headers',
                 'Origin, X-Requested-With, Content-Type, Accept'
             );
+            res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS')
             next();
         });
         // this.app.use(middleware(pool)

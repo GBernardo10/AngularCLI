@@ -41,7 +41,8 @@ fk_idSoft int
 
 create table software (
 id_soft int primary key identity (7,7),
-nome_soft varchar (50) unique
+nome_soft varchar (50) unique,
+fk_idusuario int
 );
 
 create table usuario (
@@ -50,8 +51,7 @@ create table usuario (
     usuario varchar (50),
     email varchar (255),
     senha varchar (20),
-    fk_idSoft int,
-    fk_idAcesso int,
+    fk_idAcesso int
 );
 
 create table nivel_acesso (
@@ -75,13 +75,16 @@ select id_usuario,nome, usuario,id_soft ,nome_soft from usuario,software, desemp
 select * from usuario,software where fk_idSoft = id_soft and ID_SOFT = 7;
 select * from usuario,software, hardware, desempenho 
 where usuario.fk_idSoft = id_soft and ID_HARDWARE = 100;
+
 select * from usuario,software, hardware, desempenho 
 where id_soft = 7 and id_usuario = 70 and id_hardware = 100;
+
 select id_usuario, nome, usuario,
 email,id_soft,nome_soft,id_hardware,nome_processador,modelo_processador,sistema_operacional,
 id_desempenho, cpu_disponivel
 from usuario,software, hardware, desempenho 
 where id_soft = 7 and id_usuario = 70 and id_hardware = 100;
+
 select id_usuario,nome, usuario,
 email,nome_soft,sistema_operacional,
 cpu_disponivel
@@ -94,9 +97,15 @@ alter table hardware add foreign key (fk_idSoft ) references software (ID_SOFT);
 alter table desempenho add foreign key (fk_idSoft ) references software (ID_SOFT);
 alter table usuario add foreign key (fk_idSoft) references software (ID_SOFT);
 alter table usuario add foreign key (fk_idAcesso) references nivel_acesso (idAcesso);
+alter table software add foreign key (fk_idusuario) references usuario(id_usuario)
 
 insert into software values ('softUm'),('SoftDois'),('softTres'),('softQuatro'),('softCinco');
 insert into desempenho values(98,2,42.5,4,3.9,100,200,39.1,2,7);
 insert into usuario values('Guilherme', 'GBernardo10','emailteste@teste.com','123', 7,1);
 insert into nivel_acesso values(1, 'SuperMaster'),(2, 'Master'),(3,'Secundario');
 
+
+
+select * from software, usuario, hardware where hardware.fk_idSOFT = software.id_soft and id_usuario = 70 and ID_SOFT = 21;
+
+select * from software, usuario, hardware, desempenho where desempenho.fk_idSoft=software.id_soft and hardware.fk_idSOFT = software.id_soft and id_usuario = 70 and ID_SOFT = 7;

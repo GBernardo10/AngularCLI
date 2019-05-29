@@ -13,52 +13,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../../database"));
 class UsuarioController {
-    // public async list(req: Request, res: Response) {
-    //     await pool.query`select * from users`.then(resultado => {
-    //         if (resultado.recordset.length > 0) {
-    //             res.json(resultado.recordset);
-    //             //console.log(resultado)
-    //         } else {
-    //             res.status(404).json({
-    //                 text: "Nenhum usuario encontrado"
-    //             })
-    //         }
-    //     })
-    // };
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.connect(`select * from users`).then(resultado => {
+            yield database_1.default.query `select * from users`.then(resultado => {
+                // try {
+                //     res.json(resultado.recordset)
+                // } catch () {
+                //     // error("msg", error)
+                // }
                 if (resultado.recordset.length > 0) {
                     res.json(resultado.recordset);
-                    //console.log(resultado)
                 }
                 else {
                     res.status(404).json({
                         text: "Nenhum usuario encontrado"
                     });
                 }
-            });
+            }).then(() => database_1.default.off);
         });
     }
     ;
-    // public async list(req: Request, res: Response) {
-    //     const sql: any = new mssql.ConnectionPool(keys, err => {
-    //         return sql.request().query(`select * from users`).then((resultado: { recordset: { length: number; }; }) => {
-    //             if (resultado.recordset.length > 0) {
-    //                 res.json(resultado.recordset);
-    //                 //console.log(resultado)
-    //             } else {
-    //                 res.status(404).json({
-    //                     text: "Nenhum usuario encontrado"
-    //                 })
-    //             }
-    //         })
-    //     })
-    // }
     getUserId(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // const { id } = req.params;
-            const { id } = req.params;
+            const id = req.params.id;
             yield database_1.default.query `select * from users where userId = ${id}`.then(resultado => {
                 if (resultado.recordset[0]) {
                     console.log(resultado.recordset);

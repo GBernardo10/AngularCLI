@@ -1,57 +1,31 @@
 import { Request, Response } from 'express';
-import mssql from 'mssql';
+import mssql, { PreparedStatement, Transaction } from 'mssql';
 import pool from '../../database';
 import keys from '../../keys';
 
 
 class UsuarioController {
 
-    // public async list(req: Request, res: Response) {
-    //     await pool.query`select * from users`.then(resultado => {
-    //         if (resultado.recordset.length > 0) {
-    //             res.json(resultado.recordset);
-    //             //console.log(resultado)
-    //         } else {
-    //             res.status(404).json({
-    //                 text: "Nenhum usuario encontrado"
-    //             })
-    //         }
-    //     })
-    // };
     public async list(req: Request, res: Response) {
-        
-        await pool.connect(`select * from users`).then(resultado => {
+        await pool.query`select * from users`.then(resultado => {
+            // try {
+            //     res.json(resultado.recordset)
+            // } catch () {
+            //     // error("msg", error)
+            // }
             if (resultado.recordset.length > 0) {
                 res.json(resultado.recordset);
-                //console.log(resultado)
             } else {
                 res.status(404).json({
                     text: "Nenhum usuario encontrado"
                 })
             }
-        })
+        }).then(() => pool.off)
     };
-
-
-    // public async list(req: Request, res: Response) {
-    //     const sql: any = new mssql.ConnectionPool(keys, err => {
-    //         return sql.request().query(`select * from users`).then((resultado: { recordset: { length: number; }; }) => {
-    //             if (resultado.recordset.length > 0) {
-    //                 res.json(resultado.recordset);
-    //                 //console.log(resultado)
-    //             } else {
-    //                 res.status(404).json({
-    //                     text: "Nenhum usuario encontrado"
-    //                 })
-    //             }
-    //         })
-    //     })
-    // }
 
     public async getUserId(req: Request, res: Response): Promise<void> {
         // const { id } = req.params;
-        const { id } = req.params;
-
+        const id = req.params.id;
         await pool.query`select * from users where userId = ${id}`.then(resultado => {
             if (resultado.recordset[0]) {
                 console.log(resultado.recordset)
