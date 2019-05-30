@@ -15,7 +15,7 @@ const database_1 = __importDefault(require("../../database"));
 class UsuarioController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query `select * from username`.then(resultado => {
+            yield database_1.default.query `select * from userSeven`.then(resultado => {
                 if (resultado.recordset.length > 0) {
                     res.json(resultado.recordset);
                 }
@@ -32,7 +32,7 @@ class UsuarioController {
         return __awaiter(this, void 0, void 0, function* () {
             // const { id } = req.params;
             const id = req.params.id;
-            yield database_1.default.query `select * from users where userId = ${id}`.then(resultado => {
+            yield database_1.default.query `select * from userSeven where id_usuario = ${id}`.then(resultado => {
                 if (resultado.recordset[0]) {
                     console.log(resultado.recordset);
                     return res.json(resultado.recordset[0]);
@@ -55,7 +55,7 @@ class UsuarioController {
             const { usuario } = req.body;
             const { email } = req.body;
             const { senha } = req.body;
-            yield database_1.default.query `insert into [username](nome, usuario,email,senha) values (${nome}, ${usuario},${email}, ${senha})`.then(resultado => {
+            yield database_1.default.query `insert into [userSeven](nome, usuario,email,senha) values (${nome}, ${usuario},${email}, ${senha})`.then(resultado => {
                 console.log(resultado.recordset);
                 if (resultado.recordsets.length > 0) {
                     res.json({
@@ -87,7 +87,7 @@ class UsuarioController {
             const { password } = req.body;
             const { firstName } = req.body;
             const { lastName } = req.body;
-            yield database_1.default.query `update [users] set username = ${username}, password = ${password}, firstName = ${firstName}, lastName = ${lastName} where userId = ${id}`
+            yield database_1.default.query `update [userSeven] set username = ${username}, password = ${password}, firstName = ${firstName}, lastName = ${lastName} where userId = ${id}`
                 .then(resultado => {
                 res.json({
                     text: "Usuario atualizado com sucesso"

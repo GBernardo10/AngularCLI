@@ -26,19 +26,19 @@ export class UserDashboardComponent implements OnInit {
   constructor(private userService: UsersService, private activatedRoute: ActivatedRoute, public location: Location, private router: Router) { }
 
   ngOnInit() {
-    // this.getUser()
+    this.getUser()
   }
 
-  // getUser() {
-  //   const params = this.activatedRoute.snapshot.params;
-  //   this.userService.getUser(params.id).subscribe(
-  //     res => {
-  //       console.log(res)
-  //       this.user = res
-  //     },
-  //     err => console.log(err)
-  //   )
-  // }
+  getUser() {
+    const params = this.activatedRoute.snapshot.params;
+    this.userService.getUser(params.id).subscribe(
+      res => {
+        console.log(res)
+        this.user = res
+      },
+      err => console.log(err)
+    )
+  }
   // getUser() {
   //   const params = this.activatedRoute.snapshot.params;
   //   this.userService.getUsers().subscribe(

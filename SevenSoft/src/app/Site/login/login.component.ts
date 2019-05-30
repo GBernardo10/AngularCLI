@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { UsersService } from '../services/users.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { User } from 'src/app/models/User';
+import { UserSeven } from '../models/UserSeven';
 
 
 @Component({
@@ -64,13 +64,12 @@ export class LoginComponent implements OnInit {
       (user) => {
         if (user) {
           this.userService.getUser(user)
-          this.router.navigate(['/dashboard', user.userId])
+          this.router.navigate(['/dashboard', user.id_usuario])
         }
         // this.router.navigate(["/dashboard"])
         // this.router.navigate([this.returnUrl]);
         console.log(user)
       });
-    console.log(formData);
   }
 
 }

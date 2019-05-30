@@ -15,7 +15,6 @@ const config = {
         encrypt: true,
     }
 };
-exports.default = config;
 // const config = {
 //     server: 'gameoverserve.database.windows.net',
 //     user: 'adminGO',
@@ -27,3 +26,4 @@ exports.default = config;
 //         encrypt: true
 //     }
 // };
+exports.default = config;

@@ -5,7 +5,7 @@ import { rows } from 'mssql';
 class UsuarioController {
 
     public async list(req: Request, res: Response) {
-        await pool.query`select * from username`.then(resultado => {
+        await pool.query`select * from userSeven`.then(resultado => {
             if (resultado.recordset.length > 0) {
                 res.json(resultado.recordset)
             } else {
@@ -19,7 +19,7 @@ class UsuarioController {
     public async getUserId(req: Request, res: Response): Promise<void> {
         // const { id } = req.params;
         const id = req.params.id;
-        await pool.query`select * from users where userId = ${id}`.then(resultado => {
+        await pool.query`select * from userSeven where id_usuario = ${id}`.then(resultado => {
             if (resultado.recordset[0]) {
                 console.log(resultado.recordset)
                 return res.json(resultado.recordset[0]);
@@ -42,7 +42,7 @@ class UsuarioController {
         const { email } = req.body;
         const { senha } = req.body;
 
-        await pool.query`insert into [username](nome, usuario,email,senha) values (${nome}, ${usuario},${email}, ${senha})`.then(
+        await pool.query`insert into [userSeven](nome, usuario,email,senha) values (${nome}, ${usuario},${email}, ${senha})`.then(
             resultado => {
                 console.log(resultado.recordset)
                 if (resultado.recordsets.length > 0) {
@@ -78,7 +78,7 @@ class UsuarioController {
         const { firstName } = req.body;
         const { lastName } = req.body;
 
-        await pool.query`update [users] set username = ${username}, password = ${password}, firstName = ${firstName}, lastName = ${lastName} where userId = ${id}`
+        await pool.query`update [userSeven] set username = ${username}, password = ${password}, firstName = ${firstName}, lastName = ${lastName} where userId = ${id}`
             .then(resultado => {
                 res.json({
                     text: "Usuario atualizado com sucesso"

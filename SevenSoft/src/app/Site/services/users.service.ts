@@ -6,6 +6,7 @@ import { Login } from '../../models/login';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { UserSeven } from '../models/UserSeven';
 
 @Injectable({
   providedIn: 'root'
@@ -90,9 +91,9 @@ export class UsersService {
         if (user) {
           localStorage.setItem('currentUser', JSON.stringify(user));
         }
-        this.log(`Entrou com o usuario=${user.username}`)
+        this.log(`Entrou com o usuario=${user.usuario}`)
       }),
-      catchError(this.handleError<User>('login'))
+      catchError(this.handleError<UserSeven>('login'))
     );
   }
 
@@ -118,9 +119,9 @@ export class UsersService {
     }
   }
 
-getHardware(){
-  return this.http.get(`${this.API_URI}/hardware`);
-}
+  getHardware() {
+    return this.http.get(`${this.API_URI}/hardware`);
+  }
 
   getUsers() {
     return this.http.get(`${this.API_URI}/usuario`);

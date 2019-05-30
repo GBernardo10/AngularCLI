@@ -2,14 +2,17 @@ import express, { Application, Request, Response, ErrorRequestHandler, NextFunct
 import morgan from 'morgan';
 import cors from 'cors';
 
+// import userRoutes from './routes/userRoutes';
+// import middleware from './middleware';
+// import authRoutes from './routes/authRoutes';
+// import businessRoutes from './routes/businessRoutes';
+
 import indexRoutes from './routes/indexRoutes';
+import loginRoutes from './routes/routesProjeto/loginRoutes';
 import usuarioRoutes from './routes/routesProjeto/usuarioRoutes';
-import businessRoutes from './routes/businessRoutes';
-import authRoutes from './routes/authRoutes';
 import graficoRoutes from './routes/graficoRoutes';
 import hardwareRoutes from './routes/hardwareRoutes';
 import maquinaRoutes from './routes/routesProjeto/maquinaRoutes';
-// import middleware from './middleware';
 
 class Server {
     public app: Application;
@@ -37,19 +40,19 @@ class Server {
             res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS')
             next();
         });
-        // this.app.use(middleware(pool)
-
     };
 
     routes(): void {
         this.app.use(indexRoutes);
-        // this.app.use('/api/user', userRoutes);
+        this.app.use('/api/login', loginRoutes);
         this.app.use('/api/usuario', usuarioRoutes);
-        this.app.use('/api/business', businessRoutes);
-        this.app.use('/api/login', authRoutes);
         this.app.use('/api/grafico', graficoRoutes);
         this.app.use('/api/hardware', hardwareRoutes);
         this.app.use('/api/maquina', maquinaRoutes);
+        
+        // this.app.use('/api/business', businessRoutes);
+        // this.app.use('/api/user', userRoutes);
+        // this.app.use('/api/login', authRoutes);
     }
 
     // error() {

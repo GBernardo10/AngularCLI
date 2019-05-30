@@ -5,7 +5,7 @@ class MaquinaController {
 
     public async list(req: Request, res: Response) {
         const id = req.params.id;
-        await pool.query`select * from maquina join username on maquina.fk_idusuario = ${id} and username.id_usuario = ${id};`.then(resultado => {
+        await pool.query`select * from maquina join userSeven on maquina.fk_idusuario = ${id} and userSeven.id_usuario = ${id};`.then(resultado => {
             if (resultado.recordset.length > 0) {
                 res.json(resultado.recordset);
             } else {
@@ -20,7 +20,7 @@ class MaquinaController {
         // const { id } = req.params;
         const id = req.params.id;
         const idSoft = req.params.id
-        await pool.query`select * from maquina, username where id_soft = ${id}`.then(resultado => {
+        await pool.query`select * from maquina, userSeven where id_soft = ${id}`.then(resultado => {
             if (resultado.recordset[0]) {
                 console.log(resultado.recordset)
                 return res.json(resultado.recordset[0]);

@@ -16,7 +16,7 @@ class MaquinaController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;
-            yield database_1.default.query `select * from maquina join username on maquina.fk_idusuario = ${id} and username.id_usuario = ${id};`.then(resultado => {
+            yield database_1.default.query `select * from maquina join userSeven on maquina.fk_idusuario = ${id} and userSeven.id_usuario = ${id};`.then(resultado => {
                 if (resultado.recordset.length > 0) {
                     res.json(resultado.recordset);
                 }
@@ -34,7 +34,7 @@ class MaquinaController {
             // const { id } = req.params;
             const id = req.params.id;
             const idSoft = req.params.id;
-            yield database_1.default.query `select * from maquina, username where id_soft = ${id}`.then(resultado => {
+            yield database_1.default.query `select * from maquina, userSeven where id_soft = ${id}`.then(resultado => {
                 if (resultado.recordset[0]) {
                     console.log(resultado.recordset);
                     return res.json(resultado.recordset[0]);

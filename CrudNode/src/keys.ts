@@ -15,7 +15,6 @@ const config = {
         }
 };
 
-export default config;
 
 // const config = {
 //     server: 'gameoverserve.database.windows.net',
@@ -28,3 +27,5 @@ export default config;
 //         encrypt: true
 //     }
 // };
+
+export default config;
