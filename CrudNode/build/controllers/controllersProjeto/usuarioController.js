@@ -15,7 +15,7 @@ const database_1 = __importDefault(require("../../database"));
 class UsuarioController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query `select * from users`.then(resultado => {
+            yield database_1.default.query `select * from username`.then(resultado => {
                 if (resultado.recordset.length > 0) {
                     res.json(resultado.recordset);
                 }
@@ -24,7 +24,7 @@ class UsuarioController {
                         text: "Nenhum usuario encontrado"
                     });
                 }
-            }).then(() => database_1.default.off);
+            }).catch(err => res.status(500).send(err));
         });
     }
     ;
@@ -42,19 +42,42 @@ class UsuarioController {
                         text: "Usuario nao encontrado"
                     });
                 }
-            });
+            }).catch(err => res.status(500).send(err));
         });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { username } = req.body;
-            const { password } = req.body;
-            const { firstName } = req.body;
-            const { lastName } = req.body;
-            yield database_1.default.query `insert into [users](username, password,firstName,lastName) values (${username}, ${password},${firstName}, ${lastName})`;
-            res.json({
-                text: 'Usuario Criado'
-            });
+            // const nome = req.body.nome;
+            // const usuario = req.body.usuario;
+            // const email = req.body.email;
+            // const senha = req.body.senha;
+            const { nome } = req.body;
+            const { usuario } = req.body;
+            const { email } = req.body;
+            const { senha } = req.body;
+            yield database_1.default.query `insert into [username](nome, usuario,email,senha) values (${nome}, ${usuario},${email}, ${senha})`.then(resultado => {
+                console.log(resultado.recordset);
+                if (resultado.recordsets.length > 0) {
+                    res.json({
+                        text: 'Usuario Criado'
+                    });
+                }
+                else {
+                    res.json({
+                        text: "Usuario ja existe"
+                    });
+                }
+            }).catch(err => res.status(500).send(err));
+            //.then(
+            //     rows => {
+            //         if(rows.recordset.columns){
+            //             console.log(rows.rowsAffected)
+            //         }
+            //     }
+            // )
+            // res.json({
+            //     text: 'Usuario Criado'
+            // });
         });
     }
     update(req, res) {
@@ -69,7 +92,7 @@ class UsuarioController {
                 res.json({
                     text: "Usuario atualizado com sucesso"
                 });
-            });
+            }).catch(err => res.status(500).send(err));
         });
     }
     delete(req, res) {

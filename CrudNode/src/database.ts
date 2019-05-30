@@ -1,4 +1,4 @@
-import mssql, { NText } from 'mssql';
+import mssql from 'mssql';
 import keys from './keys';
 
 const pool = new mssql.ConnectionPool(keys, err => {
@@ -10,6 +10,16 @@ const pool = new mssql.ConnectionPool(keys, err => {
     };
 })
 
+
+pool.on('error', err => {
+    try {
+        pool.connect().then(res => {
+            res.connected
+        }).catch(err => console.log(err))
+    } catch (error) {
+    }
+})
+
 pool.on('release', () => console.log('pool => conexao retornada'));
 pool.on('SIGINT', () =>
     pool.close(err => {
@@ -18,6 +28,5 @@ pool.on('SIGINT', () =>
         process.exit(0);
     })
 );
-// const pool = new Banco();
 
 export default pool;

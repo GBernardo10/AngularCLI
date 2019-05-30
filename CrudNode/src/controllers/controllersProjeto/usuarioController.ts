@@ -1,18 +1,19 @@
 import { Request, Response } from 'express';
 import pool from '../../database';
+import { rows } from 'mssql';
 
 class UsuarioController {
 
     public async list(req: Request, res: Response) {
-        await pool.query`select * from users`.then(resultado => {
+        await pool.query`select * from username`.then(resultado => {
             if (resultado.recordset.length > 0) {
-                res.json(resultado.recordset);
+                res.json(resultado.recordset)
             } else {
                 res.status(404).json({
                     text: "Nenhum usuario encontrado"
                 })
             }
-        }).then(() => pool.off)
+        }).catch(err => res.status(500).send(err))
     };
 
     public async getUserId(req: Request, res: Response): Promise<void> {
@@ -27,20 +28,48 @@ class UsuarioController {
                     text: "Usuario nao encontrado"
                 })
             }
-        })
+        }).catch(err => res.status(500).send(err))
     }
 
     public async create(req: Request, res: Response): Promise<void> {
-        const { username } = req.body;
-        const { password } = req.body;
-        const { firstName } = req.body;
-        const { lastName } = req.body;
+        // const nome = req.body.nome;
+        // const usuario = req.body.usuario;
+        // const email = req.body.email;
+        // const senha = req.body.senha;
 
-        await pool.query`insert into [users](username, password,firstName,lastName) values (${username}, ${password},${firstName}, ${lastName})`;
-        res.json({
-            text: 'Usuario Criado'
-        });
+        const { nome } = req.body;
+        const { usuario } = req.body;
+        const { email } = req.body;
+        const { senha } = req.body;
+
+        await pool.query`insert into [username](nome, usuario,email,senha) values (${nome}, ${usuario},${email}, ${senha})`.then(
+            resultado => {
+                console.log(resultado.recordset)
+                if (resultado.recordsets.length > 0) {
+                    res.json({
+                        text: 'Usuario Criado'
+                    });
+                } else {
+                    res.json({
+                        text: "Usuario ja existe"
+                    })
+                }
+            }
+        ).catch(err => res.status(500).send(err))
+
+        //.then(
+        //     rows => {
+        //         if(rows.recordset.columns){
+        //             console.log(rows.rowsAffected)
+        //         }
+        //     }
+        // )
+        // res.json({
+        //     text: 'Usuario Criado'
+        // });
+
     }
+
 
     public async update(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
@@ -54,7 +83,7 @@ class UsuarioController {
                 res.json({
                     text: "Usuario atualizado com sucesso"
                 });
-            })
+            }).catch(err => res.status(500).send(err))
     }
 
     public async delete(req: Request, res: Response): Promise<void> {

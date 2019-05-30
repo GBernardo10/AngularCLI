@@ -25,7 +25,7 @@ class MaquinaController {
                         text: "Nenhum usuario encontrado"
                     });
                 }
-            }).then(() => database_1.default.off);
+            }).catch(err => res.status(500).send(err));
         });
     }
     ;
@@ -34,7 +34,7 @@ class MaquinaController {
             // const { id } = req.params;
             const id = req.params.id;
             const idSoft = req.params.id;
-            yield database_1.default.query `select * from maquina, username where id_soft = ${idSoft}`.then(resultado => {
+            yield database_1.default.query `select * from maquina, username where id_soft = ${id}`.then(resultado => {
                 if (resultado.recordset[0]) {
                     console.log(resultado.recordset);
                     return res.json(resultado.recordset[0]);
@@ -44,7 +44,7 @@ class MaquinaController {
                         text: "Usuario nao encontrado"
                     });
                 }
-            });
+            }).catch(err => res.status(500).send(err));
         });
     }
     create(req, res) {
@@ -71,7 +71,7 @@ class MaquinaController {
                 res.json({
                     text: "Usuario atualizado com sucesso"
                 });
-            });
+            }).catch(err => res.status(500).send(err));
         });
     }
     delete(req, res) {

@@ -3,11 +3,16 @@ const config = {
     user: 'ninja',
     password: 'x=Rw4=P_',
     database: 'SevenSoft',
+    pool: {
+        max: 10,
+        min: 2,
+        idleTimeoutMillis: 30000
+    },
     options:
-    {
-        database: 'SevenSoft', //update me
-        encrypt: true
-    }
+        {
+            database: 'SevenSoft', //update me
+            encrypt: true,
+        }
 };
 
 export default config;

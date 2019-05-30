@@ -13,14 +13,14 @@ class MaquinaController {
                     text: "Nenhum usuario encontrado"
                 })
             }
-        }).then(() => pool.off)
+        }).catch(err => res.status(500).send(err))
     };
 
     public async getMaquinaId(req: Request, res: Response): Promise<void> {
         // const { id } = req.params;
         const id = req.params.id;
         const idSoft = req.params.id
-        await pool.query`select * from maquina, username where id_soft = ${idSoft}`.then(resultado => {
+        await pool.query`select * from maquina, username where id_soft = ${id}`.then(resultado => {
             if (resultado.recordset[0]) {
                 console.log(resultado.recordset)
                 return res.json(resultado.recordset[0]);
@@ -29,7 +29,7 @@ class MaquinaController {
                     text: "Usuario nao encontrado"
                 })
             }
-        })
+        }).catch(err => res.status(500).send(err))
     }
 
     public async create(req: Request, res: Response): Promise<void> {
@@ -56,7 +56,7 @@ class MaquinaController {
                 res.json({
                     text: "Usuario atualizado com sucesso"
                 });
-            })
+            }).catch(err => res.status(500).send(err))
     }
 
     public async delete(req: Request, res: Response): Promise<void> {
