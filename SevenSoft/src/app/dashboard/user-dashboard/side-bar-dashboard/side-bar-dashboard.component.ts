@@ -1,16 +1,20 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
 import 'rxjs/add/operator/filter';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
+import { UsersService } from 'src/app/Site/services/users.service';
+import { UserSeven } from 'src/app/Site/models/UserSeven';
 
 declare const $: any;
+
 declare interface RouteInfo {
   path: string;
   title: string;
   icon: string;
   class: string;
+
 }
 export const ROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' },
@@ -33,7 +37,12 @@ export class SideBarDashboardComponent implements OnInit {
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
 
-  constructor(public location: Location, private router: Router) { }
+
+  public user: UserSeven = {};
+
+  constructor(public location: Location, private router: Router,
+    private userService: UsersService,
+    private activatedRoute: ActivatedRoute) { }
 
   isMobileMenu() {
     if ($(window).width() > 991) {
@@ -43,6 +52,9 @@ export class SideBarDashboardComponent implements OnInit {
   };
 
   ngOnInit() {
+    const params = this.activatedRoute.snapshot.params;
+    this.getUser(params.id);
+    console.log(this.user)
     this.menuItems = ROUTES.filter(menuItem => menuItem);
 
     const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
@@ -107,6 +119,17 @@ export class SideBarDashboardComponent implements OnInit {
       bool = true;
     }
     return bool;
+  }
+
+  getUser(id: number) {
+    return this.userService.getUser(id).subscribe(
+      (user) => {
+        this.userService.getUser(user)
+        this.user = (user)
+        // this.router.navigate(["/dashboard"])
+        // this.router.navigate([this.returnUrl]);
+        console.log(user)
+      });
   }
 
 }

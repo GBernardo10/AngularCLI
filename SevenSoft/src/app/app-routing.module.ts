@@ -42,12 +42,12 @@ const routes: Routes = [
   { path: 'contato', component: ContatoComponent, canActivate: [GuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
-  { path: 'dashboard', loadChildren: () => UserDashboardModule, canActivate: [GuardService] },
-  { path: 'perfil', component: PerfilDashboardComponent },
-  { path: 'evento', component: EventoDashboardComponent },
-  { path: 'abrir-chamado', component: ChamadosDashboardComponent },
+  { path: 'dashboard/:id', loadChildren: () => UserDashboardModule, canActivate: [GuardService] },
+  // { path: 'perfil', component: PerfilDashboardComponent },
+  // { path: 'evento', component: EventoDashboardComponent },
+  // { path: 'abrir-chamado', component: ChamadosDashboardComponent },
   { path: '404', loadChildren: () => Error404Module },
-  { path: '**', redirectTo: '/404' },
+  // { path: '**', redirectTo: '/404' },
 ]
 // {
 //   path: '',

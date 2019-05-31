@@ -7,7 +7,7 @@ import { ChamadosDashboardComponent } from './chamados-dashboard/chamados-dashbo
 
 const routes: Routes = [
   { path: '', component: UserDashboardComponent },
-  { path: 'dashboard', component: UserDashboardComponent },
+  { path: 'dashboard/:id', component: UserDashboardComponent },
   { path: 'perfil', component: PerfilDashboardComponent },
   { path: 'evento', component: EventoDashboardComponent },
   { path: 'abrir-chamado', component: ChamadosDashboardComponent }
