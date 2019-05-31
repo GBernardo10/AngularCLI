@@ -3,7 +3,7 @@
         <div class="navbar-wrapper">
             <a id="colorTitle" class="navbar-brand" routerLink="/dashboard">{{getTitle()}}</a>
             <div id="welcome" class="container">
-                Welcome, {{user.usuario}}
+                Bem vindo , {{user.usuario}} !
             </div>
         </div>
         <button mat-raised-button class="navbar-toggler" type="button" (click)="sidebarToggle()">
@@ -14,7 +14,7 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <ul class="navbar-nav">
-                <a class="logout" href="javascript:void(0);" (click)="logout()">Logout</a>
+                <a class="logout" href="javascript:void(0);" (click)="logout()">Sair</a>
                 <li class="nav-item">
                     <a class="nav-link">
                         <i id="colorTitle" class="material-icons">person</i>

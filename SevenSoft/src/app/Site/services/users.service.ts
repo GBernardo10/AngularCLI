@@ -132,6 +132,11 @@ export class UsersService {
     return this.http.get<any>(`${this.API_URI}/usuario/${id}`);
   }
 
+  getEvento(id: string | number) {
+    console.log(id)
+    return this.http.get<any>(`${this.API_URI}/evento/${id}`);
+  }
+
   deleteUser(id: string) {
     return this.http.delete(`${this.API_URI}/user/${id}`);
   }

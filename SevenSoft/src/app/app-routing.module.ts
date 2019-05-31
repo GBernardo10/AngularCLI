@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'objetivo', component: ObjetivoComponent },
   { path: 'projeto', component: ProjetoComponent },
   { path: 'servicos', component: ServicosComponent },
-  { path: 'contato', component: ContatoComponent, canActivate: [GuardService] },
+  { path: 'contato', component: ContatoComponent},
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'dashboard/:id', loadChildren: () => UserDashboardModule, canActivate: [GuardService] },

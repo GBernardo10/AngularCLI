@@ -4,14 +4,15 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { PerfilDashboardComponent } from './perfil-dashboard/perfil-dashboard.component';
 import { EventoDashboardComponent } from './evento-dashboard/evento-dashboard.component';
 import { ChamadosDashboardComponent } from './chamados-dashboard/chamados-dashboard.component';
+import { GuardService } from 'src/app/Site/services/guard.service';
 
 const routes: Routes = [
-  { path: '', component: UserDashboardComponent },
-  { path: 'dashboard/:id', component: UserDashboardComponent },
-  { path: 'perfil', component: PerfilDashboardComponent },
-  { path: 'evento', component: EventoDashboardComponent },
-  { path: 'abrir-chamado', component: ChamadosDashboardComponent }
-
+  { path: '', component: UserDashboardComponent, canActivate: [GuardService] },
+  { path: 'dashboard/:id', component: UserDashboardComponent, canActivate: [GuardService] },
+  { path: 'perfil/:id', component: PerfilDashboardComponent, canActivate: [GuardService] },
+  { path: 'evento/:id', component: EventoDashboardComponent, canActivate: [GuardService] },
+  { path: 'evento/:id/cadastro-maquina', component:PerfilDashboardComponent },
+  { path: 'abrir-chamado/:id', component: ChamadosDashboardComponent, canActivate: [GuardService] }
 ];
 
 @NgModule({

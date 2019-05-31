@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/platform-server": "7.2.13",
     "@angular/router": "~7.1.0",
+    "@material/fab": "^2.3.0",
     "@types/jquery": "^3.3.29",
     "angular2-materialize": "^15.1.10",
     "bootstrap": "^4.3.1",
