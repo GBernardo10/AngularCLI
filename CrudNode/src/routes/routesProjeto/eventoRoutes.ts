@@ -12,7 +12,9 @@ class EventoRoutes {
 
     config(): void {
         // this.router.get('/:id', loginController.getLogin);
-        this.router.get('/', eventoController.getAllEventoById);
+        this.router.get('/:id', eventoController.getAllEventoById);
+        this.router.get('/:id/eventobyid/:id', eventoController.getEventoById);
+
     }
 
 }

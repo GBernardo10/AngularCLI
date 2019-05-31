@@ -17,9 +17,21 @@ class EventoController {
         return __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;
             // const teste = "<p>dois</p>"
-            yield database_1.default.query `select * from evento`.then(resultado => {
+            yield database_1.default.query `select * from evento where fk_idUserSeven = ${id}`.then(resultado => {
                 // res.send(teste)
                 res.json(resultado.recordset);
+                console.log(resultado.recordset[0]);
+                // res.json(resultado.recordset[0])
+            });
+        });
+    }
+    getEventoById(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = req.params.id;
+            // const teste = "<p>dois</p>"
+            yield database_1.default.query `select * from evento where id_evento = ${id}`.then(resultado => {
+                // res.send(teste)
+                return res.json(resultado.recordset[0]);
                 console.log(resultado.recordset[0]);
                 // res.json(resultado.recordset[0])
             });
