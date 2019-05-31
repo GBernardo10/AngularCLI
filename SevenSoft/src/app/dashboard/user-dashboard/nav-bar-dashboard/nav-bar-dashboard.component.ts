@@ -3,7 +3,7 @@ import { ROUTES } from '../side-bar-dashboard/side-bar-dashboard.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../../Site/services/users.service';
-import { User } from '../../../models/User';
+import { UserSeven } from '../../../Site/models/UserSeven';
 
 @Component({
   selector: 'app-nav-bar-dashboard',
@@ -21,7 +21,7 @@ export class NavBarDashboardComponent implements OnInit {
   isloggedIn: boolean;
 
 
-  public user: User = {};
+  public user: UserSeven = {};
 
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -143,7 +143,7 @@ export class NavBarDashboardComponent implements OnInit {
     return 'Dashboard';
   }
 
-  getUser(user: User) {
+  getUser(user: UserSeven) {
     const params = this.activatedRoute.snapshot.params;
     // console.log(this.user.userId)
     return this.userService.getUser(params.id).subscribe(

@@ -22,6 +22,7 @@ import { ProjetoComponent } from './Site/projeto/projeto.component';
 import { UserDashboardModule } from './dashboard/user-dashboard/user-dashboard.module';
 import { GraficoService } from './Site/services/grafico.service';
 import { UsersService } from './Site/services/users.service';
+import { EventoService } from './Site/services/eventos.service';
 
 
 // import { AuthGuard } from './authentication/auth.guard';
@@ -86,6 +87,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   providers: [
     UsersService,
     GraficoService,
+    EventoService
     // AuthGuard
   ],
   bootstrap: [AppComponent]

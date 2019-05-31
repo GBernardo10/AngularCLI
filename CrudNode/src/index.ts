@@ -13,6 +13,7 @@ import usuarioRoutes from './routes/routesProjeto/usuarioRoutes';
 import graficoRoutes from './routes/graficoRoutes';
 import hardwareRoutes from './routes/hardwareRoutes';
 import maquinaRoutes from './routes/routesProjeto/maquinaRoutes';
+import eventoRoutes from './routes/routesProjeto/eventoRoutes';
 
 class Server {
     public app: Application;
@@ -49,6 +50,7 @@ class Server {
         this.app.use('/api/grafico', graficoRoutes);
         this.app.use('/api/hardware', hardwareRoutes);
         this.app.use('/api/maquina', maquinaRoutes);
+        this.app.use('/api/evento', eventoRoutes);
         
         // this.app.use('/api/business', businessRoutes);
         // this.app.use('/api/user', userRoutes);

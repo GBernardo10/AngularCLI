@@ -109,3 +109,22 @@ insert into nivel_acesso values(1, 'SuperMaster'),(2, 'Master'),(3,'Secundario')
 select * from software, usuario, hardware where hardware.fk_idSOFT = software.id_soft and id_usuario = 70 and ID_SOFT = 21;
 
 select * from software, usuario, hardware, desempenho where desempenho.fk_idSoft=software.id_soft and hardware.fk_idSOFT = software.id_soft and id_usuario = 70 and ID_SOFT = 7;
+
+alter table maquina add fk_idEvento int FOREIGN key (fk_idEvento) REFERENCES evento (id_Evento);
+
+
+
+
+----simulação do fluxo do projeto
+//primeiro o usuario entra no site, conhece todo o projeto, se interessa e realiza um cadastro.
+insert into userSeven (nome,usuario,email,senha) values ('Argentina','Maradona','maothe@deus.com','mil gols so pele') = id_usuario(315)
+
+//apos o cadastro, nossa equipe entra em contato e finaliza o negocio.
+//ao termino da negociação, iremos liberar o acesso para o cliente a nossa aplicação
+update userSeven set fk_idAcesso = 2, senha='222' where id_usuario = 315;
+//o usuario cadastrado entra na aplicação, no menu, aciona a opção visualizar evento, e cadastra evento
+insert into evento values ('Campeonato de LOL','E-Sports,MOBA','2019-05-31','10:00',315);
+// apos isso a nossa equipe ira cadastrar os softwares para o evento em si
+
+insert into maquina values ('$1-SS7', 315,50);
+// e com o nosso software rodando na maquina, ira começar o monitoramento apos o usuario organizadora se logar no software informando suas credenciais

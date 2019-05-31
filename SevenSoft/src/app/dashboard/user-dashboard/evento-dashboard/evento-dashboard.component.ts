@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { EventoService } from '../../../Site/services/eventos.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-evento-dashboard',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventoDashboardComponent implements OnInit {
 
-  constructor() { }
+  // @HostBinding('class') classes = 'row';
+  evento: any = [];
+
+  constructor(private eventoService: EventoService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.getEventosById()
   }
+
+  getEventosById() {
+    const params = this.activatedRoute.snapshot.params;
+    this.eventoService.getAllEventoById().subscribe(
+      res => {
+        this.evento = res;
+      },
+      err => console.error(err)
+    );
+  }
+
 
 }

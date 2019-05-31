@@ -16,6 +16,7 @@ const usuarioRoutes_1 = __importDefault(require("./routes/routesProjeto/usuarioR
 const graficoRoutes_1 = __importDefault(require("./routes/graficoRoutes"));
 const hardwareRoutes_1 = __importDefault(require("./routes/hardwareRoutes"));
 const maquinaRoutes_1 = __importDefault(require("./routes/routesProjeto/maquinaRoutes"));
+const eventoRoutes_1 = __importDefault(require("./routes/routesProjeto/eventoRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -46,6 +47,7 @@ class Server {
         this.app.use('/api/grafico', graficoRoutes_1.default);
         this.app.use('/api/hardware', hardwareRoutes_1.default);
         this.app.use('/api/maquina', maquinaRoutes_1.default);
+        this.app.use('/api/evento', eventoRoutes_1.default);
         // this.app.use('/api/business', businessRoutes);
         // this.app.use('/api/user', userRoutes);
         // this.app.use('/api/login', authRoutes);

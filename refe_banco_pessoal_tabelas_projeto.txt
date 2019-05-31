@@ -4,8 +4,10 @@ nomeEvento varchar(50),
 tipoEvento varchar(50),
 data date,
 hora time,
-fk_idUserEvento int,
-FOREIGN key (fk_idUserEvento) REFERENCES users(USERID) 
+fk_idUserSeven int,
+fk_idSoft int,
+FOREIGN key (fk_idUserSeven) REFERENCES userSeven(id_usuario),
+FOREIGN key (fk_idSoft) REFERENCES maquina(id_soft)
 );
 
 create table usuario (
