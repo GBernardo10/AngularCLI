@@ -4,6 +4,9 @@ import 'rxjs/add/operator/map';
 import { NgForm } from '@angular/forms';
 import { Maquina } from '../models/maquina';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/forkJoin';
 
 
 @Injectable({
@@ -16,16 +19,15 @@ export class EventoService {
   constructor(private http: HttpClient, private httpHandler: HttpHandler) { }
 
   cadMaquina(formData: NgForm) {
-    return this.http.post<any>(`${this.API_URI}/maquina`, formData).pipe(
-      tap((maq: Maquina) => {
-        maq.nome_soft
-      })
-    )
+    return this.http.post<any>(`${this.API_URI}/maquina`, formData)
   }
 
-
   getAllEventoById(id: string | number) {
-    return this.http.get(`${this.API_URI}/evento/${id}`);
+    return this.http.get<any>(`${this.API_URI}/evento/${id}`);
+  }
+
+  getEventoById(id: string | number){
+    return this.http.get<any>(`${this.API_URI}/evento/${id}`);
   }
 
   // getEventoById(id: string | number) {

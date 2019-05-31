@@ -16,6 +16,19 @@ class MaquinaController {
         }).catch(err => res.status(500).send(err))
     };
 
+    public async all(req: Request, res: Response) {
+        const id = req.params.id;
+        await pool.query`select * from maquina`.then(resultado => {
+            if (resultado.recordset.length > 0) {
+                res.json(resultado.recordset);
+            } else {
+                res.status(404).json({
+                    text: "Nenhum usuario encontrado"
+                })
+            }
+        }).catch(err => res.status(500).send(err))
+    };
+
     public async getMaquinaId(req: Request, res: Response): Promise<void> {
         // const { id } = req.params;
         const id = req.params.id;
@@ -33,14 +46,14 @@ class MaquinaController {
     }
 
     public async create(req: Request, res: Response): Promise<void> {
-        const { username } = req.body;
-        const { password } = req.body;
+        const { nome_soft } = req.body.nome_soft;
+        const { fk_idusuario } = req.body.fk_idusuario;
         const { firstName } = req.body;
         const { lastName } = req.body;
 
-        await pool.query`insert into [users](username, password,firstName,lastName) values (${username}, ${password},${firstName}, ${lastName})`;
+        await pool.query`insert into [maquina](nome_soft,fk_idusuario) values (${nome_soft},${fk_idusuario})`;
         res.json({
-            text: 'Usuario Criado'
+            text: 'Maquina Cadastrada'
         });
     }
 

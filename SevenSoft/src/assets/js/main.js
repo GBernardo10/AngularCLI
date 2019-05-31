@@ -1,10 +1,10 @@
-// function navBar() {
-//     $(function () {
-//         $(".navigation_icon").click(function () {
-//             $(".navigation").toggleClass('navigation-open');
-//         });
-//     });
-// }
+function navBar() {
+    $(function () {
+        $(".navigation_icon").click(function () {
+            $(".navigation").toggleClass('navigation-open');
+        });
+    });
+}
 
 // function tooltip() {
 //     $(function () {

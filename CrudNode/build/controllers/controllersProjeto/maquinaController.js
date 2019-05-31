@@ -29,6 +29,22 @@ class MaquinaController {
         });
     }
     ;
+    all(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = req.params.id;
+            yield database_1.default.query `select * from maquina`.then(resultado => {
+                if (resultado.recordset.length > 0) {
+                    res.json(resultado.recordset);
+                }
+                else {
+                    res.status(404).json({
+                        text: "Nenhum usuario encontrado"
+                    });
+                }
+            }).catch(err => res.status(500).send(err));
+        });
+    }
+    ;
     getMaquinaId(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // const { id } = req.params;
@@ -49,13 +65,13 @@ class MaquinaController {
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { username } = req.body;
-            const { password } = req.body;
+            const { nome_soft } = req.body.nome_soft;
+            const { fk_idusuario } = req.body.fk_idusuario;
             const { firstName } = req.body;
             const { lastName } = req.body;
-            yield database_1.default.query `insert into [users](username, password,firstName,lastName) values (${username}, ${password},${firstName}, ${lastName})`;
+            yield database_1.default.query `insert into [maquina](nome_soft,fk_idusuario) values (${nome_soft},${fk_idusuario})`;
             res.json({
-                text: 'Usuario Criado'
+                text: 'Maquina Cadastrada'
             });
         });
     }

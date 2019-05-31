@@ -11,7 +11,8 @@ class MaquinaRoutes {
         this.config();
     }
     config() {
-        // this.router.post
+        this.router.post('/', maquinaController_1.default.create);
+        this.router.get('/', maquinaController_1.default.all);
         this.router.get('/:id', maquinaController_1.default.list);
         this.router.get('/:id/seven/:id', maquinaController_1.default.getMaquinaId);
         // this.router.post('/', usuarioController.create);

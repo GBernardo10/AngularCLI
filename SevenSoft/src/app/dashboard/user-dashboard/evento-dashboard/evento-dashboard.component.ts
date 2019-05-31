@@ -3,17 +3,15 @@ import { EventoService } from '../../../Site/services/eventos.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/Site/services/users.service';
 import { UserSeven } from 'src/app/Site/models/UserSeven';
-import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, NgForm, Validators } from '@angular/forms';
 
 // declare const tooltip: any
 declare const modal: any
 
-
-
 @Component({
   selector: 'app-evento-dashboard',
   templateUrl: './evento-dashboard.component.html',
-  styleUrls: ['./evento-dashboard.component.css']
+  styleUrls: ['./evento-dashboard.component.css'],
 })
 export class EventoDashboardComponent implements OnInit {
 
@@ -21,7 +19,7 @@ export class EventoDashboardComponent implements OnInit {
   evento: any = [];
   public user: UserSeven = {};
 
-  eventoForm: FormGroup
+  eventoForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
     private eventoService: EventoService,
@@ -29,13 +27,22 @@ export class EventoDashboardComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
 
-  ngOnInit() {
+  ngOnInit() {    
     const params = this.activatedRoute.snapshot.params;
     modal();
     // tooltip();
     this.getEventosById(params.id);
     this.getUser(params.id);
+    console.log(this.user)
+    // for (let i = 0 ; i < this.evento ; i ++){
+    //   this.eventoForm2.push();
+    // }
+    this.eventoForm = this.formBuilder.group({
+      'id_usuario':[this.user.id_usuario,Validators.required],
+      'nome_soft':[null, Validators.required],
+    });
   }
+  
 
   getEventosById(id: number) {
     const params = this.activatedRoute.snapshot.params;
@@ -54,14 +61,18 @@ export class EventoDashboardComponent implements OnInit {
         this.user = (user)
         // this.router.navigate(["/dashboard"])
         // this.router.navigate([this.returnUrl]);
-        console.log(user)
+        console.log(this.user)
       });
   }
 
-  cadMaquina(formData: NgForm) {
+  cadMaq(formData: NgForm) {
     return this.eventoService.cadMaquina(formData).subscribe(
-      res => {
-        console.log(res)
+      (maquina) => {
+        if(maquina){
+          console.log(maquina)
+          this.eventoService.getAllEventoById(maquina)
+        }
+        
       },
       err => console.error(err)
     )
