@@ -46,8 +46,8 @@ class MaquinaController {
     }
 
     public async create(req: Request, res: Response): Promise<void> {
-        const { nome_soft } = req.body.nome_soft;
-        const { fk_idusuario } = req.body.fk_idusuario;
+        const nome_soft = req.body.nome_soft;
+        const fk_idusuario = req.body.fk_idusuario;
         const { firstName } = req.body;
         const { lastName } = req.body;
 

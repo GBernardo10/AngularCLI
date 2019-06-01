@@ -3,6 +3,7 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { NgForm } from '@angular/forms';
 import { Maquina } from '../models/maquina';
+import { Evento } from '../models/evento';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -19,14 +20,16 @@ export class EventoService {
   constructor(private http: HttpClient, private httpHandler: HttpHandler) { }
 
   cadMaquina(formData: NgForm) {
+    console.log(formData)
     return this.http.post<any>(`${this.API_URI}/maquina`, formData)
+
   }
 
-  getAllEventoById(id: string | number) {
-    return this.http.get<any>(`${this.API_URI}/evento/${id}`);
-  }
+  // getAllEventoById(id: Evento) {
+  //   return this.http.get<any>(`${this.API_URI}/evento/${id}`);
+  // }
 
-  getEventoById(id: string | number){
+  getEventoById(id: string | number) {
     return this.http.get<any>(`${this.API_URI}/evento/${id}`);
   }
 

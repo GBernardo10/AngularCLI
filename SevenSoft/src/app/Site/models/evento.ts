@@ -1,4 +1,4 @@
-export interface Login {
+export interface Evento {
     id_Evento?: number,
     nomeEvento?: string,
     tipoEvento?: string,
