@@ -5,20 +5,37 @@
   </div>
   <div class="main-panel">
     <app-nav-bar-dashboard></app-nav-bar-dashboard>
+
     <div class="main-content">
+      <div class="card text-center">
+
+        <button data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"
+          class="btn btn-primary bmd-btn-fab">
+          <p id="tooltiptext">Cadastrar Maquina</p>
+          <i class="material-icons">add_circle_outline</i>
+        </button>
+
+        <button data-toggle="modal" data-target="#exampleModalEvento" data-whatever="@mdo"
+          class="btn btn-primary bmd-btn-fab">
+          <p id="tooltiptext">Cadastrar Evento</p>
+          <i class="material-icons">add_circle_outline</i>
+        </button>
+
+      </div>
       <div class="row">
-        <div class="col-md-4" *ngFor="let evento of evento">
+        <div class="col-md-4" *ngFor="let eventos of eventos; let i = index">
           <div class="card text-center">
             <div class="card-header bg-dark text-white d-flex justify-content-between align-itens-center">
-              <p>Evento:{{evento.id_Evento}}</p>
+              <p>Evento:{{eventos.id_Evento}}</p>
               <button class="btn btn-danger">
                 <i class="far fa-trash-alt"></i>
               </button>
             </div>
             <div class="card-body">
-              <h5 class="card-title">{{evento.nomeEvento}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{evento.data}}{{evento.hora}}</h6>
-              <p class="card-text">{{evento.tipoEvento}}</p>
+              <h5 class="card-title">{{eventos.nomeEvento}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{eventos.data}}{{eventos.hora}}</h6>
+              <p class="card-text">{{eventos.tipoEvento}}</p>
+              <!-- <p class="card-text">{{i}}</p> -->
               <div class="row">
                 <div id="colEdit" class="col-sm">
                   <div id="tooltip">
@@ -32,10 +49,7 @@
                 </div>
                 <div id="colEdit" class="col-sm">
                   <div id="tooltip">
-                    <button data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="btn btn-primary bmd-btn-fab">
-                      <p id="tooltiptext">Cadastrar Maquina</p>
-                      <i class="material-icons">add_circle_outline</i>
-                    </button>
+
                     <!-- <button data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" 
                     routerLink="/evento/{{user.id_usuario}}/cadastro-maquina" type="button"
                       class="btn btn-primary bmd-btn-fab">
@@ -54,41 +68,104 @@
                 </div>
               </div>
             </div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nova Maquina</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form [formGroup]="eventoForm" (ngSubmit)="cadMaq(eventoForm.value)">
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">ID:</label>
-                        <input type="text" formControlName="fk_idusuario" class="form-control" id="recipient-name">
-                      </div>
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Evento:</label>
-                        <input type="text" formControlName="id_Evento" class="form-control" id="recipient-name">
-                      </div>
-                      <div class="form-group">
-                        <label for="message-text" class="col-form-label">Nome da maquina:</label>
-                        <input type="text" formControlName="nome_soft" class="form-control" id="recipient-name">
-                      </div>
-                      <button type="submit" [disabled]="!eventoForm.valid" class="btn btn-primary btn-link btn-wd btn-lg">Cadastrar</button>
-                    </form>
-                  </div>
-                  <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
-                  </div> -->
-                </div>
+
+
+
+          </div>
+        </div>
+        <!--Cadastrar Maquina-->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nova Maquina</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
+              <div class="modal-body">
+                <form [formGroup]="eventoForm" (ngSubmit)="cadMaq(eventoForm.value)">
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">ID:</label>
+                    <input type="text" formControlName="fk_idusuario" class="form-control" id="recipient-name">
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4" for="exampleFormControlSelect1">Selecionar
+                      Evento
+                    </label>
+                    <select *ngFor="let eventos of eventos" class="form-control" formControlName="fk_idEvento"
+                      id="exampleFormControlSelect1">
+                      <option></option>
+                      <option>{{eventos.id_Evento}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Nome da maquina:</label>
+                    <input type="text" formControlName="nome_soft" class="form-control" id="recipient-name">
+                  </div>
+                  <button type="submit" [disabled]="!eventoForm.valid"
+                    class="btn btn-primary btn-link btn-wd btn-lg">Cadastrar</button>
+                </form>
+              </div>
+              <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Send message</button>
+            </div> -->
             </div>
           </div>
         </div>
+        <!---->
+
+
+        <!--Cadastrar Evento-->
+        <div class="modal fade" id="exampleModalEvento" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalLabelEvento" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelEvento">Novo Evento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="eventoForm" (ngSubmit)="cadMaq(eventoForm.value)">
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">ID:</label>
+                    <input type="text" formControlName="fk_idusuario" class="form-control" id="recipient-name">
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4" for="exampleFormControlSelect1">Selecionar
+                      Evento
+                    </label>
+                    <select *ngFor="let eventos of eventos" class="form-control" formControlName="fk_idEvento"
+                      id="exampleFormControlSelect1">
+                      <option></option>
+                      <option>{{eventos.id_Evento}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Nome da maquina:</label>
+                    <input type="text" formControlName="nome_soft" class="form-control" id="recipient-name">
+                  </div>
+                  <button type="submit" [disabled]="!eventoForm.valid"
+                    class="btn btn-primary btn-link btn-wd btn-lg">Cadastrar</button>
+                </form>
+              </div>
+              <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Send message</button>
+            </div> -->
+            </div>
+          </div>
+        </div>
+
+
+
+
+
         <!-- <router-outlet></router-outlet> -->
       </div>
     </div>

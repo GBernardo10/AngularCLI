@@ -8,7 +8,7 @@ class EventoController {
         // const teste = "<p>dois</p>"
         await pool.query`select * from evento where fk_idUserSeven = ${id}`.then(resultado => {
             // res.send(teste)
-            res.json(resultado.recordset)
+            res.json(resultado)
             console.log(resultado.recordset[0])
             // res.json(resultado.recordset[0])
         });

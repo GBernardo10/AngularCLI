@@ -25,7 +25,17 @@ export class EventoDashboardComponent implements OnInit {
   //   hora: '',
   //   fk_idUserSeven: '',
   // };
-  evento: any = [];
+  // evento: any = [];
+
+  // evento: any = [
+  //   {vetor_eventoById:[]},
+  // ];
+  public vetor
+  // evento: any = [];
+
+  evento: any;
+  eventos: any = []
+
   public user: UserSeven = {};
   // public evento: Evento = {};
   eventoForm: FormGroup;
@@ -34,10 +44,47 @@ export class EventoDashboardComponent implements OnInit {
     private eventoService: EventoService,
     private userService: UsersService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute) {
+
+    this.evento = {
+      idEvento: [],
+      nomeEvento: [],
+      tipoEvento: [],
+      dataEvento: [],
+      horaEvento: [],
+      fkUserSeven: []
+    };
+  }
+
+  // this.evento = {
+  //   idEvento: []
+  // }
+
+  // nome_evento.forEach((res) => {
+  //   this.evento.push(res);
+  // })
+
+  // tipo_evento.forEach((res) => {
+  //   this.evento.push(res);
+  // })
+
+  // data_evento.forEach((res) => {
+  //   this.evento.push(res);
+  // })
+
+  // hora_evento.forEach((res) => {
+  //   this.evento.push(res);
+  // })
+
+  // fk_id_UserSeven.forEach((res) => {
+  //   this.evento.push(res);
+  // })
+
 
   ngOnInit() {
-    console.log(this.evento.id_Evento)
+    console.log(this.evento)
+    console.log(this.eventos)
+
     const params = this.activatedRoute.snapshot.params;
     modal();
     // tooltip();
@@ -50,22 +97,95 @@ export class EventoDashboardComponent implements OnInit {
     // }
     this.eventoForm = this.formBuilder.group({
       'fk_idusuario': [params.id, Validators.required],
-      'id_Evento': [this.evento.id_Evento, Validators.required],
+      'fk_idEvento': [null, Validators.required],
       'nome_soft': [null, Validators.required],
     });
   }
 
+  // getEventosById() {
+  //   const params = this.activatedRoute.snapshot.params;
+  //   this.eventoService.getEventoById(params.id).subscribe(
+  //     res => {
+  //       console.log(res)
+  //       // res = this.evento
+  //       this.evento = res;
+  //     },
+  //     err => console.error(err)
+  //   );
+  // }
+
+
   getEventosById() {
+
+
     const params = this.activatedRoute.snapshot.params;
     this.eventoService.getEventoById(params.id).subscribe(
       res => {
-        console.log(res)
-        res = this.evento
-        // this.evento = res;
-      },
-      err => console.error(err)
-    );
+        let allEventoById = res['recordset'].map(res => res);
+        let eventoById = res['recordset'].map(res => res.id_Evento);
+        let nome_evento = res['recordset'].map(res => res.nomeEvento);
+        let tipo_evento = res['recordset'].map(res => res.tipoEvento);
+        let data_evento = res['recordset'].map(res => res.data);
+        let hora_evento = res['recordset'].map(res => res.hora);
+        let fk_id_UserSeven = res['recordset'].map(res => res.fk_idUserSeven);
+
+        allEventoById.forEach((res) => {
+          this.eventos.push(res);
+        })
+
+        eventoById.forEach((res) => {
+          this.evento.idEvento.push(res);
+        })
+
+        nome_evento.forEach((res) => {
+          this.evento.nomeEvento.push(res);
+        })
+
+        tipo_evento.forEach((res) => {
+          this.evento.tipoEvento.push(res);
+        })
+
+        data_evento.forEach((res) => {
+          this.evento.dataEvento.push(res);
+        })
+
+        hora_evento.forEach((res) => {
+          this.evento.horaEvento.push(res);
+        })
+
+        fk_id_UserSeven.forEach((res) => {
+          this.evento.fkUserSeven.push(res);
+        })
+
+        // eventoById.forEach((res) => {
+        //   this.evento.vetor_eventoById.push(res);
+        // })
+        // nome_evento.forEach((res) => {
+        //   this.evento.vetor_nome_evento.push(res);
+        // })
+        // tipo_evento.forEach((res) => {
+        //   this.evento.vetor_tipo_evento.push(res);
+        // })
+        // data_evento.forEach((res) => {
+        //   this.evento.vetor_data_evento.push(res);
+        // })
+        // hora_evento.forEach((res) => {
+        //   this.evento.vetor_hora_evento.push(res);
+        // })
+        // fk_id_UserSeven.forEach((res) => {
+        //   this.evento.vetor_fk_id_UserSeven.push(res);
+        // })
+
+      }
+    )
   }
+
+  // alldates.forEach((res) => {
+  //   let jsdate = new Date(res)
+  //   chartDate.push(jsdate.toLocaleTimeString('en', {
+  //     hour: 'numeric'
+  //   }))
+  // })
 
   // getUser(id: number) {
   //   return this.userService.getUser(id).subscribe(
@@ -86,6 +206,7 @@ export class EventoDashboardComponent implements OnInit {
       err => console.error(err)
     );
   }
+
   cadMaq(formData: NgForm) {
     return this.eventoService.cadMaquina(formData).subscribe(
       (maquina) => {

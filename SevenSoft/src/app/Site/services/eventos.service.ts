@@ -30,7 +30,7 @@ export class EventoService {
   // }
 
   getEventoById(id: string | number) {
-    return this.http.get<any>(`${this.API_URI}/evento/${id}`);
+    return this.http.get<any>(`${this.API_URI}/evento/${id}`).map(result => result);
   }
 
   // getEventoById(id: string | number) {

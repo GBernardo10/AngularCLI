@@ -21,44 +21,23 @@
                                     <i class="material-icons">content_copy</i>
                                 </div>
                                 <p class="card-category">CPU</p>
-                                <h3 class="card-title">{{hardware.nome_processador}}
+                                <h3 class="card-title">
                                     <small>{{hardware.fabricante}}</small>
                                 </h3>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
                                     <i class="material-icons">cached</i>
-                                    <a href="">Atualizar</a>
+                                    <small class="card-title">{{hardware.nome_processador}}</small>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let hardware of hardware">
-                        <div class="card card-stats">
-                            <div class="card-header card-header-success card-header-icon">
-                                <div class="card-icon">
-                                    <i class="material-icons">s#tore</i>
-                                </div>
-                                <p class="card-category">Fabricante</p>
-                                <h3 class="card-title">{{hardware.nome_processador}}
-                                    <small>{{hardware.fabricante}}</small>
-                                </h3>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    <i class="material-icons">cached</i>
-                                    <a href="">Atualizar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-header card-header-danger card-header-icon">
                                 <div class="card-icon">
-                                    <i class="material-icons">i#nfo_outline</i>
+                                    <i class="material-icons">info_outline</i>
                                 </div>
                                 <p class="card-category">??</p>
                                 <h3 class="card-title">??</h3>

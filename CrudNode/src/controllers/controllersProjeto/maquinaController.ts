@@ -48,10 +48,10 @@ class MaquinaController {
     public async create(req: Request, res: Response): Promise<void> {
         const nome_soft = req.body.nome_soft;
         const fk_idusuario = req.body.fk_idusuario;
-        const { firstName } = req.body;
+        const fk_idEvento = req.body.fk_idEvento;
         const { lastName } = req.body;
 
-        await pool.query`insert into [maquina](nome_soft,fk_idusuario) values (${nome_soft},${fk_idusuario})`;
+        await pool.query`insert into [maquina](nome_soft,fk_idusuario,fk_idEvento) values (${nome_soft},${fk_idusuario},${fk_idEvento})`;
         res.json({
             text: 'Maquina Cadastrada'
         });

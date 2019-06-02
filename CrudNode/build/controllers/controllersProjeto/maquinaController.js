@@ -67,9 +67,9 @@ class MaquinaController {
         return __awaiter(this, void 0, void 0, function* () {
             const nome_soft = req.body.nome_soft;
             const fk_idusuario = req.body.fk_idusuario;
-            const { firstName } = req.body;
+            const fk_idEvento = req.body.fk_idEvento;
             const { lastName } = req.body;
-            yield database_1.default.query `insert into [maquina](nome_soft,fk_idusuario) values (${nome_soft},${fk_idusuario})`;
+            yield database_1.default.query `insert into [maquina](nome_soft,fk_idusuario,fk_idEvento) values (${nome_soft},${fk_idusuario},${fk_idEvento})`;
             res.json({
                 text: 'Maquina Cadastrada'
             });

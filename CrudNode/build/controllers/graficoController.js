@@ -15,7 +15,7 @@ const database_1 = __importDefault(require("../database"));
 class GraficoController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query `select top(1) * from desempenho order by idDesempenho desc`.then(resultado => {
+            yield database_1.default.query `select top(1) * from desempenho order by id_Desempenho desc`.then(resultado => {
                 if (resultado.recordset.length > 0) {
                     res.json(resultado);
                     console.log(resultado.recordsets);
