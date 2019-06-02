@@ -19,7 +19,7 @@ export class ChamadosDashboardComponent implements OnInit {
     // this.createForm();
   }
 
-  createForm() {
+  cadChamado() {
   }
 
   login(formData: NgForm) {

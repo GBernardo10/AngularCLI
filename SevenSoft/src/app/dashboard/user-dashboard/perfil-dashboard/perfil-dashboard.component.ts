@@ -26,15 +26,16 @@ export class PerfilDashboardComponent implements OnInit {
 
   ngOnInit() {
     const params = this.activatedRoute.snapshot.params;
-    this.getUser();
+    this.getHardwareById();
     // this.id = localStorage.getItem('token');
     this.chartTempMaxTempMin();
     this.chartUsoMemoriaRam();
     this.chartCPUDisponivelEmUso();
   }
 
-  getUser() {
-    this.usersService.getHardware().subscribe(
+  getHardwareById() {
+    const params = this.activatedRoute.snapshot.params;
+    this.usersService.getHardware(params.id).subscribe(
       res => {
         this.hardware = res;
       },
@@ -73,7 +74,6 @@ export class PerfilDashboardComponent implements OnInit {
               backgroundColor: '#ffcc00'
             }
             ]
-
           },
           options: {
             legend: {

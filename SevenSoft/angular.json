@@ -34,7 +34,9 @@
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/main.js",
               "src/assets/js/rellaxTeste.js",
-              "src/assets/js/Rellax.js"
+              "src/assets/js/Rellax.js",
+              "src/assets/js/jquery-3.4.1.min.js",
+              "src/assets/js/jquery.mask.min.js"
             ]
           },
           "configurations": {

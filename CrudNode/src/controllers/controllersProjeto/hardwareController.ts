@@ -1,10 +1,13 @@
 import { Request, Response } from 'express';
-import pool from '../database';
+import pool from '../../database';
 
 class HardwareController {
 
     public async list(req: Request, res: Response) {
-        await pool.query`select * from hardware`.then(resultado => {
+        const id = req.params.id;
+        await pool.query`select * from HARDWARE, MAQUINA, userSeven
+        where HARDWARE.fk_idsoft=maquina.id_soft and maquina.fk_idusuario = userSeven.id_usuario
+        and userSeven.id_usuario = ${id} `.then(resultado => {
             if (resultado.recordset.length > 0) {
                 res.json(resultado.recordset);
                 console.log(resultado.recordsets)

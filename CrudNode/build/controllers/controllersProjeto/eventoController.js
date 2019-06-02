@@ -37,6 +37,20 @@ class EventoController {
             });
         });
     }
+    create(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const nomeEvento = req.body.nomeEvento;
+            const tipoEvento = req.body.tipoEvento;
+            const data = req.body.data;
+            const hora = req.body.hora;
+            const fk_idUserSeven = req.body.fk_idUserSeven;
+            yield database_1.default.query `insert into [evento](nomeEvento,tipoEvento,DATA,HORA,fk_idUserSeven) values (${nomeEvento},${tipoEvento},(select convert(date,${data},103)),${hora},${fk_idUserSeven})`.then(resultado => {
+                res.json({
+                    text: 'Evento Cadastrada'
+                });
+            }).catch(err => res.status(500).send(err));
+        });
+    }
 }
 const eventoController = new EventoController();
 exports.default = eventoController;

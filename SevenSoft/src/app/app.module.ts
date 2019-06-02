@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
+
 import { AppRoutingModule } from './app-routing.module';
 // import { ComponentsDashboardModule } from './components/dashboard/components-dashboard/components-dashboard.module';
 import { AppComponent } from './app.component';
@@ -23,7 +24,7 @@ import { UserDashboardModule } from './dashboard/user-dashboard/user-dashboard.m
 import { GraficoService } from './Site/services/grafico.service';
 import { UsersService } from './Site/services/users.service';
 import { EventoService } from './Site/services/eventos.service';
-
+import {NgxMaskModule} from 'ngx-mask';
 
 // import { AuthGuard } from './authentication/auth.guard';
 
@@ -45,6 +46,8 @@ import { EventoService } from './Site/services/eventos.service';
 // import { AdmComponent } from './dashboard/adm/adm.component';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+
 
 @NgModule({
   declarations: [
@@ -80,7 +83,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AppRoutingModule,
     HttpClientModule,
     UserDashboardModule,
-    Error404Module
+    Error404Module,
+    NgxMaskModule.forRoot(new Option)
+
     // ComponentsDashboardModule,
     // ComponentsGraficoModule
   ],
@@ -93,5 +98,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   bootstrap: [AppComponent]
 })
 
+
 export class AppModule {
+  
 }

@@ -86,7 +86,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form [formGroup]="eventoForm" (ngSubmit)="cadMaq(eventoForm.value)">
+                <form [formGroup]="maquinaForm" (ngSubmit)="cadMaq(maquinaForm.value)">
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">ID:</label>
                     <input type="text" formControlName="fk_idusuario" class="form-control" id="recipient-name">
@@ -105,7 +105,7 @@
                     <label for="message-text" class="col-form-label">Nome da maquina:</label>
                     <input type="text" formControlName="nome_soft" class="form-control" id="recipient-name">
                   </div>
-                  <button type="submit" [disabled]="!eventoForm.valid"
+                  <button type="submit" [disabled]="!maquinaForm.valid"
                     class="btn btn-primary btn-link btn-wd btn-lg">Cadastrar</button>
                 </form>
               </div>
@@ -131,24 +131,26 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form [formGroup]="eventoForm" (ngSubmit)="cadMaq(eventoForm.value)">
+                <form [formGroup]="eventoForm" (ngSubmit)="cadEvento(eventoForm.value)">
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">ID:</label>
-                    <input type="text" formControlName="fk_idusuario" class="form-control" id="recipient-name">
+                    <input type="text" formControlName="fk_idUserSeven" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label class="col-md-4" for="exampleFormControlSelect1">Selecionar
-                      Evento
-                    </label>
-                    <select *ngFor="let eventos of eventos" class="form-control" formControlName="fk_idEvento"
-                      id="exampleFormControlSelect1">
-                      <option></option>
-                      <option>{{eventos.id_Evento}}</option>
-                    </select>
+                    <label for="recipient-name" class="col-form-label">Nome do Evento:</label>
+                    <input type="text" formControlName="nomeEvento" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label for="message-text" class="col-form-label">Nome da maquina:</label>
-                    <input type="text" formControlName="nome_soft" class="form-control" id="recipient-name">
+                    <label for="recipient-name" class="col-form-label">Tipo de Evento:</label>
+                    <input type="text" formControlName="tipoEvento" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Data:</label>
+                    <input type="text" class="form-control" id="dataNascimento" formControlName="data">
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Hora:</label>
+                    <input type="text" id="hora" formControlName="hora" class="form-control">
                   </div>
                   <button type="submit" [disabled]="!eventoForm.valid"
                     class="btn btn-primary btn-link btn-wd btn-lg">Cadastrar</button>

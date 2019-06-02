@@ -22,7 +22,12 @@ export class EventoService {
   cadMaquina(formData: NgForm) {
     console.log(formData)
     return this.http.post<any>(`${this.API_URI}/maquina`, formData)
+  }
 
+  
+  cadEvento(formData: NgForm) {
+    console.log(formData)
+    return this.http.post<any>(`${this.API_URI}/evento`, formData)
   }
 
   // getAllEventoById(id: Evento) {

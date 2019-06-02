@@ -11,7 +11,7 @@
           <h4 class="card-title">Registrar Ocorrencia</h4>
         </div>
         <div class="card-body">
-          <form [formGroup]="angForm" (ngSubmit)="login(angForm.value)" class="form">
+          <form [formGroup]="chamadoForm" (ngSubmit)="cadChamado(chamadoForm.value)" class="form">
             <div class="form-group">
               <label class="col-md-4">Descrição</label>
               <input type="text" class="form-control" formControlName="descricao"/>

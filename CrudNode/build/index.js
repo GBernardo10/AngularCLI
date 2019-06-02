@@ -14,7 +14,7 @@ const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const loginRoutes_1 = __importDefault(require("./routes/routesProjeto/loginRoutes"));
 const usuarioRoutes_1 = __importDefault(require("./routes/routesProjeto/usuarioRoutes"));
 const graficoRoutes_1 = __importDefault(require("./routes/graficoRoutes"));
-const hardwareRoutes_1 = __importDefault(require("./routes/hardwareRoutes"));
+const hardwareRoutes_1 = __importDefault(require("./routes/routesProjeto/hardwareRoutes"));
 const maquinaRoutes_1 = __importDefault(require("./routes/routesProjeto/maquinaRoutes"));
 const eventoRoutes_1 = __importDefault(require("./routes/routesProjeto/eventoRoutes"));
 class Server {

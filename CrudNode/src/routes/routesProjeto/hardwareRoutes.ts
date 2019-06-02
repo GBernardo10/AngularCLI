@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import hardwareController from '../controllers/hardwareController';
+import hardwareController from '../../controllers/controllersProjeto/hardwareController';
 
 
 class HardwareRoutes {
@@ -10,8 +10,8 @@ class HardwareRoutes {
     }
     
     config(): void {
-        this.router.get('/', hardwareController.list);
-        this.router.get('/:id', hardwareController.getUserId);
+        this.router.get('/:id', hardwareController.list);
+        // this.router.get('/:id', hardwareController.getUserId);
     }
 }
 

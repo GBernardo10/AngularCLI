@@ -119,8 +119,8 @@ export class UsersService {
     }
   }
 
-  getHardware() {
-    return this.http.get(`${this.API_URI}/hardware`);
+  getHardware(id: string | number) {
+    return this.http.get(`${this.API_URI}/hardware/${id}`);
   }
 
   getUsers() {

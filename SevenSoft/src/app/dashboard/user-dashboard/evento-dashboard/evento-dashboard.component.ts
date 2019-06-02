@@ -14,7 +14,9 @@ declare const modal: any
   templateUrl: './evento-dashboard.component.html',
   styleUrls: ['./evento-dashboard.component.css'],
 })
+
 export class EventoDashboardComponent implements OnInit {
+
 
   // @HostBinding('class') classes = 'row';
   // evento = {
@@ -38,6 +40,7 @@ export class EventoDashboardComponent implements OnInit {
 
   public user: UserSeven = {};
   // public evento: Evento = {};
+  maquinaForm: FormGroup;
   eventoForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
@@ -46,14 +49,14 @@ export class EventoDashboardComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute) {
 
-    this.evento = {
-      idEvento: [],
-      nomeEvento: [],
-      tipoEvento: [],
-      dataEvento: [],
-      horaEvento: [],
-      fkUserSeven: []
-    };
+    // this.evento = {
+    //   idEvento: [],
+    //   nomeEvento: [],
+    //   tipoEvento: [],
+    //   dataEvento: [],
+    //   horaEvento: [],
+    //   fkUserSeven: []
+    // };
   }
 
   // this.evento = {
@@ -82,8 +85,6 @@ export class EventoDashboardComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.evento)
-    console.log(this.eventos)
 
     const params = this.activatedRoute.snapshot.params;
     modal();
@@ -95,12 +96,20 @@ export class EventoDashboardComponent implements OnInit {
     // for (let i = 0 ; i < this.evento ; i ++){
     //   this.eventoForm2.push();
     // }
-    this.eventoForm = this.formBuilder.group({
+    this.maquinaForm = this.formBuilder.group({
       'fk_idusuario': [params.id, Validators.required],
       'fk_idEvento': [null, Validators.required],
       'nome_soft': [null, Validators.required],
     });
+    this.eventoForm = this.formBuilder.group({
+      'nomeEvento': [null, Validators.required],
+      'tipoEvento': [null, Validators.required],
+      'data': [null, Validators.required],
+      'hora': [null, Validators.required],
+      'fk_idUserSeven': [params.id, Validators.required]
+    })
   }
+
 
   // getEventosById() {
   //   const params = this.activatedRoute.snapshot.params;
@@ -116,8 +125,6 @@ export class EventoDashboardComponent implements OnInit {
 
 
   getEventosById() {
-
-
     const params = this.activatedRoute.snapshot.params;
     this.eventoService.getEventoById(params.id).subscribe(
       res => {
@@ -133,29 +140,29 @@ export class EventoDashboardComponent implements OnInit {
           this.eventos.push(res);
         })
 
-        eventoById.forEach((res) => {
-          this.evento.idEvento.push(res);
-        })
+        // eventoById.forEach((res) => {
+        //   this.evento.idEvento.push(res);
+        // })
 
-        nome_evento.forEach((res) => {
-          this.evento.nomeEvento.push(res);
-        })
+        // nome_evento.forEach((res) => {
+        //   this.evento.nomeEvento.push(res);
+        // })
 
-        tipo_evento.forEach((res) => {
-          this.evento.tipoEvento.push(res);
-        })
+        // tipo_evento.forEach((res) => {
+        //   this.evento.tipoEvento.push(res);
+        // })
 
-        data_evento.forEach((res) => {
-          this.evento.dataEvento.push(res);
-        })
+        // data_evento.forEach((res) => {
+        //   this.evento.dataEvento.push(res);
+        // })
 
-        hora_evento.forEach((res) => {
-          this.evento.horaEvento.push(res);
-        })
+        // hora_evento.forEach((res) => {
+        //   this.evento.horaEvento.push(res);
+        // })
 
-        fk_id_UserSeven.forEach((res) => {
-          this.evento.fkUserSeven.push(res);
-        })
+        // fk_id_UserSeven.forEach((res) => {
+        //   this.evento.fkUserSeven.push(res);
+        // })
 
         // eventoById.forEach((res) => {
         //   this.evento.vetor_eventoById.push(res);
@@ -220,5 +227,19 @@ export class EventoDashboardComponent implements OnInit {
     )
   }
 
+  cadEvento(formData: NgForm) {
+    console.log(formData)
 
+    return this.eventoService.cadEvento(formData).subscribe(
+      (evento) => {
+        if (evento) {
+          console.log(evento)
+          this.eventoService.cadEvento(evento)
+          console.log(formData)
+        }
+
+      },
+      err => console.error(err)
+    )
+  }
 }

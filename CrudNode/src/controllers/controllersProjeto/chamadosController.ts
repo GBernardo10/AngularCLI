@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import pool from '../../database';
 
-class UsuarioController {
+class ChamadosController {
 
     public async list(req: Request, res: Response) {
         await pool.query`select * from userSeven`.then(resultado => {
@@ -55,18 +55,6 @@ class UsuarioController {
                 }
             }
         ).catch(err => res.status(500).send(err))
-
-        //.then(
-        //     rows => {
-        //         if(rows.recordset.columns){
-        //             console.log(rows.rowsAffected)
-        //         }
-        //     }
-        // )
-        // res.json({
-        //     text: 'Usuario Criado'
-        // });
-
     }
 
 
@@ -96,5 +84,5 @@ class UsuarioController {
 
 }
 
-const usuarioController = new UsuarioController();
-export default usuarioController;
+const chamadosController = new ChamadosController();
+export default chamadosController;

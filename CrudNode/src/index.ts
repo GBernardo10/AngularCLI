@@ -11,7 +11,7 @@ import indexRoutes from './routes/indexRoutes';
 import loginRoutes from './routes/routesProjeto/loginRoutes';
 import usuarioRoutes from './routes/routesProjeto/usuarioRoutes';
 import graficoRoutes from './routes/graficoRoutes';
-import hardwareRoutes from './routes/hardwareRoutes';
+import hardwareRoutes from './routes/routesProjeto/hardwareRoutes';
 import maquinaRoutes from './routes/routesProjeto/maquinaRoutes';
 import eventoRoutes from './routes/routesProjeto/eventoRoutes';
 
