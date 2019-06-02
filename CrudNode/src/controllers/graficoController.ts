@@ -4,7 +4,11 @@ import pool from '../database';
 class GraficoController {
 
     public async list(req: Request, res: Response) {
-        await pool.query`select top(1) * from desempenho order by id_Desempenho desc`.then(resultado => {
+        const id = req.params.id;
+        await pool.query`select top(1) cpu_disponivel,cpu_em_uso,temperatura_cpu,memoria_ram_disponivel,
+        memoria_ram_em_uso_cpu,disco_em_uso_hd,disco_livre_hd,temperatura_gpu,memoria_em_uso_gpu,data_hora from desempenho,maquina,userSeven 
+        where desempenho.fk_idSoft=maquina.id_soft and maquina.FK_IDUSUARIO = userSeven.id_usuario and 
+        userSeven.id_usuario = ${id} order by id_desempenho desc;`.then(resultado => {
             if (resultado.recordset.length > 0) {
                 res.json(resultado);
                 console.log(resultado.recordsets)
