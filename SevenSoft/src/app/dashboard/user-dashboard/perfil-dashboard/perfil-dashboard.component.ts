@@ -3,6 +3,7 @@ import { Chart } from 'chart.js';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GraficoService } from 'src/app/Site/services/grafico.service';
 import { UsersService } from 'src/app/Site/services/users.service';
+import { EventoService } from 'src/app/Site/services/eventos.service';
 
 
 @Component({
@@ -18,11 +19,13 @@ export class PerfilDashboardComponent implements OnInit {
   id: string
 
   user: any = [];
-  hardware: any = []
+  hardware: any = [];
+  processo: any = [];
+  chamados: any = [];
 
   constructor(private router: Router, private chartjs: GraficoService,
-    private usersService: UsersService, private activatedRoute: ActivatedRoute) { }
-
+    private usersService: UsersService, private activatedRoute: ActivatedRoute,
+    private eventoService: EventoService) { }
 
   ngOnInit() {
     const params = this.activatedRoute.snapshot.params;
@@ -31,6 +34,8 @@ export class PerfilDashboardComponent implements OnInit {
     this.chartTempMaxTempMin();
     this.chartUsoMemoriaRam();
     this.chartCPUDisponivelEmUso();
+    this.getProcesso();
+    this.getTotalChamado();
   }
 
   getHardwareById() {
@@ -41,6 +46,28 @@ export class PerfilDashboardComponent implements OnInit {
       },
       err => console.error(err)
     );
+  }
+
+  getTotalChamado() {
+    const params = this.activatedRoute.snapshot.params;
+    this.eventoService.getTotalRowsChamado(params.id).subscribe(
+      res => {
+        this.chamados = res;
+        console.log(res)
+      },
+      err => console.log(err)
+    )
+  }
+
+  getProcesso() {
+    const params = this.activatedRoute.snapshot.params;
+    this.eventoService.getProcesso(params.id).subscribe(
+      res => {
+        this.processo = res;
+        console.log(res)
+      },
+      err => console.log(err)
+    )
   }
 
   chartCPUDisponivelEmUso() {

@@ -13,8 +13,16 @@
         <div class="card-body">
           <form [formGroup]="chamadoForm" (ngSubmit)="cadChamado(chamadoForm.value)" class="form">
             <div class="form-group">
+              <label class="col-md-4">Data</label>
+              <input type="text" class="form-control" formControlName="data" />
+            </div>
+            <div class="form-group">
+              <label class="col-md-4">Hora</label>
+              <input type="text" class="form-control" formControlName="hora" />
+            </div>
+            <div class="form-group">
               <label class="col-md-4">Descrição</label>
-              <input type="text" class="form-control" formControlName="descricao"/>
+              <input type="text" class="form-control" formControlName="descricao" />
             </div>
             <div class="form-group">
               <label class="col-md-4" for="exampleFormControlSelect1">Selecionar
@@ -31,7 +39,7 @@
               <label class="col-md-4" for="exampleFormControlSelect2">
                 Onde ocorreu
               </label>
-              <select class="form-control" formControlName="opcao" id="exampleFormControlSelect2">
+              <select class="form-control" formControlName="onde_ocorreu" id="exampleFormControlSelect2">
                 <option></option>
                 <option>Cadastro</option>
                 <option>Login</option>
@@ -41,7 +49,11 @@
               </select>
             </div>
             <div class="form-group">
-              <button type="submit" [class.disabled]="angForm.invalid" class="btn btn-primary">
+              <label class="col-md-4">Identificação do SoftSeven</label>
+              <input type="text" class="form-control" formControlName="fk_idSoft" />
+            </div>
+            <div class="form-group">
+              <button type="submit" [disabled]="chamadoForm.invalid" class="btn btn-primary">
                 Enviar
               </button>
             </div>

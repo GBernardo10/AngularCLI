@@ -15,6 +15,17 @@ gpu_clock varchar (50),
 fk_idSoft int
 );
 
+create table chamado (
+id_chamado int primary key identity (20,22),
+data date,
+hora time,
+descricao text,
+criticidade varchar (20),
+onde_ocorreu varchar (50),
+fk_idSoft int,
+foreign key (fk_idSoft) REFERENCES maquina (id_soft)
+);
+
 
 create table desempenho (
 id_Desempenho int primary key identity (100,1),

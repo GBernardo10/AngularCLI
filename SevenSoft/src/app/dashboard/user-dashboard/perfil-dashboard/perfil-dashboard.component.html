@@ -14,44 +14,48 @@
         <div class="main-content">
             <div class="container-fluid">
                 <div class="row">
+
                     <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let hardware of hardware">
                         <div class="card card-stats">
                             <div class="card-header card-header-warning card-header-icon">
                                 <div class="card-icon">
-                                    <i class="material-icons">content_copy</i>
+                                    <small>{{hardware.nome_soft}}</small><i class="material-icons">content_copy</i>
                                 </div>
-                                <p class="card-category">CPU</p>
+                                <br><br><br>
+                                <p class="card-category">{{hardware.id_Hardware}}</p>
                                 <h3 class="card-title">
-                                    <small>{{hardware.fabricante}}</small>
+                                    <small>Fabricante: {{hardware.fabricante}}</small>
                                 </h3>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
                                     <i class="material-icons">cached</i>
                                     <small class="card-title">{{hardware.nome_processador}}</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-header card-header-danger card-header-icon">
-                                <div class="card-icon">
-                                    <i class="material-icons">info_outline</i>
-                                </div>
-                                <p class="card-category">??</p>
-                                <h3 class="card-title">??</h3>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    <i class="material-icons">cached</i>
-                                    <a href="">Atualizar</a>
+                                    <small class="card-title">{{hardware.modelo_processador}}</small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let chamados of chamados">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-danger card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">info_outline</i>
+                                </div>
+                                <p class="card-category">Chamados Abertos</p>
+                                <h3 class="card-title">{{chamados.total_de_chamado}}</h3>
+                            </div>
+                            <!-- <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">cached</i>
+                                    <a href="">Atualizar</a>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-header card-header-info card-header-icon">
                                 <div class="card-icon">
@@ -67,13 +71,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-
-
-
-
-
 
                 <div class="row">
                     <div class="col-md-4">
@@ -150,123 +149,53 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card card-plain">
-                                <div class="card-header card-header-danger">
-                                    <h4 class="card-title mt-0"> #</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover">
-                                            <thead class="">
-                                                <th>
-                                                    ID
-                                                </th>
-                                                <th>
-                                                    Nome
-                                                </th>
-                                                <th>
-                                                    Usuario
-                                                </th>
-                                                <th>
-                                                    Organizadora
-                                                </th>
-                                                <th>
-                                                    Status
-                                                </th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        1
-                                                    </td>
-                                                    <td>
-
-                                                    </td>
-                                                    <td>
-
-                                                    </td>
-                                                    <td>
-
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        2
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        3
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        4
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        5
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        6
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-plain">
+                                    <div class="card-header card-header-danger">
+                                        <h4 class="card-title mt-0"> Processos Ativos</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <th>
+                                                        ID:Processo
+                                                    </th>
+                                                    <th>
+                                                        Nome do Processo
+                                                    </th>
+                                                    <th>
+                                                        PID
+                                                    </th>
+                                                    <th>
+                                                        Memoria
+                                                    </th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let processo of processo">
+                                                        <td>
+                                                            {{processo.id_processo}}
+                                                        </td>
+                                                        <td>
+                                                            {{processo.nome_processo}}
+                                                        </td>
+                                                        <td>
+                                                            {{processo.pid}}
+                                                        </td>
+                                                        <td>
+                                                            {{processo.memoria}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> -->
                 </div>
 
                 <app-footer-dashboard></app-footer-dashboard>

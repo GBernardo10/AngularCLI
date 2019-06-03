@@ -11,6 +11,7 @@ import { SideBarDashboardComponent } from './side-bar-dashboard/side-bar-dashboa
 import { EventoDashboardComponent } from './evento-dashboard/evento-dashboard.component';
 import { ChamadosDashboardComponent } from './chamados-dashboard/chamados-dashboard.component';
 import { FooterDashboardComponent } from './footer-dashboard/footer-dashboard.component';
+import { VisualizarEventoComponent } from './visualizar-evento/visualizar-evento.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FooterDashboardComponent } from './footer-dashboard/footer-dashboard.co
     SideBarDashboardComponent,
     EventoDashboardComponent,
     ChamadosDashboardComponent,
-    FooterDashboardComponent
+    FooterDashboardComponent,
+    VisualizarEventoComponent
   ],
   exports: [UserDashboardComponent],
   imports: [

@@ -60,17 +60,15 @@
                 </div>
                 <div id="colEdit" class="col-sm">
                   <div id="tooltip">
-                    <button type="button" class="btn btn-primary bmd-btn-fab">
-                      <p id="tooltiptext">Visualizar</p>
+                    <button [routerLink]="['visualizar-evento/', eventos.id_Evento ]" type="button"
+                      class="btn btn-primary bmd-btn-fab">
+                      <p id="tooltiptext">Visualizar </p>
                       <i class="material-icons">search</i>
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-
-
-
           </div>
         </div>
         <!--Cadastrar Maquina-->

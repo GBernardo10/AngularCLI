@@ -85,7 +85,7 @@ export class EventoDashboardComponent implements OnInit {
 
 
   ngOnInit() {
-
+    
     const params = this.activatedRoute.snapshot.params;
     modal();
     // tooltip();
@@ -109,7 +109,9 @@ export class EventoDashboardComponent implements OnInit {
       'fk_idUserSeven': [params.id, Validators.required]
     })
   }
-
+  test(i:number){
+    console.log(i);
+  }
 
   // getEventosById() {
   //   const params = this.activatedRoute.snapshot.params;
@@ -123,10 +125,9 @@ export class EventoDashboardComponent implements OnInit {
   //   );
   // }
 
-
   getEventosById() {
     const params = this.activatedRoute.snapshot.params;
-    this.eventoService.getEventoById(params.id).subscribe(
+    this.eventoService.getAllEventoById(params.id).subscribe(
       res => {
         let allEventoById = res['recordset'].map(res => res);
         let eventoById = res['recordset'].map(res => res.id_Evento);

@@ -14,6 +14,8 @@ import graficoRoutes from './routes/graficoRoutes';
 import hardwareRoutes from './routes/routesProjeto/hardwareRoutes';
 import maquinaRoutes from './routes/routesProjeto/maquinaRoutes';
 import eventoRoutes from './routes/routesProjeto/eventoRoutes';
+import chamadoRoutes from './routes/routesProjeto/chamadoRoutes';
+import processoRoutes from './routes/routesProjeto/processoRoutes';
 
 class Server {
     public app: Application;
@@ -21,7 +23,6 @@ class Server {
         this.app = express();
         this.config();
         this.routes();
-        // this.error();
     }
 
     config(): void {
@@ -51,7 +52,9 @@ class Server {
         this.app.use('/api/hardware', hardwareRoutes);
         this.app.use('/api/maquina', maquinaRoutes);
         this.app.use('/api/evento', eventoRoutes);
-        
+        this.app.use('/api/chamado', chamadoRoutes);
+        this.app.use('/api/processo', processoRoutes);
+
         // this.app.use('/api/business', businessRoutes);
         // this.app.use('/api/user', userRoutes);
         // this.app.use('/api/login', authRoutes);

@@ -1,0 +1,61 @@
+<div class="wrapper">
+  <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+    <app-side-bar-dashboard></app-side-bar-dashboard>
+    <div class="sidebar-background" style="background-image: url(./assets/img/sidebar-4.jpg)"></div>
+  </div>
+  <div class="main-panel">
+    <app-nav-bar-dashboard></app-nav-bar-dashboard>
+    <div class="main-content">
+      <main role="main">
+        <button value="Voltar" onClick="history.go(-1)" class="btn btn-primary bmd-btn-fab">
+          <p id="tooltiptext">Retornar</p>
+          <i class="material-icons">
+            keyboard_backspace
+          </i>
+        </button>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-plain">
+                <div class="card-header card-header-danger">
+                  <h4 class="card-title mt-0">{{evento.nomeEvento[0]}}</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <th>
+                          ID:Soft
+                        </th>
+                        <th>
+                          Nome do Soft
+                        </th>
+                        <th>
+                          ID:Evento
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let eventos of eventos">
+                          <td>
+                            {{eventos.id_soft}}
+                          </td>
+                          <td>
+                            {{eventos.nome_soft}}
+                          </td>
+                          <td>
+                            {{eventos.id_Evento}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <app-footer-dashboard></app-footer-dashboard>
+  </div>
+</div>

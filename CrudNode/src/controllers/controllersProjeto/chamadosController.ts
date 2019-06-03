@@ -4,82 +4,62 @@ import pool from '../../database';
 class ChamadosController {
 
     public async list(req: Request, res: Response) {
-        await pool.query`select * from userSeven`.then(resultado => {
-            if (resultado.recordset.length > 0) {
-                res.json(resultado.recordset)
-            } else {
-                res.status(404).json({
-                    text: "Nenhum usuario encontrado"
-                })
-            }
-        }).catch(err => res.status(500).send(err))
+        const id = req.params.id;
+
+        await pool.query`select * from chamado, maquina, userSeven where 
+        chamado.fk_idsoft = maquina.id_soft and maquina.fk_idusuario = userSeven.id_usuario
+        and userSeven.id_usuario = ${id}`
+            .then(resultado => {
+                if (resultado.recordset) {
+                    res.json(resultado.recordset)
+                } else {
+                    res.status(404).json({
+                        text: "Nenhum chamado encontrado"
+                    })
+                }
+            }).catch(err => res.status(500).send(err))
     };
 
-    public async getUserId(req: Request, res: Response): Promise<void> {
-        // const { id } = req.params;
+    public async totalRows(req: Request, res: Response) {
         const id = req.params.id;
-        await pool.query`select * from userSeven where id_usuario = ${id}`.then(resultado => {
-            if (resultado.recordset[0]) {
-                console.log(resultado.recordset)
-                return res.json(resultado.recordset[0]);
-            } else {
-                res.status(404).json({
-                    text: "Usuario nao encontrado"
-                })
-            }
-        }).catch(err => res.status(500).send(err))
-    }
+        await pool.query`select count(*) as total_de_chamado from chamado, maquina, userSeven where 
+        chamado.fk_idsoft = maquina.id_soft and maquina.fk_idusuario = userSeven.id_usuario
+        and userSeven.id_usuario = ${id}`
+            .then(resultado => {
+                if (resultado.recordset) {
+                    res.json(resultado.recordset)
+                } else {
+                    res.status(404).json({
+                        text: "Nenhum chamado encontrado"
+                    })
+                }
+            }).catch(err => res.status(500).send(err))
+    };
 
     public async create(req: Request, res: Response): Promise<void> {
-        // const nome = req.body.nome;
-        // const usuario = req.body.usuario;
-        // const email = req.body.email;
-        // const senha = req.body.senha;
+        const data = req.body.data;
+        const hora = req.body.hora;
+        const descricao = req.body.descricao;
+        const criticidade = req.body.criticidade;
+        const onde_ocorreu = req.body.onde_ocorreu;
+        const fk_idSoft = req.body.fk_idSoft;
 
-        const { nome } = req.body;
-        const { usuario } = req.body;
-        const { email } = req.body;
-        const { senha } = req.body;
-
-        await pool.query`insert into [userSeven](nome, usuario,email,senha) values (${nome}, ${usuario},${email}, ${senha})`.then(
+        await pool.query`insert into [chamado](data, hora,descricao,criticidade,onde_ocorreu,fk_idSoft) values 
+        ((select convert(date,${data},103)),${hora}, ${descricao},${criticidade}, 
+            ${onde_ocorreu},${fk_idSoft})`.then(
             resultado => {
                 console.log(resultado.recordset)
                 if (resultado.recordsets.length > 0) {
                     res.json({
-                        text: 'Usuario Criado'
+                        text: 'Chamado Criado'
                     });
                 } else {
                     res.json({
-                        text: "Usuario ja existe"
+                        text: "Chamado ja existe"
                     })
                 }
             }
         ).catch(err => res.status(500).send(err))
-    }
-
-
-    public async update(req: Request, res: Response): Promise<void> {
-        const { id } = req.params;
-        const { username } = req.body;
-        const { password } = req.body;
-        const { firstName } = req.body;
-        const { lastName } = req.body;
-
-        await pool.query`update [userSeven] set username = ${username}, password = ${password}, firstName = ${firstName}, lastName = ${lastName} where userId = ${id}`
-            .then(resultado => {
-                res.json({
-                    text: "Usuario atualizado com sucesso"
-                });
-            }).catch(err => res.status(500).send(err))
-    }
-
-    public async delete(req: Request, res: Response): Promise<void> {
-        const { id } = req.params;
-        await pool.request().query(`delete from users where userId = ${id}`);
-        res.json({
-            text: "Usuario deletado com sucesso"
-        })
-
     }
 
 }

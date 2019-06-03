@@ -21,21 +21,33 @@ export class EventoService {
 
   cadMaquina(formData: NgForm) {
     console.log(formData)
-    return this.http.post<any>(`${this.API_URI}/maquina`, formData)
+    return this.http.post<any>(`${this.API_URI}/maquina`, formData);
   }
 
-  
+
   cadEvento(formData: NgForm) {
     console.log(formData)
-    return this.http.post<any>(`${this.API_URI}/evento`, formData)
+    return this.http.post<any>(`${this.API_URI}/evento`, formData);
   }
 
-  // getAllEventoById(id: Evento) {
-  //   return this.http.get<any>(`${this.API_URI}/evento/${id}`);
-  // }
+  cadChamado(formData: NgForm) {
+    return this.http.post<any>(`${this.API_URI}/chamado`, formData);
+  }
 
-  getEventoById(id: string | number) {
-    return this.http.get<any>(`${this.API_URI}/evento/${id}`).map(result => result);
+  getProcesso(id: string | number) {
+    return this.http.get<any>(`${this.API_URI}/processo/${id}`)
+  }
+
+  getTotalRowsChamado(id: string | number) {
+    return this.http.get<any>(`${this.API_URI}/chamado/${id}/total/${id}`)
+  }
+
+  getAllEventoById(id: Evento) {
+    return this.http.get<any>(`${this.API_URI}/evento/${id}`);
+  }
+
+  getAllEventoAndMaquinaById(id: string | number) {
+    return this.http.get<any>(`${this.API_URI}/evento/${id}/eventosByMaquinaId/${id}`).map(result => result);
   }
 
   // getEventoById(id: string | number) {

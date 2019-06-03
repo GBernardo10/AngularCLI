@@ -26,6 +26,7 @@ import { EventoDashboardComponent } from './dashboard/user-dashboard/evento-dash
 import { ChamadosDashboardComponent } from './dashboard/user-dashboard/chamados-dashboard/chamados-dashboard.component';
 import { Error404Module } from './Site/error404/error404.module';
 import { PerfilDashboardComponent } from './dashboard/user-dashboard/perfil-dashboard/perfil-dashboard.component';
+import { VisualizarEventoComponent } from './dashboard/user-dashboard/visualizar-evento/visualizar-evento.component';
 
 
 
@@ -39,10 +40,12 @@ const routes: Routes = [
   { path: 'objetivo', component: ObjetivoComponent },
   { path: 'projeto', component: ProjetoComponent },
   { path: 'servicos', component: ServicosComponent },
-  { path: 'contato', component: ContatoComponent},
+  { path: 'contato', component: ContatoComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'dashboard/:id', loadChildren: () => UserDashboardModule, canActivate: [GuardService] },
+  // { path: 'visualizar-evento/:i', component: VisualizarEventoComponent },
+
   // { path: 'perfil', component: PerfilDashboardComponent },
   // { path: 'evento', component: EventoDashboardComponent },
   // { path: 'abrir-chamado', component: ChamadosDashboardComponent },

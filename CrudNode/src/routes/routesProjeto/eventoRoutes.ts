@@ -13,6 +13,7 @@ class EventoRoutes {
     config(): void {
         // this.router.get('/:id', loginController.getLogin);
         this.router.get('/:id', eventoController.getAllEventoById);
+        this.router.get('/:id/eventosByMaquinaId/:id', eventoController.getAllEventoAndMaquinaById);
         this.router.post('/', eventoController.create);
         // this.router.get('/:id/eventobyid/:id', eventoController.getEventoById);
 
