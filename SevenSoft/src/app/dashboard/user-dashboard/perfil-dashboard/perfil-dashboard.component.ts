@@ -15,6 +15,11 @@ export class PerfilDashboardComponent implements OnInit {
   chartTemperaturaCPU: any = [];
   chartMemoriaRam: any = [];
   chartCPU: any = [];
+  labelTemMax: any = [];
+  labelCPU_Uso: any = [];
+  labelCPU_Disponivel: any = [];
+  labelRAM_Uso: any = [];
+  labelRAm_Disponivel: any = [];
 
   id: string
 
@@ -36,6 +41,7 @@ export class PerfilDashboardComponent implements OnInit {
     this.chartCPUDisponivelEmUso();
     this.getProcesso();
     this.getTotalChamado();
+    console.log(this.labelTemMax);
   }
 
   getHardwareById() {
@@ -82,6 +88,14 @@ export class PerfilDashboardComponent implements OnInit {
         let cpu_disponivel = res['recordset'].map(res => res.cpu_disponivel);
         let dataHora = res['recordset'].map(res => res.data_hora);
 
+        cpu_em_uso.forEach((res) => {
+          this.labelCPU_Uso.push(res);
+        })
+
+        cpu_disponivel.forEach((res) => {
+          this.labelCPU_Disponivel.push(res);
+        })
+
         dataHora.forEach((res) => {
           let jsdate = new Date(res)
           chartDate.push(jsdate.toLocaleTimeString('en', {
@@ -95,12 +109,14 @@ export class PerfilDashboardComponent implements OnInit {
             labels: chartDate,
             datasets: [{
               data: cpu_em_uso,
+              label: 'CPU em uso',
               backgroundColor: '#3cba9f'
             }, {
               data: cpu_disponivel,
+              label: 'CPU Disponivel',
               backgroundColor: '#ffcc00'
             }
-            ]
+            ],
           },
           options: {
             legend: {
@@ -121,24 +137,24 @@ export class PerfilDashboardComponent implements OnInit {
       this.chartjs.getAllDados(params.id).subscribe(
         res => {
 
-          let temp_max = res['recordset'].map(res => res.memoria_ram_disponivel);
-          let temp_min = res['recordset'].map(res => res.memoria_ram_em_uso_cpu);
+          let ram_livre = res['recordset'].map(res => res.memoria_ram_disponivel);
+          let ram_em_uso = res['recordset'].map(res => res.memoria_ram_em_uso_cpu);
 
-          // temp_max.forEach((res) => {
-          //   chartTempMax.push(res);
-          // })
+          ram_livre.forEach((res) => {
+            this.labelRAm_Disponivel.push(res);
+          })
 
-          // temp_min.forEach((res) => {
-          //   chartTempMin.push(res);
-          // })
+          ram_em_uso.forEach((res) => {
+            this.labelRAM_Uso.push(res);
+          })
 
           this.chartMemoriaRam = new Chart('memoriaRam', {
             type: 'pie',
             data: {
               datasets: [{
                 data: [
-                  temp_max,
-                  temp_min,
+                  ram_livre,
+                  ram_em_uso,
                 ],
                 backgroundColor: [
                   '#3cba9f',
@@ -146,8 +162,8 @@ export class PerfilDashboardComponent implements OnInit {
                 ],
               }],
               labels: [
-                'Em uso',
-                'Livre'
+                'Memoria Ram Disponivel',
+                'Memoria Ram Em uso'
               ]
             },
             options: {
@@ -184,9 +200,9 @@ export class PerfilDashboardComponent implements OnInit {
             chartTempMax.push(res);
           })
 
-          // temp_min.forEach((res) => {
-          //   chartTempMin.push(res);
-          // })
+          temp_max.forEach((res) => {
+            this.labelTemMax.push(res);
+          })
 
           alldates.forEach((res) => {
             let jsdate = new Date(res)

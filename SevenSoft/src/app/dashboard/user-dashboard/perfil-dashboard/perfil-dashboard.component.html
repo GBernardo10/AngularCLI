@@ -80,6 +80,7 @@
                             <div class="container">
                                 <!-- <div class="card-header card-header-success"> -->
                                 <div *ngIf="chartTemperaturaCPU">
+                                    <br>
                                     <canvas id="canvas">
                                         {{chartTemperaturaCPU}}
                                     </canvas>
@@ -90,14 +91,12 @@
                                     
                                 </div> -->
                             <div class="card-body">
-                                <h4 class="card-title">??</h4>
+                                <h4 class="card-title">Temperatura da CPU</h4>
                                 <p class="card-category">
-                                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> ?? </span> ??</p>
+                                    <span class="text-success"><i class="fas fa-temperature-low"></i></span>
+                                    {{labelTemMax[labelTemMax.length -1]}}</p>
                             </div>
                             <div class="card-footer">
-                                <div class="stats">
-                                    <i class="material-icons">access_time</i> updated 4 minutes ago
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -107,6 +106,7 @@
                             <div class="container">
                                 <!-- <div class="card-header card-header-danger"> -->
                                 <div *ngIf="chartCPU">
+                                    <br>
                                     <canvas id="cpu">
                                         {{chartCPU}}
                                     </canvas>
@@ -117,34 +117,38 @@
                                     <div class="ct-chart">
                                     </div>
                                 </div> -->
-                            <!-- <div class="card-body">
-                                <h4 class="card-title">??</h4>
-                                <p class="card-category">??</p>
-                            </div> -->
-                            <!-- <div class="card-footer">
+                            <div class="card-body">
+                                <h4 class="card-title">Uso da CPU</h4>
+                                <p class="card-category">CPU em uso: {{labelCPU_Uso[labelCPU_Uso.length -1]}}%</p>
+                                <p class="card-category">CPU
+                                    Disponivel: {{labelCPU_Disponivel[labelCPU_Disponivel.length -1]}}%</p>
+
+                            </div>
+                            <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons">access_time</i> updated 4 minutes ago
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
-
                     <div class="col-md-4">
                         <div class="card card-chart">
                             <div class="container">
                                 <div *ngIf="chartMemoriaRam">
+                                    <br>
                                     <canvas id="memoriaRam">
                                         {{chartMemoriaRam}}
                                     </canvas>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">??</h4>
-                                <p class="card-category">??</p>
+                                <h4 class="card-title">Uso da Memoria RAM</h4>
+                                <p class="card-category">Memoria Ram em uso: {{labelRAM_Uso[labelRAM_Uso.length -1]}}%
+                                </p>
+                                <p class="card-category">Memoria Ram
+                                    Disponivel: {{labelRAm_Disponivel[labelRAm_Disponivel.length -1]}}%</p>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons">access_time</i> updated 4 minutes ago
                                 </div>
                             </div>
                         </div>

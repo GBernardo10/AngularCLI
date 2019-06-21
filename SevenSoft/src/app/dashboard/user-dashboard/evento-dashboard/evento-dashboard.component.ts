@@ -251,8 +251,11 @@ export class EventoDashboardComponent implements OnInit {
         if (evento) {
           console.log(evento)
           this.eventoService.cadEvento(evento)
-          confirm("Evento cadastrado com sucesso !")
-          this.router.navigate(['/dashboard', this.user.id_usuario])
+          if (true) {
+            confirm("Evento cadastrado com sucesso !")
+            this.router.navigate(['/dashboard', this.user.id_usuario])
+          }
+
           console.log(formData)
         }
 
