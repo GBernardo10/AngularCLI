@@ -13,7 +13,7 @@ import { UserSeven } from '../models/UserSeven';
 })
 export class UsersService {
 
-  API_URI = 'https://servidorsevensoft.azurewebsites.net/api';
+  API_URI = 'http://localhost:3000/api';
 
   //private isloggedIn: boolean;
 
@@ -73,6 +73,14 @@ export class UsersService {
       }),
       catchError(this.handleError<User>('cadastro'))
     );
+  }
+
+  deleteEvento(id: string) {
+    return this.http.delete(`${this.API_URI}/evento/${id}`);
+  }
+
+  deleteMaquina(id: string) {
+    return this.http.delete(`${this.API_URI}/maquina/${id}`);
   }
 
   // login(formData: NgForm): Observable<User> {

@@ -56,6 +56,14 @@ class EventoController {
         ).catch(err => res.status(500).send(err))
 
     }
+    public async delete(req: Request, res: Response): Promise<void> {
+        const id = req.params.id;
+        await pool.query`delete from evento where id_Evento = ${id}`;
+        res.json({
+            text: "Usuario deletado com sucesso"
+        })
+
+    }
 }
 
 const eventoController = new EventoController();

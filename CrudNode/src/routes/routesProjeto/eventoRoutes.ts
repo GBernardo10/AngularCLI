@@ -15,6 +15,7 @@ class EventoRoutes {
         this.router.get('/:id', eventoController.getAllEventoById);
         this.router.get('/:id/eventosByMaquinaId/:id', eventoController.getAllEventoAndMaquinaById);
         this.router.post('/', eventoController.create);
+        this.router.delete('/:id', eventoController.delete);
         // this.router.get('/:id/eventobyid/:id', eventoController.getEventoById);
 
     }

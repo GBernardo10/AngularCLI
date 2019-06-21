@@ -32,20 +32,10 @@ import { PerfilDashboardComponent } from './dashboard/user-dashboard/perfil-dash
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
-  { path: 'home', component: HomeComponent },
-  { path: 'objetivo', component: ObjetivoComponent },
-  { path: 'projeto', component: ProjetoComponent },
-  { path: 'servicos', component: ServicosComponent },
-  { path: 'contato', component: ContatoComponent, canActivate: [GuardService] },
-  { path: 'login', component: LoginComponent },
-  { path: 'cadastro', component: CadastroComponent },
   { path: 'dashboard/:id', loadChildren: () => UserDashboardModule, canActivate: [GuardService] },
-  { path: 'perfil', component: PerfilDashboardComponent },
-  { path: 'evento', component: EventoDashboardComponent },
-  { path: 'abrir-chamado', component: ChamadosDashboardComponent },
   { path: '404', loadChildren: () => Error404Module },
   // { path: '**', redirectTo: '/404' },
 ]

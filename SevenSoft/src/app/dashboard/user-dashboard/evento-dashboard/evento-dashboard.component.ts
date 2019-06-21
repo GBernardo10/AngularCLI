@@ -85,7 +85,7 @@ export class EventoDashboardComponent implements OnInit {
 
 
   ngOnInit() {
-    
+
     const params = this.activatedRoute.snapshot.params;
     modal();
     // tooltip();
@@ -101,15 +101,16 @@ export class EventoDashboardComponent implements OnInit {
       'fk_idEvento': [null, Validators.required],
       'nome_soft': [null, Validators.required],
     });
+    let date = new Date()
     this.eventoForm = this.formBuilder.group({
       'nomeEvento': [null, Validators.required],
       'tipoEvento': [null, Validators.required],
-      'data': [null, Validators.required],
-      'hora': [null, Validators.required],
+      'data': [date.toLocaleDateString(), Validators.required],
+      'hora': [date.toLocaleTimeString(), Validators.required],
       'fk_idUserSeven': [params.id, Validators.required]
     })
   }
-  test(i:number){
+  test(i: number) {
     console.log(i);
   }
 
@@ -220,13 +221,27 @@ export class EventoDashboardComponent implements OnInit {
       (maquina) => {
         if (maquina) {
           console.log(maquina)
-          this.eventoService.cadMaquina(maquina)
+          this.eventoService.cadMaquina(maquina);
+          if (true) {
+            confirm("Maquina cadastrada com sucesso !")
+            this.router.navigate(['/evento', this.user.id_usuario])
+          }
+          // this.router.navigate(['/evento/420']);
+          // "['visualizar-evento/', eventos.id_Evento ]"
         }
 
       },
       err => console.error(err)
     )
   }
+
+  // cadMaq(formData:NgForm){
+  //   return this.eventoService.cadMaquina(formData).subscribe(
+  //     res =>{
+  //       this.router.navigate(['/evento']);
+  //     }
+  //   )
+  // }
 
   cadEvento(formData: NgForm) {
     console.log(formData)
@@ -236,11 +251,27 @@ export class EventoDashboardComponent implements OnInit {
         if (evento) {
           console.log(evento)
           this.eventoService.cadEvento(evento)
+          confirm("Evento cadastrado com sucesso !")
+          this.router.navigate(['/dashboard', this.user.id_usuario])
           console.log(formData)
         }
 
       },
       err => console.error(err)
+    )
+  }
+
+  deletarEvento(id_Evento: string) {
+    this.userService.deleteEvento(id_Evento).subscribe(
+      res => {
+        console.log(res)
+        if (true) {
+          confirm("Evento deletado com sucesso !")
+          this.router.navigate(['/dashboard', this.user.id_usuario])
+        }
+        //this.getEventosById();
+      },
+      err => console.log(err)
     )
   }
 }

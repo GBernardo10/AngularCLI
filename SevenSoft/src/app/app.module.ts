@@ -24,7 +24,6 @@ import { UserDashboardModule } from './dashboard/user-dashboard/user-dashboard.m
 import { GraficoService } from './Site/services/grafico.service';
 import { UsersService } from './Site/services/users.service';
 import { EventoService } from './Site/services/eventos.service';
-import {NgxMaskModule} from 'ngx-mask';
 
 // import { AuthGuard } from './authentication/auth.guard';
 
@@ -84,8 +83,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HttpClientModule,
     UserDashboardModule,
     Error404Module,
-    NgxMaskModule.forRoot(new Option)
-
     // ComponentsDashboardModule,
     // ComponentsGraficoModule
   ],

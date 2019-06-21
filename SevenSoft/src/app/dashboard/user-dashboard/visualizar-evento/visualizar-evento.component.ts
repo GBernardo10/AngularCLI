@@ -54,6 +54,19 @@ export class VisualizarEventoComponent implements OnInit {
     )
   }
 
+  deletarMaquina(id_Soft: string) {
+    this.userService.deleteMaquina(id_Soft).subscribe(
+      res => {
+        console.log(res)
+        if (true) {
+          confirm("Maquina deletada com sucesso !")
+        }
+        //this.getEventosById();
+      },
+      err => console.log(err)
+    )
+  }
+
   // getUser(id: number) {
   //   return this.userService.getUser(id).subscribe(
   //     (user) => {

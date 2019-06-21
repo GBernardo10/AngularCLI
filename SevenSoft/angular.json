@@ -36,7 +36,8 @@
               "src/assets/js/rellaxTeste.js",
               "src/assets/js/Rellax.js",
               "src/assets/js/jquery-3.4.1.min.js",
-              "src/assets/js/jquery.mask.min.js"
+              "src/assets/js/jquery.mask.min.js",
+              "src/assets/js/mask.js"
             ]
           },
           "configurations": {

@@ -195,8 +195,11 @@ export class PerfilDashboardComponent implements OnInit {
             }))
           })
 
-          if (chartTempMax.length > 20) {
-            chartTempMax.splice(0, 1)
+          if (chartTempMax.length > 5) {
+            temp_max.forEach((res) => {
+              chartTempMax.splice(0, 1)
+            })
+            return
           }
 
           // if (chartTempMin.length > 20) {

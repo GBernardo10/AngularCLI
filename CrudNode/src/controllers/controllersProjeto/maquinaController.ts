@@ -73,8 +73,8 @@ class MaquinaController {
     }
 
     public async delete(req: Request, res: Response): Promise<void> {
-        const { id } = req.params;
-        await pool.request().query(`delete from users where userId = ${id}`);
+        const id = req.params.id;
+        await pool.request().query(`delete from maquina where FK_IDEVENTO = ${id}`);
         res.json({
             text: "Usuario deletado com sucesso"
         })

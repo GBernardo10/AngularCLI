@@ -1,8 +1,8 @@
 <div class="wrapper">
-  <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+  <!-- <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
     <app-side-bar-dashboard></app-side-bar-dashboard>
     <div class="sidebar-background" style="background-image: url(./assets/img/sidebar-4.jpg)"></div>
-  </div>
+  </div> -->
   <div class="main-panel">
     <app-nav-bar-dashboard></app-nav-bar-dashboard>
     <div class="main-content">
@@ -42,9 +42,12 @@
                           <td>
                             {{eventos.nome_soft}}
                           </td>
-                          <td>
+                          <td >
                             {{eventos.id_Evento}}
                           </td>
+                          <button class="btn btn-danger" onClick="history.go(-1)" (click)="deletarMaquina(eventos.id_Evento)">
+                            <i class="far fa-trash-alt"></i>
+                          </button>
                         </tr>
                       </tbody>
                     </table>
